@@ -20,3 +20,4 @@ D) SUBIR UN DIRECTORIO A GIT HUB:
 	4. Especificar la rama principal: "git branch -M main"
 	5. Conectar con el repositorio: "git remote add origin [LINK_REPOSITORIO]"
 	6. Subir archivos: "git push -u origin main"
+    7. En caso de 'ERROR': git push -u origin main --force
