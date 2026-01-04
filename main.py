@@ -2,19 +2,21 @@
 Aplicación principal FastAPI
 """
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
 from typing import List
+from pathlib import Path
 import uvicorn
 
 # Importar configuración de base de datos
 from database import get_session, init_db
 from models import Proyecto
 
-# Crear instancia de FastAPI
+#INSTANCIAS DE FASTASPI
 app = FastAPI(
-    title="BIOKUAM Web Service",
-    description="Servicio web para desarrollo de software",
+    title="BIOKUAM - WEB SERVICE",
+    description="Servicio Web de 'BIOKUAM' proyecto relacionado acerca del prototipo de una embarcación para la medición del pH y temperatura del agua determinando que tan óptima es la fuente hídrica para el riego de cultivos de maíz, en el municipio de Simijaca, Cundinamarca, Colombia.",
     version="0.1.0"
 )
 
@@ -32,41 +34,46 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     """
-    Se ejecuta al iniciar la aplicación
-    Crea las tablas si no existen
+    EN CASO DE QUE NO EXISTAN LAS TABLAS PARA LA BASE DE DATOS LAS CREA.
     """
     init_db()
-    print("✅ Base de datos inicializada")
+    print("✅ LA BASE DE DATOS HA SIDO INICIALIZADA")
 
 
-# Ruta raíz
-@app.get("/")
+# ENDPOINT RAÍZ 
+@app.get("/", response_class=HTMLResponse, tags=["INICIO"])
 def read_root():
     """
-    Endpoint de bienvenida
+    ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
+    Lee el archivo HTML desde templates/index.html
     """
-    return {
-        "message": "Bienvenido a BIOKUAM Web Service",
-        "version": "0.1.0",
-        "docs": "/docs"
-    }
+    # Obtener la ruta del archivo HTML
+    html_file = Path("templates/index.html")
+    
+    # Leer el contenido del archivo HTML
+    try:
+        html_content = html_file.read_text(encoding="utf-8")
+        return html_content
+    except FileNotFoundError:
+        # Si el archivo no existe, devolver un error HTML
+        return HTMLResponse(
+            content="<h1>Error: Archivo HTML no encontrado</h1><p>El archivo templates/index.html no existe.</p>",
+            status_code=404
+        )
 
 
-# Ruta de salud
+#ENDPOINT DE VERIFICACIÓN DE ESTADO DEL SERVICIO
 @app.get("/health")
 def health_check():
-    """
-    Endpoint para verificar el estado del servicio
-    """
-    return {"status": "healthy"}
+    return { "- THE STATUS SERVICE IS HEALTHY " : True}
 
 
-# ========== RUTAS DE EJEMPLO PARA PROYECTO ==========
+# ========== RUTAS (ENDPOINTS) DEL PROYECTO: ==========
 
-@app.post("/proyectos/", response_model=Proyecto)
+@app.post("/register/user", response_model=Proyecto)
 def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
     """
-    Crear un nuevo proyecto
+    REGISTRO PARA CADA UNO DE LOS USUARIOS
     """
     session.add(proyecto)
     session.commit()
@@ -140,4 +147,5 @@ if __name__ == "__main__":
         port=8000,
         reload=True  # Recarga automática en desarrollo
     )
+
 
