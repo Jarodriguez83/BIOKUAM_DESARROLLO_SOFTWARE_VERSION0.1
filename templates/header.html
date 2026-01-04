@@ -1,130 +1,131 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <header class="header-modern">
-        <div class="glass-container">
-            <div class="logo-wrapper">
-                <a href="/" class="brand">
-                    <span class="symbol">◈</span>
-                    <span class="text">BIO<span class="highlight">KUAM</span></span>
-                </a>
-            </div>
-    
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/" class="active">Inicio</a></li>
-                    <li><a href="/nosotros">Nosotros</a></li>
-                    <li><a href="/servicios">Servicios</a></li>
-                    <li><a href="/anexos">Anexos</a></li>
-                </ul>
-            </nav>
-    
-            <div class="nav-extra">
-                <a href="/contacto" class="cta-neon">
-                    <span>INICIAR PROYECTO</span>
-                    <svg width="13" height="10" viewBox="0 0 13 10" fill="none"><path d="M1 5H11M11 5L7 1M11 5L7 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
+<!-- HEADER DE LOS HTLM - PLATILLA JINJA2 - CÓDIGO HTML-->
+<header class="bkm-header">
+    <div class="header-container">
+        <div class="brand-section">
+            <div class="logo-box">BKM</div>
+            <h1 class="brand-name">BIOKUAM</h1>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/dashboard">DASHBOARD</a>
+            <a href="/monitoreo">MONITOREO</a>
+            <a href="/reportes">REPORTES</a>
+        </nav>
+
+        <div class="user-section">
+            <button class="btn-logout">CERRAR SESIÓN</button>
+            <div class="user-profile">
+                <span class="username">Usuario</span>
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
             </div>
         </div>
-    </header>
-</body>
-</html>
+    </div>
+</header>
 
+<!-- ESTILOS CSS DEL HEADER PARA LOS HTML-->
 <style>
-   /* Importamos tipografía de estilo tecnológico/moderno */
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
 
-:root {
-    --dark-bg: #0a0f0d; /* Un verde casi negro, muy profundo */
-    --accent: #00ff88;  /* Verde Neón para resaltar */
-    --text-light: #e0e0e0;
-}
+    :root {
+        --bkm-blue: #0D47A1;
+        --bkm-orange: #EF6C00;
+        --bkm-red: #F44336;
+        --bkm-white: #FFFFFF;
+    }
 
-.header-modern {
-    position: fixed;
-    top: 20px;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    padding: 0 20px;
-}
+    body {
+        margin: 0;
+        font-family: 'Lexend', sans-serif;
+    }
 
-.glass-container {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px); /* Efecto de desenfoque */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50px; /* Bordes muy redondeados para estilo orgánico */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 35px;
-    width: 100%;
-    max-width: 1100px;
-    transition: all 0.4s ease;
-}
+    .bkm-header {
+        background-color: var(--bkm-blue);
+        height: 70px;
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        color: var(--bkm-white);
+    }
 
-.brand {
-    text-decoration: none;
-    font-family: 'Syne', sans-serif;
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: white;
-    letter-spacing: 1px;
-}
+    .header-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.highlight {
-    color: var(--accent);
-    text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-}
+    .brand-section {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
 
-.main-nav ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
+    .logo-box {
+        background-color: var(--bkm-orange);
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
 
-.main-nav a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: 0.3s;
-}
+    .brand-name {
+        font-size: 1.4rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin: 0;
+    }
 
-.main-nav a:hover, .main-nav a.active {
-    color: var(--accent);
-}
+    .nav-links {
+        display: flex;
+        gap: 40px;
+    }
 
-/* Botón llamativo estilo Neón */
-.cta-neon {
-    background: var(--accent);
-    color: #000;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-    transition: 0.3s;
-}
+    .nav-links a {
+        color: var(--bkm-white);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 400;
+        transition: opacity 0.3s;
+    }
 
-.cta-neon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
-}
+    .nav-links a:hover {
+        opacity: 0.7;
+    }
+
+    .user-section {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .btn-logout {
+        background-color: var(--bkm-red);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-family: 'Lexend', sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 0.85rem;
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .avatar {
+        background-color: var(--bkm-orange);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+    }
 </style>
