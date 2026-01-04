@@ -1,9 +1,10 @@
 """
 Aplicación principal FastAPI
 """
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Request  # Agrega Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates  # Agrega esto para plantillas
 from sqlmodel import Session, select
 from typing import List
 from pathlib import Path
@@ -13,12 +14,15 @@ import uvicorn
 from database import get_session, init_db
 from models import Proyecto
 
-#INSTANCIAS DE FASTASPI
+# INSTANCIAS DE FASTAPI
 app = FastAPI(
     title="BIOKUAM - WEB SERVICE",
     description="Servicio Web de 'BIOKUAM' proyecto relacionado acerca del prototipo de una embarcación para la medición del pH y temperatura del agua determinando que tan óptima es la fuente hídrica para el riego de cultivos de maíz, en el municipio de Simijaca, Cundinamarca, Colombia.",
     version="0.1.0"
 )
+
+# Configurar plantillas Jinja2
+templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
 
 # Configurar CORS (permite peticiones desde el frontend)
 app.add_middleware(
@@ -42,30 +46,18 @@ def on_startup():
 
 # ENDPOINT RAÍZ 
 @app.get("/", response_class=HTMLResponse, tags=["INICIO"])
-def read_root():
+def read_root(request: Request):  # Agrega request como parámetro
     """
     ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
-    Lee el archivo HTML desde templates/index.html
+    Renderiza la plantilla index.html con Jinja2
     """
-    # Obtener la ruta del archivo HTML
-    html_file = Path("templates/index.html")
-    
-    # Leer el contenido del archivo HTML
-    try:
-        html_content = html_file.read_text(encoding="utf-8")
-        return html_content
-    except FileNotFoundError:
-        # Si el archivo no existe, devolver un error HTML
-        return HTMLResponse(
-            content="<h1>Error: Archivo HTML no encontrado</h1><p>El archivo templates/index.html no existe.</p>",
-            status_code=404
-        )
+    return templates.TemplateResponse("index.html", {"request": request})  # Usa TemplateResponse
 
 
-#ENDPOINT DE VERIFICACIÓN DE ESTADO DEL SERVICIO
+# ENDPOINT DE VERIFICACIÓN DE ESTADO DEL SERVICIO
 @app.get("/health")
 def health_check():
-    return { "- THE STATUS SERVICE IS HEALTHY " : True}
+    return {"- THE STATUS SERVICE IS HEALTHY ": True}
 
 
 # ========== RUTAS (ENDPOINTS) DEL PROYECTO: ==========
