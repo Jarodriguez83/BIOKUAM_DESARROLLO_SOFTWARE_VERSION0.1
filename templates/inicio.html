@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOKUAM - Gestión de Acceso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bkm-blue: #0D47A1;
+            --bkm-orange: #EF6C00;
+            --bkm-white: #FFFFFF;
+            --bkm-gray: #f4f7f6;
+            --bkm-text: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lexend', sans-serif;
+            background-color: var(--bkm-gray);
+            height: 100vh;
+            display: flex;
+        }
+
+        /* Estructura Split-Screen */
+        .main-wrapper { display: flex; width: 100%; }
+
+        /* Lado Izquierdo (Publicidad) */
+        .hero-side {
+            flex: 1.2;
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.7)), 
+                        url('https://images.unsplash.com/photo-1532187875605-1ef6ca237b1d?auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .hero-content {
+            color: white;
+            border-left: 6px solid var(--bkm-orange);
+            padding-left: 30px;
+        }
+
+        /* Lado Derecho (Navegación por Pestañas) */
+        .auth-side {
+            flex: 0.8;
+            background: var(--bkm-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* Tabs Styling */
+        .tabs-header {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            color: #888;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .tab-btn.active {
+            color: var(--bkm-blue);
+            border-bottom: 3px solid var(--bkm-orange);
+        }
+
+        /* Contenido de las pestañas */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Estilos de Formulario */
+        h2 { color: var(--bkm-blue); margin-bottom: 20px; font-size: 1.5rem; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 0.75rem; font-weight: bold; color: #666; margin-bottom: 5px; }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus { border-color: var(--bkm-blue); }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--bkm-blue);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--bkm-orange); }
+
+        .helper-text {
+            font-size: 0.8rem;
+            margin-top: 15px;
+            text-align: center;
+            color: #777;
+        }
+
+        .helper-text a { color: var(--bkm-blue); text-decoration: none; font-weight: bold; cursor: pointer; }
+
+        @media (max-width: 900px) {
+            .main-wrapper { flex-direction: column; }
+            .hero-side { min-height: 200px; flex: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <section class="hero-side">
+            <div class="hero-content">
+                <h1>BIOKUAM</h1>
+                <p>Gestión inteligente de recursos biotecnológicos.</p>
+            </div>
+        </section>
+
+        <section class="auth-side">
+            <div class="auth-card">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="openTab(event, 'login')">Ingresar</button>
+                    <button class="tab-btn" onclick="openTab(event, 'register')">Registro</button>
+                    <button class="tab-btn" onclick="openTab(event, 'password')">Contraseña</button>
+                </div>
+
+                <div id="login" class="tab-content active">
+                    <h2>Bienvenido de nuevo</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>USUARIO / EMAIL</label>
+                            <input type="text" placeholder="nombre@biokuam.com">
+                        </div>
+                        <div class="form-group">
+                            <label>CONTRASEÑA</label>
+                            <input type="password" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-submit">INICIAR SESIÓN</button>
+                    </form>
+                    <p class="helper-text">¿No tienes cuenta? <a onclick="triggerTab(1)">Regístrate</a></p>
+                </div>
+
+                <div id="register" class="tab-content">
+                    <h2>Crear Cuenta</h2>
+                    <form>
+                        <div class="form-group">
+                            <label>NOMBRE COMPLETO</label>
+                            <input type="text" placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label>CORREO ELECTRÓNICO</label>
+                            <input type="email" placeholder="correo@ejemplo.com">
+                        </div>
+                        <div class="form-group">
+                            <label>CONTRASEÑA</label>
+                            <input type="password" placeholder="Mínimo 8 caracteres">
+                        </div>
+                        <button type="submit" class="btn-submit">REGISTRARSE</button>
+                    </form>
+                    <p class="helper-text">¿Ya tienes cuenta? <a onclick="triggerTab(0)">Ingresa aquí</a></p>
+                </div>
+
+                <div id="password" class="tab-content">
+                    <h2>Recuperar Acceso</h2>
+                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 20px;">
+                        Ingresa tu correo y te enviaremos las instrucciones para restablecer tu contraseña.
+                    </p>
+                    <form>
+                        <div class="form-group">
+                            <label>CORREO REGISTRADO</label>
+                            <input type="email" placeholder="correo@biokuam.com">
+                        </div>
+                        <button type="submit" class="btn-submit">ENVIAR INSTRUCCIONES</button>
+                    </form>
+                    <p class="helper-text"><a onclick="triggerTab(0)"><i class="fas fa-arrow-left"></i> Volver al inicio</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Ocultar todos los contenidos
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].className = tabcontent[i].className.replace(" active", "");
+            }
+
+            // Quitar clase active de todos los botones
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Mostrar la pestaña actual y añadir clase active al botón
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+
+        // Función para cambiar de pestaña mediante enlaces de texto
+        function triggerTab(index) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons[index].click();
+        }
+    </script>
+</body>
+</html>
