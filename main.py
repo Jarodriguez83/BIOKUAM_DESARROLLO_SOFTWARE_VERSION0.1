@@ -4,6 +4,7 @@ Aplicación principal FastAPI
 from fastapi import FastAPI, Depends, HTTPException, Request  # Agrega Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates  # Agrega esto para plantillas
 from sqlmodel import Session, select
 from typing import List
@@ -22,6 +23,7 @@ app = FastAPI(
 )
 
 # Configurar plantillas Jinja2
+app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
 templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
 
 # Configurar CORS (permite peticiones desde el frontend)
