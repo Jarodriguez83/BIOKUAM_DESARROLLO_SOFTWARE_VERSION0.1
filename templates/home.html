@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME - BIOKUAM</title>
+    
+</head>
+<header>
+    {% include "header.html" %}
+</header>
+<body>
+   <br>
+    <style>
+        :root {
+            --bkm-blue: #0D47A1;
+            --bkm-orange: #EF6C00;
+            --bkm-white: #FFFFFF;
+            --bkm-gray: #f8f9fa;
+            --bkm-text: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Causel", cursive, sans-serif; color: var(--bkm-text); line-height: 1.6; background-color: var(--bkm-white); }
+
+        /* --- SECCIÓN BIENVENIDA (HERO) --- */
+        .welcome-section {
+            display: flex;
+            align-items: center;
+            min-height: 80vh;
+            padding: 40px 8%;
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+        }
+
+        .welcome-image {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .welcome-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 8px solid var(--bkm-orange);
+        }
+
+        .welcome-text {
+            flex: 1;
+        }
+
+        .welcome-text h1 {
+            color: var(--bkm-blue);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .highlight { color: var(--bkm-orange); font-weight: bold; }
+
+        /* --- SECCIÓN OBJETIVOS --- */
+        .objectives-section {
+            padding: 80px 8%;
+            background-color: var(--bkm-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--bkm-orange);
+            margin: 10px auto;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .obj-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .obj-card:hover {
+            background: var(--bkm-white);
+            color: var(--bkm-blue);
+            transform: translateY(-10px);
+        }
+
+        .obj-card i {
+            font-size: 2.5rem;
+            color: var(--bkm-orange);
+            margin-bottom: 20px;
+        }
+
+        /* --- SECCIÓN NOTICIAS --- */
+        .news-section {
+            padding: 80px 8%;
+            background-color: var(--bkm-gray);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .news-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-body {
+            padding: 20px;
+        }
+
+        .news-body h4 {
+            color: var(--bkm-blue);
+            margin-bottom: 10px;
+        }
+
+        .btn-more {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--bkm-orange);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .welcome-section { flex-direction: column; text-align: center; }
+            .welcome-image { padding-right: 0; margin-bottom: 30px; }
+            .welcome-text h1 { font-size: 2.2rem; }
+        }
+    </style>
+<body>
+
+    <section class="welcome-section">
+        <div class="welcome-image">
+            <img src="tu-imagen-prototipo.jpg" alt="Prototipo BioKuaM en el campo">
+        </div>
+        <div class="welcome-text">
+            <center><h1>¡BIENVENIDO A <span class="highlight">BIOKUAM!</span></h1></center>
+            <p>Queremos darte las más sinceras <strong>gracias</strong> por sumarte a este proyecto. Tu participación es fundamental para transformar la agricultura y la gestión biotecnológica en nuestras comunidades rurales.</p>
+            <p>Juntos estamos construyendo una herramienta que une la tecnología de vanguardia con el saber ancestral del campo.</p>
+        </div>
+    </section>
+
+    <section class="objectives-section">
+        <h2 class="section-title">Objetivos del Proyecto</h2>
+        <div class="objectives-grid">
+            <div class="obj-card">
+                <i class="fas fa-seedling"></i>
+                <h3>Sostenibilidad</h3>
+                <p>Optimizar el uso de recursos naturales en cultivos de maíz y zonas rurales.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Monitoreo Real</h3>
+                <p>Brindar datos precisos mediante nuestra embarcación automatizada.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fas fa-users"></i>
+                <h3>Apoyo al Campesino</h3>
+                <p>Empoderar a los trabajadores del campo con tecnología accesible y útil.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <h2 class="section-title" style="color: var(--bkm-blue); text-align: center;">Últimas Noticias</h2>
+        <div class="news-grid">
+            <article class="news-item">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-body">
+                    <h4>Nueva fase de pruebas en campo</h4>
+                    <p>Iniciamos la validación del prototipo en cultivos reales de la región...</p>
+                    <a href="#" class="btn-more">Leer más →</a>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-body">
+                    <h4>Alianza con agricultores locales</h4>
+                    <p>Más de 20 familias se han unido a la red de monitoreo BioKuaM este mes.</p>
+                    <a href="#" class="btn-more">Leer más →</a>
+                </div>
+            </article>
+            <article class="news-item">
+                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-body">
+                    <h4>Tecnología Sostenible</h4>
+                    <p>¿Cómo nuestra embarcación reduce el impacto ambiental en el riego?</p>
+                    <a href="#" class="btn-more">Leer más →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</body>
+</html>
+   <br>
+</body>
+<footer>
+    {% include "footer.html" %}
+</footer>
+</html>
+
