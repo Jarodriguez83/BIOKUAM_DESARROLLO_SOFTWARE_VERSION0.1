@@ -53,7 +53,7 @@ def read_root(request: Request):  # Agrega request como parámetro
     ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
     Renderiza la plantilla asistente.html con Jinja2
     """
-    return templates.TemplateResponse("asistente.html", {"request": request})  # Usa TemplateResponse
+    return templates.TemplateResponse("home.html", {"request": request})  # Usa TemplateResponse
 
 
 # ENDPOINT DE VERIFICACIÓN DE ESTADO DEL SERVICIO
