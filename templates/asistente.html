@@ -10,12 +10,180 @@
     {% include "header.html" %}
 </header>
 <body>
-    
    <br>
+
+   <div class="biokuam-chat-container">
+
+        <div class="biokuam-chat-header">
+            <h1 style="  font-family: 'Cause', cursive">ASISTENTE BIOKUAM CON IA 'GEMINI'</h1>
+            <h2>SIMIJACA, CUNDINAMARCA</h2>
+        </div>
+
+        <div class="biokuam-chat-description">
+            ESTE CHAT USA EL APOYO DE IA PARA AYUDARTE CON LA SOLUCIÓN DE LAS DUDAS QUE TENGAS SOBRE TUS CULTIVOS. TE RECOMENDAMOS USAR LOS DATOS DE: PH Y TEMPERATURA, PARA QUE TE PUEDA AYUDAR DE UNA FORMA MÁS REAL.
+        </div>
+
+        <div id="biokuamChatBox" class="biokuam-chat-box">
+            <!-- Mensaje inicial de bienvenida de la IA -->
+            <div class="biokuam-msg-ai">
+                ¡Hola! Soy el asistente virtual de Biokuam. Estoy aquí para ayudarte a optimizar tus cultivos de maíz. Pregúntame sobre el pH ideal, la temperatura del agua o cualquier duda que tengas sobre tu cosecha en Simijaca.
+            </div>
+        </div>
+
+        <div class="biokuam-input-area">
+            <textarea id="biokuamUserInput" placeholder="ESCRIBE TU PREGUNTA AQUÍ..." style="font-family: 'Cause', cursive;"></textarea>
+            <button id="biokuamSendBtn" style="font-family: 'Cause', cursive;">ENVIAR</button>
+        </div>
+
+    </div>
+    </section>
+    <script src="{{ url_for('static', path='scripts/api_asistente.js') }}"></script>
+
    <br>
 </body>
 <footer>
     {% include "footer.html" %}
 </footer>
+
+<style>
+        /* ASISTENTE CON GEMINI - BIOKUAM AI */
+        .biokuam-chat-container {
+            width: 850px;
+            height: 70vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            font-family: 'Cause', cursive;
+            margin: auto; /* Centrar el contenedor */
+            max-width: 95%; /* Adaptación móvil */
+        }
+
+        .biokuam-chat-header {
+            background: #0D47A1;
+            padding: 15px;
+            text-align: center;
+            color: white;
+            margin-bottom: -23px;
+        }
+
+        .biokuam-chat-header h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .biokuam-chat-header h2 {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .biokuam-chat-description {
+            background: #EF6C00;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Cause', cursive;
+        }
+
+        .biokuam-chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.7)), 
+                        url('https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/BIOKUAM_ACCESO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9CSU9LVUFNX0FDQ0VTTy5wbmciLCJpYXQiOjE3Njc4MzYxMzksImV4cCI6MTc2ODQ0MDkzOX0.CpLZ6gkgVa66hzDEcDTlsEn3tvXh30XImlQXA_rSMms');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            padding: 40px;
+        }
+
+        .biokuam-msg-user {
+            align-self: flex-end;
+            background: #EF6C00;
+            color: white;
+            padding: 12px;
+            border-radius: 12px 12px 0 12px;
+            max-width: 70%;
+            font-size: 15px;
+            word-wrap: break-word;
+        }
+
+        .biokuam-msg-ai {
+            align-self: flex-start;
+            background: #eaeaea;
+            color: #0D47A1;
+            padding: 12px;
+            border-radius: 12px 12px 12px 0;
+            max-width: 70%;
+            font-size: 15px;
+            border-left: 4px solid #002244;
+            word-wrap: break-word;
+        }
+        
+        /* Estilo para el mensaje de "escribiendo..." */
+        .typing-indicator {
+            align-self: flex-start;
+            background: #eaeaea;
+            padding: 12px;
+            border-radius: 12px 12px 12px 0;
+            max-width: 70%;
+            font-size: 15px;
+            border-left: 4px solid #002244;
+            opacity: 0.7;
+            font-family: "Cause", cursive;
+        }
+
+        .biokuam-input-area {
+            padding: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 2px solid #ddd;
+        }
+
+        .biokuam-input-area textarea {
+            flex: 1;
+            height: 30px;
+            padding: 10px;
+            border-radius: 12px;
+            outline: none;
+            border: 2px solid #002244;
+            resize: none;
+            font-size: 14px;
+        }
+
+        .biokuam-input-area textarea:focus {
+            border-color: #EF6C00;
+        }
+
+        .biokuam-input-area button {
+            background: #0D47A1;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            font-family: 'Cause', cursive;
+        }
+
+        .biokuam-input-area button:hover {
+            background: #ff8c00;
+        }
+        
+        .biokuam-input-area button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+</style>
 </html>
 
