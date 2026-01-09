@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBICACIÓN Y CLIMA | BIOKUAM</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<header>
+    {% include "header.html" %}
+</header>
+<body>
+   <br>
+   <style>
+        .location-hero {
+            padding: 0.1rem 8%;
+            background: linear-gradient(rgba(13, 71, 161, 0.05), rgba(239, 108, 0, 0.05));
+            text-align: center;
+            background: white;
+        }
+
+        .weather-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .weather-card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--bkm-blue);
+            transition: 0.3s;
+            font-family: 'Cause', cursive;
+            font-size: 1.4rem;
+        }
+
+        .weather-card i {
+            font-size: 2rem;
+            color: var(--bkm-orange);
+            margin-bottom: 10px;
+        }
+
+        .map-section {
+            display: flex;
+            padding: 60px 8%;
+            gap: 40px;
+            background: #fff;
+        }
+
+        #map {
+            flex: 1.5;
+            height: 450px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .info-municipio {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: justify;
+        }
+
+        .section-title-cm{
+            color: #0D47A1;
+            font-size: 3rem;
+        }
+
+        .description-clima{
+            font-size: 1.2rem;
+            margin-top: -1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .title-simijaca{
+            font-size: 2.5rem;
+            margin-bottom: -5px;
+        }
+
+
+        .section-simijaca-info {
+            display: flex;
+            align-items: center;
+            min-height: 50vh; 
+            padding: 20px 8%;
+            background: white
+        }
+
+        .geografia-image {
+            flex: 0.8;
+            padding-left: 100px;
+        }
+
+        .geografia-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 8px solid var(--bkm-orange);
+        }
+
+        .description-simijaca {
+            flex: 1;
+        }
+
+        .description-simijaca h1 {
+            color: #0D47A1;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: "Cause", cursive;
+        }
+
+        .description-simijaca p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            color: black;
+            text-align: justify;
+            font-family: "Cause", cursive;
+        }
+        
+        .highlight { color: var(--bkm-orange); font-weight: bold; }
+
+        .description-simijaca h2{
+            color: #0D47A1;
+            font-size: 2rem;
+        }
+        
+        .list-limits li{
+            font-size: 1.1rem;
+            justify-content: center;
+        }
+
+        .list-limits{
+            margin-left: 5.5rem;
+            margin-top: -1.5rem;
+        }
+
+        .container-extensiones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+            gap: 15px;
+            padding: 1rem 8%; 
+            margin: 10px 0;
+            margin-top: -2rem;
+        }
+
+        .extensiones-item {
+            background: white; 
+            padding-top: 20px;
+            border-radius: 12px;
+            display: flex; 
+            gap: 15px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(226, 15, 15, 0.05);
+            justify-content: center;
+        }
+
+        .extensiones-item i {
+            font-size: 1.4rem;
+            color: black;
+        }
+
+        .info-wrapper {
+            text-align: left; /* Texto alineado a la izquierda se ve más ordenado */
+        }
+
+        .highlight-title {
+            display: block;
+            color: black;
+            font-size: 1.05rem; /* Título más pequeño y sutil */
+            font-weight: 400;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-value {
+            color: black;
+            font-size: 1.1rem; 
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: -1.8rem;
+        }
+
+        /* Efecto Hover */
+        .extensiones-item:hover {
+            background-color: orange; /* Cambia a azul del logo */
+            transform: scale(1.03); /* Un pequeño pulso en lugar de desplazarse tanto */
+            box-shadow: 0 8px 15px rgba(13, 71, 161, 0.2);
+        }
+
+        /* Ajuste para pantallas pequeñas */
+        @media (max-width: 600px) {
+            .container-extensiones {
+                padding: 1rem 4%;
+                grid-template-columns: 1fr; /* Una columna en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="location-hero">
+            <h1 class="section-title-cm">CENTRO DE MONITOREO CLIMÁTICO DE SIMIJACA</h1>
+            <p class="description-clima">Datos en tiempo real del Municipio de Simijaca, Cundinamarca.</p>
+
+            <div class="weather-container" id="weather-data">
+                <div class="weather-card">
+                    <i class="fas fa-temperature-high"></i>
+                    <h3 id="temp">--°C</h3>
+                    <p>TEMPERATURA</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3 id="desc">Cargando...</h3>
+                    <p>CONDICIÓN</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-droplet"></i>
+                    <h3 id="humidity">--%</h3>
+                    <p>HUMEDAD</p>
+                </div>
+                <div class="weather-card">
+                    <i class="fas fa-wind"></i>
+                    <h3 id="wind">-- km/h</h3>
+                    <p>VIENTO</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section">
+            <div id="map"></div>
+            
+            <div class="info-municipio">
+                <center><h2 style="color: var(--bkm-blue);" class="title-simijaca">SOBRE EL MUNICIPIO | SIMIJACA</h2></center>
+                <p>Simijaca, cuyo nombre de origen muisca evoca la mística figura del "Pico de Lechuza", se erige como un enclave estratégico en la provincia del Valle de Ubaté, al norte del departamento de Cundinamarca. Situado a una altitud de 2.559 metros sobre el nivel del mar, este municipio disfruta de un clima frío y vigorizante que define su paisaje andino, caracterizado por extensas planicies verdes y una arquitectura colonial preservada. Su ubicación privilegiada, en el límite con el departamento de Boyacá, no solo facilita el intercambio comercial regional, sino que lo convierte en un punto de conexión vital para la logística y el desarrollo de infraestructuras en el centro de Colombia.</p>
+                <p>Económicamente, el municipio es reconocido a nivel nacional como la "Capital Lechera de Colombia", gracias a la tecnificación de sus hatos ganaderos y la alta calidad de sus productos derivados que abastecen a gran parte del país. Sin embargo, su riqueza no se limita a la industria láctea; Simijaca posee suelos de excepcional fertilidad que sostienen una variada producción agrícola, destacándose especialmente los cultivos de maíz, papa y hortalizas. Esta vocación agropecuaria es la que hace del municipio el escenario idóneo para la implementación de proyectos biotecnológicos, donde la tradición campesina se fusiona con la innovación para optimizar el rendimiento de la tierra de forma sostenible.</p>
+        
+            </div>
+        </section>
+        <section class="section-simijaca-info">
+        <div class="description-simijaca">
+            <center><h1>DESCRIPCIÓN FISICA DEL TERRITORIO </h1></center>
+            <p>El Municipio de Simijaca se encuentra localizado al norte del Departamento de Cundinamarca y hacia el Occidente del fértil valle de Ubaté y Chiquinquirá. Es bañado por el Río Simijaca y Suárez afluentes de la laguna de Fúquene. Hace parte de la provincia de Ubaté.</p>
+            <center><h2>LIMITES DEL MUNICIPIO</h2></center>
+            <ul class="list-limits">
+                <li><strong>NORTE: </strong>Departamento de Boyacá, municipios de Chiquinquirá y Caldas. </li>
+                <li><strong>SUR: </strong>Departamento de Cundinamarca, municipios de Susa y Carmen de Carupa. </li>
+                <li><strong>ORIENTE: </strong>Departamento de Boyacá, municipio de San Miguel de Sema. </li>
+                <li><strong>OCCIDENTE: </strong>Departamento de Boyacá, municipio de Caldas. </li>
+            </ul>
+            <center><h2>EXTENSIONES DEL MUNICIPIO</h2></center>
+            <div class="container-extensiones"> 
+                <div class="extensiones-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div class="info-wrapper">
+                        <span class="highlight-title">EXT. TOTAL</span>
+                        <p class="data-value" >107 Km²</p>
+                    </div>
+                </div>
+                <div class="extensiones-item">
+                    <i class="fas fa-city"></i>
+                    <div class="info-wrapper">
+                        <span class="highlight-title">ÁREA URBANA</span>
+                        <p class="data-value">0.8 Km²</p>
+                    </div>
+                </div>
+                <div class="extensiones-item">
+                    <i class="fas fa-mountain"></i>
+                    <div class="info-wrapper">
+                        <span class="highlight-title">ÁREA RURAL</span>
+                        <p class="data-value">106.2 Km²</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="geografia-image">
+            <img src="https://www.simijaca-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Informacion-del-Municipio/Mapa%20Simijaca1.jpeg" alt="MAPA GEOGRAFICO DE SIMIJACA, CUNDINAMARCA">
+        </div>
+        </section>
+
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', path='scripts/api_openmap.js') }}"></script>
+
+   <br>
+</body>
+<footer>
+    {% include "footer.html" %}
+</footer>
+</html>
+
