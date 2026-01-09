@@ -9,6 +9,7 @@
 <header>
     {% include "header.html" %}
 </header>
+
 <body>
    <br>
     <style>
@@ -20,21 +21,19 @@
             --bkm-text: #333;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: "Causel", cursive, sans-serif; color: var(--bkm-text); line-height: 1.6; background-color: var(--bkm-white); }
 
         /* --- SECCIÓN BIENVENIDA (HERO) --- */
         .welcome-section {
             display: flex;
             align-items: center;
-            min-height: 80vh;
-            padding: 40px 8%;
-            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+            min-height: 50vh; 
+            padding: 20px 8%;
+            background: white
         }
 
         .welcome-image {
             flex: 1;
-            padding-right: 50px;
+            padding-right: 100px;
         }
 
         .welcome-image img {
@@ -50,19 +49,22 @@
 
         .welcome-text h1 {
             color: var(--bkm-blue);
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
+            font-family: "Cause", cursive;
         }
 
         .welcome-text p {
             font-size: 1.1rem;
             margin-bottom: 25px;
             color: #555;
+            text-align: justify;
+            font-family: "Cause", cursive;
         }
-
+        
         .highlight { color: var(--bkm-orange); font-weight: bold; }
 
-        /* --- SECCIÓN OBJETIVOS --- */
+        /* OBJETOS */
         .objectives-section {
             padding: 80px 8%;
             background-color: var(--bkm-blue);
@@ -70,16 +72,20 @@
             text-align: center;
         }
 
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+        .section-title-objetivos,
+        .section-title-noticias {
+            margin-top: -2.0rem;
+            font-size: 2.5rem;
             position: relative;
+            padding-bottom: 0.2rem;
+            font-family: "Cause", cursive;
         }
 
-        .section-title::after {
+        .section-title-objetivos::after,
+        .section-title-noticias::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 32rem;
             height: 4px;
             background: var(--bkm-orange);
             margin: 10px auto;
@@ -89,6 +95,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
+            margin-top: 1rem;
+            font-family: "Cause", cursive;
+            margin-bottom: -1.5rem;
         }
 
         .obj-card {
@@ -106,21 +115,27 @@
         }
 
         .obj-card i {
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: var(--bkm-orange);
             margin-bottom: 20px;
+        }
+
+        .obj-card p {
+            font-size: 1.1rem;
         }
 
         /* --- SECCIÓN NOTICIAS --- */
         .news-section {
             padding: 80px 8%;
-            background-color: var(--bkm-gray);
+            background-color: white;
+            margin-bottom: -4rem; 
         }
 
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 1.3rem;
         }
 
         .news-item {
@@ -128,6 +143,8 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: justify;
+            font-family: "Cause", cursive;
         }
 
         .news-img {
@@ -166,61 +183,59 @@
 
     <section class="welcome-section">
         <div class="welcome-image">
-            <img src="tu-imagen-prototipo.jpg" alt="Prototipo BioKuaM en el campo">
+            <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/IMAGEN_HOME.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9JTUFHRU5fSE9NRS5wbmciLCJpYXQiOjE3Njc5MTQxODAsImV4cCI6MTc2ODUxODk4MH0.5_pMmkp578l3ewR20rjuHDx1m5au2AGM9tc4ACPBgxM" alt="Prototipo BioKuaM en el campo">
         </div>
         <div class="welcome-text">
             <center><h1>¡BIENVENIDO A <span class="highlight">BIOKUAM!</span></h1></center>
-            <p>Queremos darte las más sinceras <strong>gracias</strong> por sumarte a este proyecto. Tu participación es fundamental para transformar la agricultura y la gestión biotecnológica en nuestras comunidades rurales.</p>
-            <p>Juntos estamos construyendo una herramienta que une la tecnología de vanguardia con el saber ancestral del campo.</p>
+            <p>Queremos darte las más sinceras <strong>GRACIAS</strong> por sumarte a este proyecto. Tu participación es fundamental para transformar la agricultura y la gestión biotecnológica en nuestras comunidades rurales.</p>
+            <p>Nuestra iniciativa nace de la imperativa necesidad de integrar soluciones tecnológicas de alta precisión en los entornos agrícolas más exigentes. A través de este sistema de gestión y monitoreo automatizado, buscamos no solo optimizar el rendimiento de los cultivos de maíz, sino también dignificar y potenciar la labor de nuestros productores rurales mediante herramientas de vanguardia.</p>
+            <p>Su integración a este ecosistema digital es fundamental. Agradecemos profundamente su compromiso y confianza, los cuales son el motor que impulsa este proyecto hacia una soberanía tecnológica más justa, eficiente y sostenible para el campo. Gracias por ser parte del cambio.</p>
         </div>
     </section>
 
     <section class="objectives-section">
-        <h2 class="section-title">Objetivos del Proyecto</h2>
+        <h2 class="section-title-objetivos">OBJETIVOS DEL PROYECTO</h2>
         <div class="objectives-grid">
             <div class="obj-card">
-                <i class="fas fa-seedling"></i>
-                <h3>Sostenibilidad</h3>
-                <p>Optimizar el uso de recursos naturales en cultivos de maíz y zonas rurales.</p>
+                <i class="fa-sharp fa-solid fa-gear"></i>
+                <h3>DISEÑO PROTOTIPO</h3>
+                <p>Investigar los materiales necesarios para mejorar el diseño de la embarcación, garantizando su resistencia, durabilidad y capacidad de flotación.</p>
+            </div>
+            <div class="obj-card">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>COMPONENTES ELECTRÓNICOS</h3>
+                <p>Buscar y seleccionar los componentes necesarios para la optimización del circuito, garantizando un funcionamiento más eficiente y confiable del prototipo.</p>
             </div>
             <div class="obj-card">
                 <i class="fas fa-chart-line"></i>
-                <h3>Monitoreo Real</h3>
-                <p>Brindar datos precisos mediante nuestra embarcación automatizada.</p>
-            </div>
-            <div class="obj-card">
-                <i class="fas fa-users"></i>
-                <h3>Apoyo al Campesino</h3>
-                <p>Empoderar a los trabajadores del campo con tecnología accesible y útil.</p>
+                <h3>MONITOREO DE DATOS</h3>
+                <p>Asegurar el envío correcto de los datos recolectados por el prototipo hacia la página, garantizando una comunicación estable para el monitoreo en tiempo real.</p>
             </div>
         </div>
     </section>
 
     <section class="news-section">
-        <h2 class="section-title" style="color: var(--bkm-blue); text-align: center;">Últimas Noticias</h2>
+        <h2 class="section-title-noticias" style="color: var(--bkm-blue); text-align: center;">DATOS INTERESANTES</h2>
         <div class="news-grid">
             <article class="news-item">
-                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-img" style="background-image: url('https://archivobogota.secretariageneral.gov.co/sites/default/files/Noticias/Captura%20de%20pantalla%202019-12-05%20a%20la%28s%29%2010.47.02_0.png');"></div>
                 <div class="news-body">
-                    <h4>Nueva fase de pruebas en campo</h4>
-                    <p>Iniciamos la validación del prototipo en cultivos reales de la región...</p>
-                    <a href="#" class="btn-more">Leer más →</a>
+                    <center><h4>¿POR QUÉ EL NOMBRE BIOKUAM?</h4></center>
+                    <p>El nombre de BIOKUAM nace porque el municipio de Simijaca fue uno de los lugares en donde habitaron los muiscas que fue un pueblo indígena que habitó el altiplano cundiboyacense. Los muiscas hablaban ‘muysccubun’ o ‘chibcha’ un lenguaje que pertenecía a su familia. Y es por esto que ‘BIO’ significa ‘Vida’, ‘KUA’ significa ‘Agua’ y la ‘M’ hace referencia a los cultivos de maíz. Dichos cultivos hacían parte de la vida, alimento, economía y cultura para los muiscas. </p>
                 </div>
             </article>
             <article class="news-item">
-                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-img" style="background-image: url('https://blog.aepla.es/wp-content/uploads/2022/11/importancia-calidad-agua-de-riego_redes.jpeg');"></div>
                 <div class="news-body">
-                    <h4>Alianza con agricultores locales</h4>
-                    <p>Más de 20 familias se han unido a la red de monitoreo BioKuaM este mes.</p>
-                    <a href="#" class="btn-more">Leer más →</a>
+                    <center><h4>IDENTIFICACIÓN DE LA PROBLEMÁTICA</h4></center>
+                    <p>La identificación de la problemática radica en que no hay una forma práctica para poder medir el pH del agua usada en los cultivos del municipio de Simijaca. Nos enfocamos en los cultivos de Maíz ya que es el principal producto agrícola de la zona. La consecuencia de que allá un riesgo en la calidad del agua es la baja productividad y deterioro del suelo. De ahí surge la necesidad de crear una solución sencilla y tecnológica que permita la medición del pH y la temperatura.  </p>
                 </div>
             </article>
             <article class="news-item">
-                <div class="news-img" style="background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="news-img" style="background-image: url('https://observatorio.tec.mx/wp-content/uploads/2021/08/SeaprendematemC3A1ticasenunmodelovirtual.jpg');"></div>
                 <div class="news-body">
-                    <h4>Tecnología Sostenible</h4>
-                    <p>¿Cómo nuestra embarcación reduce el impacto ambiental en el riego?</p>
-                    <a href="#" class="btn-more">Leer más →</a>
+                    <center><h4>ÁREAS ACADÉMICAS QUE INTEGRA BIOKUAM</h4></center>
+                    <p>Dentro del proyecto de ‘BIOKUAM’ se integran diferentes áreas de Ciencias Básicas como el ‘Cálculo Vectorial’ y la ‘Física’ estás áreas nos permiten evaluar distintas herramientas que son claves para el proyecto. Por ejemplo, el cálculo nos permite analizar y entender como cambia la calidad del agua en diferentes puntos de los vallados de agua donde navega la embarcación. Desde la física hay distintas leyes como: ‘La Ley de Arquímedes’ que nos ayudan a determinar la flotabilidad de la embarcación.  </p>
                 </div>
             </article>
         </div>
