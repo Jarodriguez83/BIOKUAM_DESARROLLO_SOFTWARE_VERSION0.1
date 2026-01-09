@@ -53,8 +53,7 @@ def read_root(request: Request):  # Agrega request como parámetro
     ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
     Renderiza la plantilla asistente.html con Jinja2
     """
-    return templates.TemplateResponse("home.html", {"request": request})  # Usa TemplateResponse
-
+    return templates.TemplateResponse("inicio.html", {"request": request})  # Usa TemplateResponse
 
 # ENDPOINT DE VERIFICACIÓN DE ESTADO DEL SERVICIO
 @app.get("/health")
@@ -63,6 +62,30 @@ def health_check():
 
 
 # ========== RUTAS (ENDPOINTS) DEL PROYECTO: ==========
+
+@app.get("/home", response_class=HTMLResponse, tags=["INICIO"])
+def read_home(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
+    Renderiza la plantilla home.html con Jinja2
+    """
+    return templates.TemplateResponse("home.html", {"request": request})  # Usa TemplateResponse
+
+@app.get("/asistente", response_class=HTMLResponse, tags=["ASISTENTE IA"])
+def read_asistente(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DEL ASISTENTE IA DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DEL ASISTENTE IA
+    Renderiza la plantilla asistente.html con Jinja2
+    """
+    return templates.TemplateResponse("asistente.html", {"request": request})  # Usa TemplateResponse
+
+@app.get("/ubicacion", response_class=HTMLResponse, tags=["UBICACIÓN"])
+def read_ubicacion(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DE LA UBICACIÓN DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE LA UBICACIÓN
+    Renderiza la plantilla ubicacion.html con Jinja2
+    """
+    return templates.TemplateResponse("ubicacion.html", {"request": request})  # Usa TemplateResponse
 
 @app.post("/register/user", response_model=Proyecto)
 def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
