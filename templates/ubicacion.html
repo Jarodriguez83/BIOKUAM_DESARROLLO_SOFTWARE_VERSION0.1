@@ -203,6 +203,172 @@
                 grid-template-columns: 1fr; /* Una columna en móviles */
             }
         }
+
+        .description-agricultor{
+            display: flex;
+            padding: 20px 8%;
+            background-color: var(--bkm-blue);
+            color: white;
+            text-align: center;
+        }
+        .text-agricultor{
+            flex: 1;
+            padding-left: 4rem;
+        }
+        .text-agricultor h1 {
+            font-size: 2.5rem;
+            color: white;
+            font-family: "Cause", cursive;
+        }
+
+        .text-agricultor p {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            color: white;
+            text-align: justify;
+            font-family: "Cause", cursive;
+        }
+
+        .agricultor-img{
+            flex: 0.8;
+            padding-left: 1rem;
+        }
+
+        .agricultor-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-bottom: 8px solid var(--bkm-orange);
+        }
+
+        .funcionamiento-recorrido {
+    padding: 1.3rem 8%;
+    background-color: #fcfcfc;
+}
+
+.intro-recorrido {
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.intro-recorrido p{
+    margin-top: -20px;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 0  .6;
+}
+
+.grid-recorrido {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Contenedor de la Imagen */
+.img-container-recorrido {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    border: 4px solid var(--bkm-white);
+    max-height: 550px;
+}
+
+.img-main {
+    width: 100%;
+    max-height: 60%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.img-container-recorrido:hover .img-main {
+    transform: scale(1.05);
+}
+
+.badge-tech {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--bkm-blue);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);
+}
+
+/* Tarjetas de Pasos */
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    transition: 0.3s;
+    border-left: 5px solid var(--bkm-orange);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.step-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    background: #fffaf5; /* Fondo naranja muy sutil */
+}
+
+.step-number {
+    background: var(--bkm-orange);
+    color: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: 20px;
+}
+
+.step-info h3 {
+    color: var(--bkm-blue);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.step-info p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.section-title-recorrido{
+    color: #0D47A1;
+    font-size: 2.5rem;
+}
+/* Responsivo */
+@media (max-width: 900px) {
+    .grid-recorrido {
+        grid-template-columns: 1fr;
+    }
+    .img-container-recorrido {
+        order: 1;
+    }
+    .steps-container {
+        order: 2;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -285,7 +451,56 @@
             <img src="https://www.simijaca-cundinamarca.gov.co/MiMunicipio/PublishingImages/Paginas/Informacion-del-Municipio/Mapa%20Simijaca1.jpeg" alt="MAPA GEOGRAFICO DE SIMIJACA, CUNDINAMARCA">
         </div>
         </section>
+        <section class="description-agricultor">
+        <div class="agricultor-img">
+            <img src="https://colmundoradio.com.co/wp-content/uploads/2024/05/campesino.jpg" alt="IMAGEN REPRES. CAMPESINOS">
+        </div>
+        <div class="text-agricultor">
+            <center><h1>HONOR Y GRATITUD A NUESTRA TIERRA </h1></center>
+            <p>Un Agradecimiento desde el Corazón del Proyecto Queremos iniciar este espacio extendiendo un profundo agradecimiento a cada uno de los hombres y mujeres que, con manos fuertes y voluntad inquebrantable, labran los suelos de Simijaca. Ustedes son los verdaderos guardianes del Valle de Ubaté. Gracias por permitir que la tecnología de BioKuaM entre a sus predios; su sabiduría ancestral y su apertura a la innovación son el motor que nos impulsa. Este proyecto no es solo una herramienta técnica, es un homenaje a su resiliencia y un compromiso mutuo para asegurar que el legado del campo simijacense perdure y prospere en las manos de las nuevas generaciones.</p>
+            <p>El Pilar de Nuestra Identidad Para quienes visitan nuestra plataforma, es fundamental comprender que la agricultura en Simijaca no es solo un oficio, es la columna vertebral de nuestra identidad y economía. Con una extensión rural que supera los 106 Km², el municipio se destaca como un centro de despensa agrícola de vital importancia para Cundinamarca.</p>
+        </div>
+        
+        </section>
+        <section class="funcionamiento-recorrido">
+    <div class="intro-recorrido">
+        <center><h2 class="section-title-recorrido">¿CÓMO EL PROTOTIPO DE BIOKUAM RECORRE LA FUENTE HÍDRICA?</h2></center>
+        <p>El funcionamiento estratégico de BioKuaM se fundamenta en el aprovechamiento inteligente de la red de vallados y canales de agua que ya forman parte del paisaje productivo de las fincas en Simijaca. Al utilizar esta infraestructura hídrica existente, el prototipo logra una integración armónica con el entorno, desplazándose de manera autónoma y precisa para realizar un escaneo detallado de cada parcela sin intervenir directamente sobre el suelo o el follaje de los cultivos de maíz. Este método de navegación no solo optimiza el consumo energético del dispositivo al reducir la fricción, sino que garantiza un monitoreo constante y de alta fidelidad, permitiendo capturar datos biofísicos en tiempo real que son esenciales para una toma de decisiones informada y una gestión de recursos hídricos mucho más sostenible para el agricultor.</p>
+    </div>
 
+    <div class="grid-recorrido">
+        <div class="img-container-recorrido">
+            <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/PARCELACION_CULTIVOS.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9QQVJDRUxBQ0lPTl9DVUxUSVZPUy5qcGVnIiwiaWF0IjoxNzY3OTk4NjE0LCJleHAiOjE3Njg2MDM0MTR9.AwUA-nSlpCzrS-WjdjJYiD4m-lNz-YT2CrzKt7GEFV8" alt="MAPA PARCILACIÓN DE FINCAS" class="img-main">
+            <div class="badge-tech">SISTEMA GPS ACTIVO</div>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-info">
+                    <h3>PARCELACIÓN ESTRATÉGICA</h3>
+                    <p>Las fincas se dividen en lotes específicos. El mapa permite identificar cada área (Finca 1, 2, 3...) para asignar rutas de navegación precisas.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-info">
+                    <h3>NAVEGACIÓN POR VALLADOS DE AGUA</h3>
+                    <p>La embarcación se desplaza a través de los vallados de agua que circundan los cultivos, evitando el contacto físico con las plantas y reduciendo el impacto en el suelo.</p>
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-info">
+                    <h3>MONITOREO MULTIZONA</h3>
+                    <p>A medida que el prototipo avanza, sus sensores captan datos de humedad y salud del cultivo de forma lateral, cubriendo múltiples parcelas en un solo recorrido.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
