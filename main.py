@@ -87,6 +87,22 @@ def read_ubicacion(request: Request): # Agrega request como parámetro
     """
     return templates.TemplateResponse("ubicacion.html", {"request": request})  # Usa TemplateResponse
 
+@app.get("/cultivos", response_class=HTMLResponse, tags=["CULTIVOS"])
+def read_cultivos(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DE LOS CULTIVOS DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE LOS CULTIVOS
+    Renderiza la plantilla cultivos.html con Jinja2
+    """
+    return templates.TemplateResponse("cultivos.html", {"request": request})  # Usa TemplateResponse
+
+@app.get("/prototipo", response_class=HTMLResponse, tags=["PROTOTIPO"])
+def read_prototipo(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DEL PROTOTIPO DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DEL PROTOTIPO
+    Renderiza la plantilla prototipo.html con Jinja2
+    """
+    return templates.TemplateResponse("prototipo.html", {"request": request})  # Usa TemplateResponse
+
 @app.post("/register/user", response_model=Proyecto)
 def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
     """
