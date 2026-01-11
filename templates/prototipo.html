@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESPECIFICACIONES DEL PROTOTIPO | BIOKUAM</title>
+    
+</head>
+<header>
+    {% include "header.html" %}
+</header>
+<body>
+   <br>
+        <style>
+    .proto-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 10%;
+        gap: 60px;
+        transition: all 0.5s ease;
+    }
+
+    /* Alternancia de columnas */
+    .proto-section:nth-child(even) {
+        flex-direction: row-reverse;
+        background-color: #f8f9fa;
+    }
+
+    .proto-image-col {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .proto-image-container {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
+        border: 2px solid rgba(13, 71, 161, 0.05);
+    }
+
+    .proto-image-container img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .proto-image-container:hover img {
+        transform: scale(1.08);
+    }
+
+    .proto-text-col {
+        flex: 1;
+    }
+
+    .proto-tag {
+        display: inline-block;
+        background: rgba(239, 108, 0, 0.1);
+        color: #EF6C00;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+
+    .proto-text-col h2 {
+        color: #0D47A1;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .proto-text-col p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    .proto-features {
+        list-style: none;
+        padding: 0;
+    }
+
+    .proto-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .proto-features i {
+        color: #EF6C00;
+        font-size: 1.2rem;
+    }
+
+    /* Responsivo */
+    @media (max-width: 992px) {
+        .proto-section, .proto-section:nth-child(even) {
+            flex-direction: column;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        .proto-text-col p {
+            text-align: center;
+        }
+        .proto-features {
+            display: inline-block;
+            text-align: left;
+        }
+    }
+</style>
+
+<section class="proto-section">
+    <div class="proto-image-col">
+        <div class="proto-image-container">
+            <img src="static/img/prototipo-render-1.jpg" alt="Diseño Estructural BioKuaM">
+        </div>
+    </div>
+    <div class="proto-text-col">
+        <span class="proto-tag">Ingeniería Física</span>
+        <h2>Arquitectura Naval y Aerodinámica</h2>
+        <p>El prototipo ha sido diseñado con una estructura ligera y resistente, optimizada para la navegación en canales angostos. Su casco hidrodinámico permite un desplazamiento fluido sobre el agua de los vallados, minimizando la turbulencia y asegurando estabilidad incluso en condiciones climáticas variables de la región de Simijaca.</p>
+        <ul class="proto-features">
+            <li><i class="fas fa-check-circle"></i> Materiales eco-amigables de alta durabilidad.</li>
+            <li><i class="fas fa-check-circle"></i> Centro de gravedad bajo para estabilidad total.</li>
+            <li><i class="fas fa-check-circle"></i> Dimensiones compactas para canales de riego.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="proto-section">
+    <div class="proto-image-col">
+        <div class="proto-image-container">
+            <img src="static/img/prototipo-render-2.jpg" alt="Sistema de Navegación GPS">
+        </div>
+    </div>
+    <div class="proto-text-col">
+        <span class="proto-tag">Autonomía</span>
+        <h2>Navegación Autónoma Inteligente</h2>
+        <p>Equipado con un sistema de posicionamiento global y sensores de proximidad ultrasónicos, el prototipo es capaz de seguir rutas predefinidas a lo largo de las parcelaciones. El sistema detecta obstáculos en tiempo real y ajusta su velocidad para garantizar un recorrido seguro a través de los límites hídricos de las fincas.</p>
+        <ul class="proto-features">
+            <li><i class="fas fa-check-circle"></i> Control remoto y rutas programadas vía GPS.</li>
+            <li><i class="fas fa-check-circle"></i> Sensores anticolisión de 360 grados.</li>
+            <li><i class="fas fa-check-circle"></i> Retorno automático a estación base.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="proto-section">
+    <div class="proto-image-col">
+        <div class="proto-image-container">
+            <img src="static/img/prototipo-render-3.jpg" alt="Sensores de Monitoreo Agrícola">
+        </div>
+    </div>
+    <div class="proto-text-col">
+        <span class="proto-tag">Recolección de Datos</span>
+        <h2>Monitoreo Multiespectral del Cultivo</h2>
+        <p>La verdadera potencia de BioKuaM reside en su conjunto de sensores de grado agrícola. Mientras navega, analiza parámetros críticos como la humedad relativa, la temperatura ambiente y los niveles de estrés hídrico de las plantas de maíz, enviando esta información directamente a la nube para su procesamiento.</p>
+        <ul class="proto-features">
+            <li><i class="fas fa-check-circle"></i> Sensores de humedad y temperatura de alta precisión.</li>
+            <li><i class="fas fa-check-circle"></i> Cámara HD para inspección visual de plagas.</li>
+            <li><i class="fas fa-check-circle"></i> Transmisión de datos en tiempo real (LoRaWAN/WiFi).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="proto-section">
+    <div class="proto-image-col">
+        <div class="proto-image-container">
+            <img src="static/img/prototipo-render-4.jpg" alt="Energía Solar Sostenible">
+        </div>
+    </div>
+    <div class="proto-text-col">
+        <span class="proto-tag">Energía Limpia</span>
+        <h2>Propulsión 100% Eléctrica y Solar</h2>
+        <p>Comprometidos con la sostenibilidad de Simijaca, el prototipo utiliza energía limpia para su funcionamiento. El sistema de baterías de litio se complementa con paneles solares integrados en la parte superior, permitiendo jornadas de trabajo extendidas sin emisiones contaminantes ni ruido que perturbe el ecosistema local.</p>
+        <ul class="proto-features">
+            <li><i class="fas fa-check-circle"></i> Carga solar integrada para mayor autonomía.</li>
+            <li><i class="fas fa-check-circle"></i> Motores eléctricos de bajo consumo y cero ruido.</li>
+            <li><i class="fas fa-check-circle"></i> Sistema de gestión de energía optimizado.</li>
+        </ul>
+    </div>
+</section>
+   <br>
+</body>
+<footer>
+    {% include "footer.html" %}
+</footer>
+</html>
+
+
