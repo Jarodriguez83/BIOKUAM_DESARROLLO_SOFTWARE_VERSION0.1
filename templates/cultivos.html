@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CULTIVOS DE MAÍZ | BIOKUAM</title>
+    
+</head>
+<header>
+    {% include "header.html" %}
+</header>
+<body>
+<style>
+    .cultivos-hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('static/img/campos-maiz.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 8%;
+        text-align: center;
+    }
+
+    .main-content-cultivos {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 60px 5%;
+        display: flex;
+        gap: 30px;
+    }
+
+    .articulos-col {
+        flex: 3;
+    }
+
+    .tema-section {
+        margin-bottom: 20px; /* Mayor espacio para extender la página */
+        padding-right: 9rem;
+        padding-left: 9rem;
+    }
+
+    .texto-detalle h2 {
+        color: #0D47A1;
+        font-size: 2.3rem;
+        margin-bottom: 25px;
+        position: relative;
+        text-align: center;
+    }
+
+    .texto-detalle h2::after {
+        content: '';
+        width: 100%;
+        height: 5px;
+        background: #EF6C00;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+    }
+
+    .texto-detalle p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 30px;
+        text-align: justify;
+    }
+
+    .imagen-detalle {
+        width: 100%;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+
+    .imagen-detalle img {
+        width: 100%;
+        transition: transform 0.8s ease;
+    }
+
+    .imagen-detalle:hover img {
+        transform: scale(1.05);
+    }
+
+    /* BANNERS PUBLICITARIOS GRANDES (SKYSCRAPERS) */
+    .ad-sidebar {
+        flex: 0.8;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: -130px;
+        margin-right: -130px;
+    }
+
+    .banner-grande {
+        width: 20rem;
+        height: 800px; 
+        border: 2px solid #e0e0e0;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 20px;
+        color: #aaa;
+        text-align: center;
+    }
+
+    .highlight-box {
+        background: rgba(239, 108, 0, 0.05);
+        border-left: 5px solid #EF6C00;
+        padding: 20px;
+        margin: 20px 0;
+        font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+        .main-content-cultivos { flex-direction: column; }
+        .ad-sidebar { order: -1; }
+        .banner-grande { height: 200px; position: static; }
+    }
+
+    #banner-one{
+        background-image: url('https://img.freepik.com/fotos-premium/disparo-vertical-agricultor-hispano-su-plantacion-mexico_543270-807.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; 
+
+    }
+
+    #banner-two{
+        background-image: url('https://media.istockphoto.com/id/965148186/es/foto/verde-de-maduraci%C3%B3n-soja-campo-parajes-agr%C3%ADcolas.jpg?s=612x612&w=0&k=20&c=anJnOB9ePJ1ygfamdoOEyk-HXSaamBCpee2jqeEF_sI=');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; 
+    }
+
+</style>
+
+<div class="main-content-cultivos">
+    
+    <aside class="ad-sidebar" id="sidebar-izquierdo">
+        <div class="banner-grande" id="banner-one">
+        </div>
+    </aside>
+
+    <main class="articulos-col">
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <center><h2 class="title-cultivos">LOS CULTIVOS DE MAÍZ</h2></center>
+                <p>Cultivar maíz es rentable si se le proporciona suficiente espacio, calor y agua. Sin embargo, el cultivo del maíz es muy sensible al clima y a las condiciones del campo, no existe una respuesta única para todos los casos. Con la tecnología disponible hoy en día, las ventajas de sembrar maíz radican en un proceso que se puede ajustar rápidamente para obtener el máximo rendimiento, controlando diversos factores del campo, como el clima, los datos de humedad del suelo, las potenciales amenazas, incluidas la maleza y las plagas y mucho más.</p>
+            </div>
+            <div class="imagen-detalle">
+                <img src="https://agroinsumossa.com/wp-content/uploads/2018/07/situacion-cultivo-maiz-colombia-1030x655.jpg" alt="CULTIVO DE MAÍZ">
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <h2>¿EN QUÉ CLIMA SE CULTIVA EL MAÍZ?</h2>
+                <p>Cuando se piensa en las condiciones climáticas del cultivo de maíz, una de las primeras preocupaciones debe ser: “¿Cuál es la temperatura ideal para el cultivo de maíz?”. Se trata de un tipo de cultivo de verano, por lo que sólo puede prosperar en climas cálidos. El clima adecuado para el cultivo de maíz cambia a lo largo del día y del periodo vegetativo. Durante el día, la temperatura óptima para el cultivo oscila entre 25-33°C (77-91°F), mientras que por la noche lo óptimo es 17-23°C (62-74°F).</p>
+                <div class="highlight-box">
+                    <strong>¿CUÁNTO SOL NECESITA EL MAÍZ PARA CRECER? </strong><br> <br>
+                    "Un mínimo de 6-8 horas de luz solar al día es el requisito común de luz para el cultivo del maíz. Es necesario cultivar el maíz lejos de árboles grandes que puedan proyectar sombra y plantar las variedades más altas al norte o al este del campo, para que las plantas más cortas reciban suficiente sol durante el día."
+                </div>
+            </div>
+            <div class="texto-detalle">
+                <p>Las temperaturas de 20-22°C (68-73°F) son ideales para el desarrollo del cultivo del maíz durante todo el periodo vegetativo. Sin embargo, si el suelo está suficientemente húmedo, el maíz puede crecer con temperaturas de hasta 38°C (100°F). Se entiende como humedad suficiente para el cultivo de maíz un suministro constante de agua en forma de precipitaciones suaves y periódicas o riego en todo el campo, con un total de no menos de 15″ (38 cm) durante la temporada de crecimiento. La cantidad ideal de precipitaciones para una temporada de cultivo de alto rendimiento se sitúa entre 45 y 50 cm (18 y 20″).</p>
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <h2>¿QUÉ TIPO DE SUELO ES MEJOR PARA CULTIVAR?</h2>
+                <p>Las plantas de maíz son muy exigentes; por lo tanto, conocer las condiciones y el tipo de suelo para sembrar maíz es crucial para obtener una cosecha sana. Si desea maximizar su rendimiento, el suelo idóneo para el cultivo de maíz de variedades tempranas es arenoso o limoso, y para las tardías, limoso o arcilloso. Al igual que con muchas hortalizas, el pH óptimo para el cultivo de maíz está entre 5,5 y 6,5, que se corresponde con suelos ácidos y neutros. Por lo tanto, es aconsejable realizar análisis del suelo para asegurarse de que su pH es el adecuado para el cultivo.</p>
+                <div class="highlight-box">
+                    <strong>¿A QUÉ PROFUNIDAD CRECEN LAS RAÍCES DEL MAÍZ? </strong><br> <br>
+                    "Aunque las raíces de este cultivo pueden penetrar hasta 1,5 metros de profundidad, normalmente crecen en los 90 cm superiores. Por este motivo, el cultivo suele tener raíces relativamente superficiales, pero en condiciones adecuadas, las raíces pueden crecer a mayor profundidad."
+                </div>
+            </div>
+            <div class="imagen-detalle">
+                <img src="https://cdn.wikifarmer.com/images/detailed/2022/07/Preparacion-del-suelo-de-maiz-y-requisitos-para-la-siembra.jpg" alt="SUELO PARA EL CULTIVO DE MAÍZ">
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <h2>TÉCNICAS DE CUIDADO</h2>
+                <p>Como hay tantos aspectos que deben gestionarse continuamente para que el maíz crezca sano, no existe una guía definitiva sobre cómo cuidarlo. Sin embargo, mientras se mantienen los cultivos en crecimiento, hay algunas áreas clave que requieren tu atención extra. En primer lugar, durante la temporada de cultivo del maíz, debe garantizar un riego y un suministro de nutrientes suficientes. Hay que polinizar el máximo de plantas posible. Y, por último, aunque no menos importante, las enfermedades del cultivo de maíz, así como plagas y maleza puede afectar seriamente al rendimiento, por lo que es clave proteger los cultivos. Estas técnicas empleadas para el cultivo del maíz le servirán para mantener sus cultivos sanos.</p>
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <h2>EL RIEGO PARA LOS CULTIVOS DE MAÍZ</h2>
+                <p>Es esencial proporcionar suficiente agua desde el momento de la plantación hasta la cosecha. El potencial de rendimiento puede disminuir drásticamente si no se satisfacen las necesidades de agua del maíz durante la fase de crecimiento reproductivo.</p>
+                <div class="highlight-box">
+                    <strong>¿CON QUÉ FRECUENCIA HAY QUE REALIZAR LOS RIEGOS? </strong><br> <br>
+                    "Puede ser necesario regar los cultivos en crecimiento cada semana para asegurarse de que reciben alrededor de 2,5 cm (1 pulgada) de humedad semanal."
+                </div>
+                <div class="texto-detalle">
+                <p>Tampoco conviene regar en exceso, ya que podrían pudrirse las semillas o las raíces de las plantas. Saber cómo cambian las necesidades de agua del cultivo a lo largo de la temporada de crecimiento le ayudará a tomar mejores decisiones sobre cuándo y cuánta agua utilizar para el riego.</p>
+            </div>
+            <div class="imagen-detalle">
+                <img src="https://regaber.com/wp-content/uploads/2015/08/1508Regaber_RiegoGoteo_MaizSoja_05.jpg" alt="RIEGO DEL CULTIVO DE MAÍZ">
+            </div>
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <h2>POLINIZACIÓN</h2>
+                <p>Si cultiva maíz en bloques de al menos tres hileras muy próximas entre sí, en lugar de hileras separadas, el viento se encargará de polinizar las plantas. Cuando el viento sopla y los tallos se rozan, el polen se dispersa. El polen se transfiere de las borlas del maíz a las sedas de las espigas en desarrollo cuando éstas aparecen por primera vez.</p>
+                <div class="highlight-box">
+                    <strong>¿CUÁNTO MAÍZ SE PUEDE CULTIVAR POR HECTÁREA? </strong><br> <br>
+                    "Para garantizar un espacio adecuado para cada planta junto con una polinización adecuada, cultive entre 22 y 35 mil plantas en un solo acre del campo."
+                </div>
+                <div class="texto-detalle">
+                <p>Las plantas mal polinizadas tendrán espigas con puntos vacíos donde deberían estar los granos. En tal situación, la polinización manual resulta muy útil. Incluso en campos grandes, se ha demostrado que la polinización manual aumenta el rendimiento de la cosecha al reducir el número de tallos estériles y mejorar la formación de granos en general.</p>
+            </div>
+            </div>
+        </section>
+
+        <section class="tema-section">
+            <div class="texto-detalle">
+                <center><h2>¿CUÁNTO DURA EL CRECIMIENTO DEL CULTIVO?</h2></center>
+                <p>El tiempo de cultivo del maíz es de entre dos y tres meses, si contamos desde que se plantan las semillas hasta que se recogen los cultivos maduros. El tiempo de crecimiento varía mucho entre las distintas variedades. Algunos tipos de maíz (por ejemplo, Seneca Horizon o Earlivee) sólo necesitan entre 58 y 65 días para crecer, mientras que otros (como Silver Queen, Platinum Lady y Camelot) necesitan entre 86 y 92 días para alcanzar la madurez. El tiempo medio de crecimiento de cada variedad suele venir especificado en el reverso del paquete de semillas. Es crucial elegir una variedad que pueda prosperar en la temporada media de cultivo de la región en la que se plante.</p>
+            </div>
+            <div class="imagen-detalle">
+                <img src="https://eos.com/wp-content/uploads/2023/03/corn-growth-timeline-es.jpg.webp" alt="CULTIVO DE MAÍZ">
+            </div>
+        </section>
+    </main>
+
+    <aside class="ad-sidebar" id="sidebar-derecho">
+        <div class="banner-grande" id="banner-two">
+        </div>
+    </aside>
+
+</div>
+</body>
+<footer>
+    {% include "footer.html" %}
+</footer>
+</html>
+
