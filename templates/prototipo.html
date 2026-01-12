@@ -10,13 +10,25 @@
     {% include "header.html" %}
 </header>
 <body>
-   <br>
+   
         <style>
+    .title-principal-prototipo{
+        font-family: "Cause", cursive;
+        text-align: center;
+        color: #0D47A1;  
+        font-size: 3rem;
+    }
+
+    .title-principal-prototipo:hover{
+        color: #EF6C00;
+        cursor: pointer;
+    }
+
     .proto-section {
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 80px 10%;
+        padding: 15px 10%;
         gap: 60px;
         transition: all 0.5s ease;
     }
@@ -24,7 +36,7 @@
     /* Alternancia de columnas */
     .proto-section:nth-child(even) {
         flex-direction: row-reverse;
-        background-color: #f8f9fa;
+        background-color: white;
     }
 
     .proto-image-col {
@@ -36,7 +48,7 @@
 
     .proto-image-container {
         width: 100%;
-        max-width: 500px;
+        max-width: 600px;
         border-radius: 30px;
         overflow: hidden;
         box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
@@ -61,12 +73,12 @@
         display: inline-block;
         background: rgba(239, 108, 0, 0.1);
         color: #EF6C00;
-        padding: 5px 15px;
+        padding: 5px 5px;
         border-radius: 20px;
         font-size: 0.8rem;
         font-weight: bold;
         text-transform: uppercase;
-        margin-bottom: 15px;
+        margin-bottom: -35px;
     }
 
     .proto-text-col h2 {
@@ -119,21 +131,36 @@
         }
     }
 </style>
+    <h1 class="title-principal-prototipo"><strong>BIOKUAM: </strong>PROTOTIPO TECNOLÓGICO AL SERVICIO DEL CAMPO</h1>
+<section class="proto-section">
+    <div class="proto-image-col">
+        <div class="proto-image-container">
+            <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/BIOKUAM_ACCESO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9CSU9LVUFNX0FDQ0VTTy5wbmciLCJpYXQiOjE3NjgxNzI1ODIsImV4cCI6MTc3MDc2NDU4Mn0.j4zrmX-CMWJLa9XiCA69615nUXP4sEOhJEg0ZDso4ds" alt="Diseño Estructural BioKuaM">
+        </div>
+    </div>
+    <div class="proto-text-col">
+        <span class="proto-tag">DISEÑO DEL PROTOTIPO | PRUEBA PILOTO</span>
+        <center><h2>DISEÑO Y FUNCIONAMIENTO DEL PROTOTIPO</h2></center>
+        <p>Más que una simple embarcación de monitoreo, este prototipo representa una solución integral de agricultura. Su concepto se basa en la movilidad inteligente a través de los vallados de agua, permitiendo un monitoreo y supervisión constante, no invasiva. Equipado con una serie de sensores y sistemas que le permiten su navegación. 'Biokuam' actúa como los "ojos" del agricultor en el terreno, transformando variables como la humedad, la temperatura y el pH en datos importantes para la toma de decisiones.  El prototipo ha sido diseñado con una estructura ligera y resistente, optimizada para la navegación en canales angostos.</p>
+    </div>
+</section>
 
 <section class="proto-section">
     <div class="proto-image-col">
         <div class="proto-image-container">
-            <img src="static/img/prototipo-render-1.jpg" alt="Diseño Estructural BioKuaM">
+            <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/IMG_CIRCUITO_AGUA.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9JTUdfQ0lSQ1VJVE9fQUdVQS5qcGVnIiwiaWF0IjoxNzY4MTc2ODk0LCJleHAiOjE3NzA3Njg4OTR9.Ao2xyUJO7nqAmpfwKgZWCCyGSlm8jo4PS2rkRqzvwB0" alt="Sistema de Navegación GPS">
         </div>
     </div>
     <div class="proto-text-col">
-        <span class="proto-tag">Ingeniería Física</span>
-        <h2>Arquitectura Naval y Aerodinámica</h2>
-        <p>El prototipo ha sido diseñado con una estructura ligera y resistente, optimizada para la navegación en canales angostos. Su casco hidrodinámico permite un desplazamiento fluido sobre el agua de los vallados, minimizando la turbulencia y asegurando estabilidad incluso en condiciones climáticas variables de la región de Simijaca.</p>
+        <span class="proto-tag">CIRCUITOS I DEL PROTOTIPO | FASE DE PRUEBA</span>
+        <center><h2>ARQUITECTURA DEL SISTEMA</h2></center>
+        <p>El núcleo operativo de 'BIOKUAM' se reduce en un sistema electrónico diseñado para la gestión de datos en tiempo real y el control de navegación por los vallados. Actualmente, el prototipo cuenta con: </p>
         <ul class="proto-features">
-            <li><i class="fas fa-check-circle"></i> Materiales eco-amigables de alta durabilidad.</li>
-            <li><i class="fas fa-check-circle"></i> Centro de gravedad bajo para estabilidad total.</li>
-            <li><i class="fas fa-check-circle"></i> Dimensiones compactas para canales de riego.</li>
+            <li><i class="fas fa-check-circle"></i>Un circuito basado en microcontroladores encargados de coordinar la entrada de los sensores ambientales con los actuadores de propulsión. </li>
+        </ul>
+        <p>Teniendo en cuenta que es un modelo en fase de desarrollo, la arquitectura actual nos permite realizar diagnósticos rápidos y ajustes de conectividad de forma directa.  Sin embargo, como parte de los objetivos está </p>
+        <ul class="proto-features">
+            <li><i class="fas fa-check-circle"></i>Trabajar en la evolución hacia un encapsulado, esto permitirá la mejora de proporcionar una protección hermética superior contra la humedad, el polvo y las distintas condiciones climáticas.</li>
         </ul>
     </div>
 </section>
@@ -141,54 +168,26 @@
 <section class="proto-section">
     <div class="proto-image-col">
         <div class="proto-image-container">
-            <img src="static/img/prototipo-render-2.jpg" alt="Sistema de Navegación GPS">
+            <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/COMPONENTES_PROTOTIPO.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9DT01QT05FTlRFU19QUk9UT1RJUE8uanBlZyIsImlhdCI6MTc2ODE3Njk4NSwiZXhwIjoxNzcwNzY4OTg1fQ.Zqs_O5uosgp6y3oTP-ya7IIpWuJkmbiYCMCbL4BakiY" alt="Sensores de Monitoreo Agrícola">
         </div>
     </div>
     <div class="proto-text-col">
-        <span class="proto-tag">Autonomía</span>
-        <h2>Navegación Autónoma Inteligente</h2>
-        <p>Equipado con un sistema de posicionamiento global y sensores de proximidad ultrasónicos, el prototipo es capaz de seguir rutas predefinidas a lo largo de las parcelaciones. El sistema detecta obstáculos en tiempo real y ajusta su velocidad para garantizar un recorrido seguro a través de los límites hídricos de las fincas.</p>
-        <ul class="proto-features">
-            <li><i class="fas fa-check-circle"></i> Control remoto y rutas programadas vía GPS.</li>
-            <li><i class="fas fa-check-circle"></i> Sensores anticolisión de 360 grados.</li>
-            <li><i class="fas fa-check-circle"></i> Retorno automático a estación base.</li>
-        </ul>
+        <span class="proto-tag">CIRCUITOS II DEL PROTOTIPO | COMPONENTES</span>
+        <center><h2>HARDWARE DEL SISTEMA</h2></center>
+        <p>El funcionamiento interno de 'BIOKUAM' se basa en un hardware que integra componentes clave para la navegación y el monitoreo de la embarcación. En su etapa actual, el prototipo emplea un microcontrolador 'ATMEGA328P' como unidad central del procesamiento, complementado con módulos de conectividad 'BLUETOOTH HC-05' y 'WIFI NODECUM ESP8266' para la transmisión inalámbrica de datos. El control de potencia se gestiona a través de un puente 'L298N' el cual regula los moto-reductores encargados de la propulsión mediante aspas especializadas. Para el análisis del entorno hídrico, se han incorporado sensores de temperatura 'DS18B20' y un medidor de PH '4502-C'. Es importante destacar que, aunque los componentes actuales han sido fundamentales para validar la viabilidad del proyecto en esta fase inicial, representan una base de prueba. Actualmente, nos encontramos en un proceso de investigación y selección de nuevos módulos que ofrezcan una mayor compatibilidad, mayor eficiencia energética y una respuesta mucho más rápida.</p>
     </div>
 </section>
 
 <section class="proto-section">
     <div class="proto-image-col">
         <div class="proto-image-container">
-            <img src="static/img/prototipo-render-3.jpg" alt="Sensores de Monitoreo Agrícola">
+            <img src="https://play-lh.googleusercontent.com/fUx0HwXQoHC-4w3Tp-fS96qXcHh9fRfD9399WDZQlvwjVzSmBhAvOc0HQ_QIW5YXJQ=w526-h296-rw" alt="Energía Solar Sostenible">
         </div>
     </div>
     <div class="proto-text-col">
-        <span class="proto-tag">Recolección de Datos</span>
-        <h2>Monitoreo Multiespectral del Cultivo</h2>
-        <p>La verdadera potencia de BioKuaM reside en su conjunto de sensores de grado agrícola. Mientras navega, analiza parámetros críticos como la humedad relativa, la temperatura ambiente y los niveles de estrés hídrico de las plantas de maíz, enviando esta información directamente a la nube para su procesamiento.</p>
-        <ul class="proto-features">
-            <li><i class="fas fa-check-circle"></i> Sensores de humedad y temperatura de alta precisión.</li>
-            <li><i class="fas fa-check-circle"></i> Cámara HD para inspección visual de plagas.</li>
-            <li><i class="fas fa-check-circle"></i> Transmisión de datos en tiempo real (LoRaWAN/WiFi).</li>
-        </ul>
-    </div>
-</section>
-
-<section class="proto-section">
-    <div class="proto-image-col">
-        <div class="proto-image-container">
-            <img src="static/img/prototipo-render-4.jpg" alt="Energía Solar Sostenible">
-        </div>
-    </div>
-    <div class="proto-text-col">
-        <span class="proto-tag">Energía Limpia</span>
-        <h2>Propulsión 100% Eléctrica y Solar</h2>
-        <p>Comprometidos con la sostenibilidad de Simijaca, el prototipo utiliza energía limpia para su funcionamiento. El sistema de baterías de litio se complementa con paneles solares integrados en la parte superior, permitiendo jornadas de trabajo extendidas sin emisiones contaminantes ni ruido que perturbe el ecosistema local.</p>
-        <ul class="proto-features">
-            <li><i class="fas fa-check-circle"></i> Carga solar integrada para mayor autonomía.</li>
-            <li><i class="fas fa-check-circle"></i> Motores eléctricos de bajo consumo y cero ruido.</li>
-            <li><i class="fas fa-check-circle"></i> Sistema de gestión de energía optimizado.</li>
-        </ul>
+        <span class="proto-tag">FUNCIONAMIENTO DE NAVEGACIÓN DEL PROTOTIPO</span>
+        <center><h2>CONECTIVIDAD Y CONTROL INALÁMBRICO</h2></center>
+        <p>La interacción entre el usuario-prototipo de 'BIOKUAM' se gestiona de forma intuitiva a través de una conexión inalámbrica de corto alcance mediante tecnología Bluetooth. Para operar el sistema, el usuario debe integrar la aplicación móvil 'SriTu Hobby' en su dispositivo inteligente, la cual actúa como el centro de mando remoto de la embarcación. Una vez establecida la vinculación con el módulo Bluetooth HC-05 interno del prototipo, la aplicación despliega una interfaz de control digital que permite dirigir la navegación en múltiples direcciones con una respuesta inmediata. Este sistema de control manual es fundamental para las fases de exploración y maniobras de precisión en los vallados de agua.  </p>
     </div>
 </section>
    <br>
