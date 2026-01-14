@@ -369,6 +369,102 @@
             }
         }
 
+        .proto-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 10%;
+        gap: 60px;
+        transition: all 0.5s ease;
+    }
+
+    /* Alternancia de columnas */
+    .proto-section:nth-child(even) {
+        flex-direction: row-reverse;
+        background-color: white;
+    }
+
+    .proto-image-col {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .proto-image-container {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(13, 71, 161, 0.15);
+        border: 2px solid rgba(13, 71, 161, 0.05);
+    }
+
+    .proto-image-container img {
+        width: 100%;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+
+    .proto-image-container:hover img {
+        transform: scale(1.08);
+    }
+
+    .proto-text-col {
+        flex: 1;
+    }
+
+    .proto-text-col h2 {
+        color: #0D47A1;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .proto-text-col p {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    .proto-features {
+        list-style: none;
+        padding: 0;
+    }
+
+    .proto-features li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .proto-features i {
+        color: #EF6C00;
+        font-size: 1.2rem;
+    }
+
+    /* Responsivo */
+    @media (max-width: 992px) {
+        .proto-section, .proto-section:nth-child(even) {
+            flex-direction: column;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        .proto-text-col p {
+            text-align: center;
+        }
+        .proto-features {
+            display: inline-block;
+            text-align: left;
+        }
+    }
+
+
     </style>
 </head>
 <body>
@@ -501,6 +597,18 @@
                 </div>
             </div>
         </section>
+
+        <section class="proto-section">
+            <div class="proto-image-col">
+                <div class="proto-image-container">
+                    <img src="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/MAPA_GRAFOS.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9NQVBBX0dSQUZPUy5qcGVnIiwiaWF0IjoxNzY4MzQ4NTA2LCJleHAiOjE3NzA5NDA1MDZ9.HxdxLrXpfcTPYpp6wpRp6fw8rIi76f-OeiKv37f8ITs" alt="Sensores de Monitoreo Agrícola">
+                </div>
+            </div>
+        <div class="proto-text-col">
+            <center><h2>MODELADO DE NAVEGACIÓN: GRAFO BIOKAUM</h2></center>
+            <p>Para garantizar que el prototipo BioKuaM recorra de manera eficiente y autónoma los canales de riego, hemos desarrollado un modelo de navegación basado en la teoría de grafos. Esta imagen representa la infraestructura lógica del terreno, donde cada 'nodo' o punto de intersección corresponde a una coordenada específica dentro de los vallados del cultivo de maíz. Las líneas o aristas que conectan estos puntos definen las rutas seguras y optimizadas que la embarcación puede seguir. Este sistema de mapeo permite que el prototipo no solo se desplace de un punto A a un punto B, sino que sea capaz de recalcular su trayectoria para cubrir la mayor área de monitoreo posible, asegurando que los sensores capturen datos representativos de cada sección de la parcela sin riesgo de encallamiento o pérdida de rumbo.</p>
+        </div>
+    </section>
     </main>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
