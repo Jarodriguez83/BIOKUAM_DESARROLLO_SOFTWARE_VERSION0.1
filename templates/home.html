@@ -178,6 +178,97 @@
             .welcome-image { padding-right: 0; margin-bottom: 30px; }
             .welcome-text h1 { font-size: 2.2rem; }
         }
+
+        .video-review-section {
+            padding: 50px 8%;
+            
+        }
+
+        .review-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            color: black;
+        }
+
+        .review-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Video grande y reseñas a la derecha */
+            gap: 20px;
+            align-items: start;
+        }
+
+        .video-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 5px solid white;
+            padding-top: 40px;
+        }
+
+        .review-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 6px solid #EF6C00; /* Naranja BioKuaM */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateX(10px);
+            border-left-color: #0D47A1; /* Cambia a Azul en hover */
+        }
+
+        .review-card h3 {
+            color: #0D47A1;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .review-card i {
+            color: #EF6C00;
+        }
+
+        .review-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Responsivo para móviles */
+        @media (max-width: 1024px) {
+            .review-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-wrapper {
+                height: 350px;
+            }
+        }
+
+        #title-maiz-porva{
+            font-family: "Cause", cursive;
+            color: #0D47A1;  
+            font-size: 2.5rem;
+        }
+
+        .review-intro{
+            font-family: "Cause", cursive;
+            color: #333;
+            font-size: 1.2rem;
+            margin-top: -12px;
+        }
     </style>
 <body>
 
@@ -240,7 +331,44 @@
             </article>
         </div>
     </section>
+    
+    <section class="video-review-section">
+    <div class="review-header">
+        <h2 class="section-title-noticias" id="title-maiz-porva">EL TESORO DE SIMIJACA: MAÍZ PORVA</h2>
+        <p class="review-intro">Explore la historia y el proceso detrás de la mazorca más dulce y aromática de Colombia, un pilar fundamental de nuestra economía local.</p>
+    </div>
 
+    <div class="review-container">
+        <div class="video-wrapper">
+            <iframe 
+                width="100%" 
+                height="450" 
+                src="https://www.youtube.com/embed/1RLAAXvFpzU" 
+                title="Maíz Porva de Simijaca" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="review-content">
+            <div class="review-card">
+                <h3><i class="fas fa-seedling"></i> TRADICIÓN Y CULTIVO</h3>
+                <p>El Maíz Porva es una semilla nativa que requiere 5 meses y 10 días para su cosecha en tierno, y hasta 7 meses para la obtención de semilla pura. Su color verde con tonos rojizos es la marca de autenticidad de Simijaca.</p>
+            </div>
+
+            <div class="review-card">
+                <h3><i class="fas fa-utensils"></i> VERSATILIDAD GASTRONÓMICA</h3>
+                <p>Al ser asada, esta mazorca desprende un aroma único gracias a los suelos del Valle de Ubaté. Es la base de microempresas familiares que transforman el grano en envueltos, arepas de choclo desgranadas a mano y el tradicional mute.</p>
+            </div>
+
+            <div class="review-card">
+                <h3><i class="fas fa-chart-line"></i> IMPACTO ECONÓMICO</h3>
+                <p>Considerada la segunda economía del municipio después de la ganadería, el maíz impulsa un crecimiento estable, posicionando a Simijaca como el principal proveedor de semilla para la Sabana de Bogotá.</p>
+            </div>
+        </div>
+    </div>
+</section>
 </body>
 </html>
    <br>
