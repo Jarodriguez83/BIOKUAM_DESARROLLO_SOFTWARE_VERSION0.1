@@ -103,6 +103,14 @@ def read_prototipo(request: Request): # Agrega request como parámetro
     """
     return templates.TemplateResponse("prototipo.html", {"request": request})  # Usa TemplateResponse
 
+@app.get("/monitoreo", response_class=HTMLResponse, tags=["MONITOREO"])
+def read_monitoreo(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DEL MONITOREO DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DEL MONITOREO
+    Renderiza la plantilla monitoreo.html con Jinja2
+    """
+    return templates.TemplateResponse("monitoreo.html", {"request": request})  # Usa TemplateResponse
+
 @app.post("/register/user", response_model=Proyecto)
 def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
     """
