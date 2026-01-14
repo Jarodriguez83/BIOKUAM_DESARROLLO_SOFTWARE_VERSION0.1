@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIOKUAM - SERVICIO WEB</title>
+    <title>MONITOREO ONLINE | BIOKUAM</title>
     
 </head>
 <header>
@@ -13,8 +13,8 @@
    <br>
     <style>
     .seccion-monitoreo {
-        padding: 60px 5%;
-        background-color: #f4f7f9;
+        padding: 20px 5%;
+        background-color: white;
         min-height: 100vh;
     }
 
@@ -86,11 +86,13 @@
     }
 
     .visualizacion-iot {
-        background: #fafafa;
+        background: white;
         border-radius: 15px;
         overflow: hidden;
         border: 1px solid #eee;
         margin-bottom: 20px;
+        justify-content: center;    
+
     }
 
     /* Contenedor responsivo para iFrames de ThingSpeak */
@@ -99,6 +101,7 @@
         width: 100%;
         height: 260px;
         margin-bottom: 15px;
+        justify-content: center;
     }
 
     .grafico-iot iframe {
@@ -137,6 +140,12 @@
         .contenedor-canales { grid-template-columns: 1fr; }
         .detalles-tecnicos { grid-template-columns: 1fr; }
     }
+
+    #table-temperatura{
+        justify-content: center;
+        margin-left: 5.5rem;
+        margin-top: 2rem;
+    }
 </style>
 
 <section class="seccion-monitoreo">
@@ -145,8 +154,8 @@
         <div class="estado-conexion">
             <span class="punto-latente"></span> SISTEMA IOT EN LÍNEA
         </div>
-        <h1>Centro de Monitoreo Hídrico</h1>
-        <p>Visualización de datos en tiempo real para el análisis de calidad de agua en los vallados de Simijaca.</p>
+        <h1>CENTRO DE MONITOREO HÍDRICO: ONLINE</h1>
+        <p>Visualización de datos en tiempo real para el análisis de calidad de agua en los vallados de Simijaca, Cundinamarca.</p>
     </div>
 
     <div class="contenedor-canales">
@@ -155,25 +164,25 @@
             <div class="titulo-canal">
                 <i class="fas fa-thermometer-half"></i>
                 <div>
-                    <h2 style="margin:0; font-size: 1.4rem;">Canal 01: Temperatura</h2>
-                    <small style="color: #888;">ID Canal: [Tu_ID_Aquí]</small>
+                    <h2 style="margin:0; font-size: 1.4rem;">CANAL 01: MEDICIÓN TEMPERATURA</h2>
+                    <small style="color: #888;">ID Canal: 2755422</small>
                 </div>
             </div>
 
             <div class="visualizacion-iot">
-                <div class="grafico-iot">
-                    <iframe src="https://thingspeak.com/channels/TU_ID/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                <div class="grafico-iot" id="table-temperatura">
+                    <iframe width="250" height="260" style="border: 0px solid #cccccc;" src="https://thingspeak.com/channels/2755422/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIEMPO&yaxis=TEMPERATURA"></iframe>
                 </div>
             </div>
 
             <div class="detalles-tecnicos">
                 <div class="dato-card">
-                    <span>Sensor</span>
+                    <span>SENSOR</span>
                     <strong>DS18B20</strong>
                 </div>
                 <div class="dato-card">
-                    <span>Unidad</span>
-                    <strong>Grados Celsius (°C)</strong>
+                    <span>UNIDAD</span>
+                    <strong>GRADOS CELSIUS (°C)</strong>
                 </div>
             </div>
             <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
@@ -185,14 +194,14 @@
             <div class="titulo-canal">
                 <i class="fas fa-vial"></i>
                 <div>
-                    <h2 style="margin:0; font-size: 1.4rem;">Canal 02: Potencial Hidrógeno (pH)</h2>
-                    <small style="color: #888;">ID Canal: [Tu_ID_Aquí]</small>
+                    <h2 style="margin:0; font-size: 1.4rem;">CANAL 02: MEDICIÓN POTENCIAL HIDRÓGENO (PH)</h2>
+                    <small style="color: #888;">ID Canal: 3151266</small>
                 </div>
             </div>
 
             <div class="visualizacion-iot">
-                <div class="grafico-iot">
-                    <iframe src="https://thingspeak.com/channels/TU_ID/charts/2?bgcolor=%23ffffff&color=%230D47A1&dynamic=true&results=60&type=line&update=15"></iframe>
+                <div class="grafico-iot" id="table-temperatura">
+                    <iframe width="450" height="260" src="https://thingspeak.com/channels/3151266/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&xaxis=TIEMPO&yaxis=PH"></iframe>
                 </div>
             </div>
 
@@ -216,7 +225,7 @@
     <div style="max-width: 1400px; margin: 40px auto 0; background: #0D47A1; color: white; padding: 30px; border-radius: 20px; display: flex; align-items: center; gap: 20px;">
         <i class="fas fa-info-circle fa-2x" style="color: #EF6C00;"></i>
         <p style="margin:0; font-size: 1rem; line-height: 1.5;">
-            <strong>Nota de Transmisión:</strong> Los datos se actualizan automáticamente cada 15 segundos gracias al protocolo HTTP/MQTT enviado desde el módulo ESP8266 a los servidores de ThingSpeak. Si no visualiza las gráficas, verifique la conexión a internet de su dispositivo.
+            <strong>NOTA IMPORTANTE:</strong> Los datos se actualizan automáticamente cada 15 segundos gracias al protocolo HTTP/MQTT enviado desde el módulo ESP8266 a los servidores de ThingSpeak. Si no visualiza las gráficas, verifique la conexión a internet de su dispositivo.
         </p>
     </div>
 
