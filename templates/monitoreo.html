@@ -11,6 +11,217 @@
 </header>
 <body>
    <br>
+    <style>
+    .seccion-monitoreo {
+        padding: 60px 5%;
+        background-color: #f4f7f9;
+        min-height: 100vh;
+    }
+
+    .encabezado-monitoreo {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .encabezado-monitoreo h1 {
+        color: #0D47A1;
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+    }
+
+    .estado-conexion {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .punto-latente {
+        height: 12px;
+        width: 12px;
+        background-color: #2e7d32;
+        border-radius: 50%;
+        animation: pulso-verde 2s infinite;
+    }
+
+    @keyframes pulso-verde {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+    }
+
+    .contenedor-canales {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 30px;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .tarjeta-canal {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border: 1px solid #e0e0e0;
+    }
+
+    .titulo-canal {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 15px;
+    }
+
+    .titulo-canal i {
+        font-size: 1.5rem;
+        color: #EF6C00;
+    }
+
+    .visualizacion-iot {
+        background: #fafafa;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+
+    /* Contenedor responsivo para iFrames de ThingSpeak */
+    .grafico-iot {
+        position: relative;
+        width: 100%;
+        height: 260px;
+        margin-bottom: 15px;
+    }
+
+    .grafico-iot iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .detalles-tecnicos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .dato-card {
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .dato-card span {
+        display: block;
+        font-size: 0.8rem;
+        color: #666;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+
+    .dato-card strong {
+        font-size: 1.2rem;
+        color: #0D47A1;
+    }
+
+    @media (max-width: 600px) {
+        .contenedor-canales { grid-template-columns: 1fr; }
+        .detalles-tecnicos { grid-template-columns: 1fr; }
+    }
+</style>
+
+<section class="seccion-monitoreo">
+    
+    <div class="encabezado-monitoreo">
+        <div class="estado-conexion">
+            <span class="punto-latente"></span> SISTEMA IOT EN LÍNEA
+        </div>
+        <h1>Centro de Monitoreo Hídrico</h1>
+        <p>Visualización de datos en tiempo real para el análisis de calidad de agua en los vallados de Simijaca.</p>
+    </div>
+
+    <div class="contenedor-canales">
+        
+        <article class="tarjeta-canal">
+            <div class="titulo-canal">
+                <i class="fas fa-thermometer-half"></i>
+                <div>
+                    <h2 style="margin:0; font-size: 1.4rem;">Canal 01: Temperatura</h2>
+                    <small style="color: #888;">ID Canal: [Tu_ID_Aquí]</small>
+                </div>
+            </div>
+
+            <div class="visualizacion-iot">
+                <div class="grafico-iot">
+                    <iframe src="https://thingspeak.com/channels/TU_ID/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                </div>
+            </div>
+
+            <div class="detalles-tecnicos">
+                <div class="dato-card">
+                    <span>Sensor</span>
+                    <strong>DS18B20</strong>
+                </div>
+                <div class="dato-card">
+                    <span>Unidad</span>
+                    <strong>Grados Celsius (°C)</strong>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
+                Monitorea el estrés térmico en el agua, factor crítico para prevenir la proliferación de bacterias que afectan el tallo del Maíz Porva.
+            </p>
+        </article>
+
+        <article class="tarjeta-canal">
+            <div class="titulo-canal">
+                <i class="fas fa-vial"></i>
+                <div>
+                    <h2 style="margin:0; font-size: 1.4rem;">Canal 02: Potencial Hidrógeno (pH)</h2>
+                    <small style="color: #888;">ID Canal: [Tu_ID_Aquí]</small>
+                </div>
+            </div>
+
+            <div class="visualizacion-iot">
+                <div class="grafico-iot">
+                    <iframe src="https://thingspeak.com/channels/TU_ID/charts/2?bgcolor=%23ffffff&color=%230D47A1&dynamic=true&results=60&type=line&update=15"></iframe>
+                </div>
+            </div>
+
+            <div class="detalles-tecnicos">
+                <div class="dato-card">
+                    <span>Sensor</span>
+                    <strong>PH 4502-C</strong>
+                </div>
+                <div class="dato-card">
+                    <span>Rango Ideal</span>
+                    <strong>6.5 - 8.5 pH</strong>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; color: #555; margin-top: 20px;">
+                Mide la acidez o alcalinidad del agua de riego. Un pH equilibrado es esencial para la correcta absorción de nutrientes en el cultivo.
+            </p>
+        </article>
+
+    </div>
+
+    <div style="max-width: 1400px; margin: 40px auto 0; background: #0D47A1; color: white; padding: 30px; border-radius: 20px; display: flex; align-items: center; gap: 20px;">
+        <i class="fas fa-info-circle fa-2x" style="color: #EF6C00;"></i>
+        <p style="margin:0; font-size: 1rem; line-height: 1.5;">
+            <strong>Nota de Transmisión:</strong> Los datos se actualizan automáticamente cada 15 segundos gracias al protocolo HTTP/MQTT enviado desde el módulo ESP8266 a los servidores de ThingSpeak. Si no visualiza las gráficas, verifique la conexión a internet de su dispositivo.
+        </p>
+    </div>
+
+</section>
+
    <br>
 </body>
 <footer>
