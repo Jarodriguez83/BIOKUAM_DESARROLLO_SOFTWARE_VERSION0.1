@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/LOGO-BIOKUAM.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9MT0dPLUJJT0tVQU0ucG5nIiwiaWF0IjoxNzY4NDQ4ODc5LCJleHAiOjE3NzEwNDA4Nzl9._9t8xngolAI-Tqc0x3qw1eb6lmGXOaMFGIf0ynR-wu8" type="image/x-icon">
     <title>CULTIVOS DE MAÍZ | BIOKUAM</title>
     
 </head>
@@ -134,6 +135,77 @@
         background-size: cover; 
     }
 
+
+    /* --- SECCIÓN DE REFERENCIAS --- */
+.referencias-seccion {
+    padding: 20px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.titulo-seccion {
+    text-align: center;
+    color: #0d47a1;
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.contenedor-referencias {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tarjeta-referencia {
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 6px solid #ef6c00; /* Naranja BioKuaM */
+}
+
+/* Apartado de Cita (Izquierda) */
+.bloque-cita {
+    flex: 6;
+    padding: 30px;
+    border-right: 1px solid #eee;
+    width: 50%;
+}
+
+.cita-textual {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #444;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.enlace-fuente {
+    display: inline-block;
+    color: #0d47a1;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.enlace-fuente:hover {
+    text-decoration: underline;
+}
+
+/* Adaptabilidad para Celulares */
+@media (max-width: 768px) {
+    .tarjeta-referencia {
+        flex-direction: column;
+    }
+    .bloque-cita{
+        flex: none;
+        border-right: none;
+    }
+    .bloque-cita {
+        border-bottom: 1px solid #eee;
+    }
+}
 </style>
 
 <div class="main-content-cultivos">
@@ -228,6 +300,48 @@
             </div>
             <div class="imagen-detalle">
                 <img src="https://eos.com/wp-content/uploads/2023/03/corn-growth-timeline-es.jpg.webp" alt="CULTIVO DE MAÍZ">
+            </div>
+        </section>
+
+        <section class="referencias-seccion">
+            <h2 class="titulo-seccion"><i class="fas fa-book"></i>  REFERENCIAS BIBLIOGRÁFICAS</h2>
+            
+            <div class="contenedor-referencias">
+                <div class="tarjeta-referencia">
+                    <div class="bloque-cita">
+                        <p class="cita-textual">1. Neild, R. E., Newman, J. E. (1988). National Corn Handbook. Growing Season Characteristics and Requirements in the Corn Belt. Purdue University, Cooperative Extension Service.</p>
+                        <a href="https://www.extension.purdue.edu/extmedia/nch/nch-40.html" target="_blank" class="enlace-fuente">
+                            <i class="fas fa-external-link-alt"></i> VER FUENTE ORIGINAL
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tarjeta-referencia">
+                    <div class="bloque-cita">
+                        <p class="cita-textual">2. Sideman, B. (2016, June). Growing Sweet Corn. University of New Hampshire (UNH) Cooperative Extension.</p>
+                        <a href="https://extension.unh.edu/sites/default/files/migrated_unmanaged_files/Resource006093_Rep8599.pdf" target="_blank" class="enlace-fuente">
+                            <i class="fas fa-external-link-alt"></i> VER FUENTE ORIGINAL
+                        </a>
+                    </div>
+                </div>
+
+                                <div class="tarjeta-referencia">
+                    <div class="bloque-cita">
+                        <p class="cita-textual">3. Mohansingh, R. (2013, May). How To Grow Field Corn. Extension Training and Information Services Division, Ministry of Food Production of Trinidad and Tobago.</p>
+                        <a href="https://agriculture.gov.tt/wp-content/uploads/2017/11/How_to_Grow_Field_Corn-.pdf" target="_blank" class="enlace-fuente">
+                            <i class="fas fa-external-link-alt"></i> VER FUENTE ORIGINAL
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tarjeta-referencia">
+                    <div class="bloque-cita">
+                        <p class="cita-textual">4. Coulter, J. (2021). Strategies for successful corn planting. University of Minnesota Extension.</p>
+                        <a href="https://extension.umn.edu/corn-planting/strategies-successful-corn-planting" target="_blank" class="enlace-fuente">
+                            <i class="fas fa-external-link-alt"></i> VER FUENTE ORIGINAL
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
