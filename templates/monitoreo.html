@@ -228,6 +228,7 @@
         font-size: 1rem;
         transition: all 0.3s ease;
         outline: none;
+        font-family: "Cause", cursive;
     }
 
     .campo-entrada input:focus {
@@ -253,6 +254,7 @@
         border-radius: 50px;
         font-size: 1.1rem;
         font-weight: bold;
+        font-family: "Cause", cursive;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
@@ -395,68 +397,68 @@
             <form id="form-reporte" class="cuerpo-formulario">
                 <div class="cuadricula-formulario">
                     
-                    <h3 class="subtitulo-formulario"><i class="fas fa-map-marker-alt"></i> Datos de Ubicación y Fecha</h3>
+                    <h3 class="subtitulo-formulario"><i class="fas fa-map-marker-alt"></i> DATOS DE UBICACIÓN Y FECHA</h3>
                     
                     <div class="campo-entrada">
-                        <label>Nombre de la Finca</label>
-                        <input type="text" id="nombreFinca" placeholder="Ej. El Mirador" required>
+                        <label>NOMBRE DE LA FINCA: </label>
+                        <input type="text" id="nombreFinca" placeholder="EJ: EL MIRADOR" required>
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Propietario / Responsable</label>
-                        <input type="text" id="nombreResponsable" placeholder="Nombre completo" required>
+                        <label>PROPIETARIO DE LA FINCA: </label>
+                        <input type="text" id="nombreResponsable" placeholder="NOMBRES Y APELLIDOS" required>
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Folio de Finca (Registro)</label>
-                        <input type="text" id="folioFinca" placeholder="N° de identificación" required>
+                        <label>FOLIO DE LA FINCA (ID): </label>
+                        <input type="text" id="folioFinca" placeholder="N° DE IDENTIFICACIÓN" required>
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Fecha del Reporte</label>
+                        <label>FECHA DEL REPORTE: </label>
                         <input type="date" id="fechaReporte" required>
                     </div>
 
-                    <h3 class="subtitulo-formulario"><i class="fas fa-robot"></i> Información del Prototipo</h3>
+                    <h3 class="subtitulo-formulario"><i class="fas fa-robot"></i> INFORMACIÓN DEL PROTOTIPO</h3>
 
                     <div class="campo-entrada">
-                        <label>Referencia Prototipo</label>
+                        <label>REFERENCIA DEL PROTOTIPO: </label>
                         <select id="refPrototipo">
-                            <option value="BKM-001">BioKuaM v1.0 (BKM-001)</option>
-                            <option value="BKM-002">BioKuaM v2.0 (BKM-002)</option>
+                            <option value="BKM-001">BIOKUAM V1.0 (BKM-001)</option>
+                            <option value="BKM-002">BIOKUAM V2.0 (BKM-002)</option>
                         </select>
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Temperatura Reportada (°C)</label>
+                        <label>TEMPERATURA REPORTADA (°C): </label>
                         <input type="number" step="0.1" id="tempReportada" placeholder="0.0">
                     </div>
 
                     <div class="campo-entrada">
-                        <label>pH Reportado</label>
+                        <label>PH REPORTADO: </label>
                         <input type="number" step="0.1" id="phReportado" placeholder="7.0">
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Hora de toma de datos</label>
+                        <label>HORA DE LA TOMA DE DATOS: </label>
                         <input type="time" id="horaToma">
                     </div>
 
-                    <h3 class="subtitulo-formulario"><i class="fas fa-seedling"></i> Estadísticas del Cultivo</h3>
+                    <h3 class="subtitulo-formulario"><i class="fas fa-seedling"></i> ESTADÍSTICAS DEL CULTIVO</h3>
 
                     <div class="campo-entrada">
-                        <label>Hectáreas de la Finca</label>
-                        <input type="number" step="0.01" id="hectareas" placeholder="Cant. ha">
+                        <label>N° HECTÁREAS DE LA FINCA: </label>
+                        <input type="number" step="0.01" id="hectareas" placeholder="CANT. HECTÁREAS">
                     </div>
 
                     <div class="campo-entrada">
-                        <label>Producción Estimada (Ton)</label>
-                        <input type="number" step="0.1" id="produccionMaiz" placeholder="Toneladas de Maíz">
+                        <label>PRODUCCIÓN ESTIMADA DE MAÍZ (TONELADAS): </label>
+                        <input type="number" step="0.1" id="produccionMaiz" placeholder="TONE. DE MAÍZ">
                     </div>
 
                     <div class="campo-entrada ancho-completo">
-                        <label>Observaciones Adicionales</label>
-                        <textarea id="observaciones" rows="4" placeholder="Escriba aquí notas sobre plagas, clima o estado de los vallados..."></textarea>
+                        <label>OBSERVACIONES ADICIONALES: </label>
+                        <textarea id="observaciones" rows="4" placeholder="ESCRIBA EN ESTE APARTADO INFORMACIÓN ADICIONAL ACERCA DEL CLIMA, PLAGAS, ESTADO DEL CULTIVO, ESTADO DE LA FUENTE HÍDRICA, ETC...."></textarea>
                     </div>
 
                     <div class="boton-generar">
