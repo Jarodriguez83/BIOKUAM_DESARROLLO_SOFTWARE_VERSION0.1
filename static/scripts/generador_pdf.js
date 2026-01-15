@@ -3,17 +3,17 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     const doc = new jsPDF();
 
     // --- 1. CAPTURA DE DATOS (IDs sincronizados con tu HTML) ---
-    const finca = document.getElementById('nombreFinca').value || "Sin Nombre";
+    const finca = document.getElementById('nombreFinca').value || "SIN NOMBRE";
     const responsable = document.getElementById('nombreResponsable').value || "N/A";
     const folio = document.getElementById('folioFinca').value || "---";
-    const fecha = document.getElementById('fechaReporte').value || "14/01/2026";
+    const fecha = document.getElementById('fechaReporte').value || "DD/MM/AAAA";
     const prototipo = document.getElementById('refPrototipo').value || "N/A";
     const hora = document.getElementById('horaToma').value || "--:--";
     const area = document.getElementById('hectareas').value || "0";
     const produccion = document.getElementById('produccionMaiz').value || "0";
     const temp = parseFloat(document.getElementById('tempReportada').value) || 0;
     const ph = parseFloat(document.getElementById('phReportado').value) || 0;
-    const notas = document.getElementById('observaciones').value || "Sin observaciones adicionales.";
+    const notas = document.getElementById('observaciones').value || "SIN OBSERVACIONES ADICIONALES.";
 
     // --- 2. ENCABEZADO CORPORATIVO ---
     doc.setFillColor(13, 71, 161); // Azul Profundo
@@ -22,31 +22,31 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     doc.setTextColor(255, 255, 255);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
-    doc.text("INFORME TÉCNICO INTEGRAL BIOKUAM", 105, 22, { align: "center" });
+    doc.text("INFORME TÉCNICO INTEGRAL - BIOKUAM", 105, 22, { align: "center" });
     
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
-    doc.text("SISTEMA DE MONITOREO IoT PARA AGRICULTURA DE PRECISIÓN EN MAÍZ", 105, 32, { align: "center" });
+    doc.text("SISTEMA DE MONITOREO IOT PARA AGRICULTURA DE PRECISIÓN EN MAÍZ", 105, 32, { align: "center" });
 
     // --- 3. INFORMACIÓN GENERAL Y ESTADÍSTICAS ---
     doc.setTextColor(0, 0, 0);
     doc.setFontSize(12);
     doc.setFont("helvetica", "bold");
-    doc.text("DATOS DE IDENTIFICACIÓN Y PRODUCCIÓN", 20, 58);
+    doc.text("DATOS DE IDENTIFICACIÓN Y PRODUCCIÓN", 105, 58, { align: "center" });
     doc.line(20, 60, 190, 60);
 
     doc.setFont("helvetica", "normal");
     doc.setFontSize(10);
     // Columna 1
-    doc.text(`FINCA: ${finca.toUpperCase()}`, 20, 70);
-    doc.text(`PROPIETARIO: ${responsable.toUpperCase()}`, 20, 78);
-    doc.text(`FOLIO (ID): ${folio}`, 20, 86);
-    doc.text(`ÁREA CULTIVADA: ${area} Hectáreas`, 20, 94);
+    doc.text(`• FINCA: ${finca.toUpperCase()}`, 20, 70);
+    doc.text(`• PROPIETARIO: ${responsable.toUpperCase()}`, 20, 78);
+    doc.text(`• FOLIO (ID): ${folio}`, 20, 86);
+    doc.text(`• ÁREA CULTIVADA: ${area} Hectáreas`, 20, 94);
     // Columna 2
-    doc.text(`FECHA: ${fecha}`, 120, 70);
-    doc.text(`HORA MUESTREO: ${hora}`, 120, 78);
-    doc.text(`PROTOTIPO: ${prototipo}`, 120, 86);
-    doc.text(`PRODUCCIÓN EST.: ${produccion} Toneladas`, 120, 94);
+    doc.text(`• FECHA: ${fecha}`, 120, 70);
+    doc.text(`• HORA MUESTREO: ${hora}`, 120, 78);
+    doc.text(`• PROTOTIPO: ${prototipo}`, 120, 86);
+    doc.text(`• PRODUCCIÓN EST.: ${produccion} Toneladas`, 120, 94);
 
     // --- 4. SECCIÓN TÉCNICA: TEMPERATURA ---
     // Lógica de consejos para temperatura
@@ -63,7 +63,7 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     
     doc.setTextColor(50, 50, 50);
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(10);
     const textoTemp = `ORIGEN: Dato obtenido mediante sensor digital DS18B20. ${consejoTemp} El agua influye en la tasa metabólica del maíz; valores entre 15°C y 22°C facilitan la absorción de nutrientes.`;
     doc.text(doc.splitTextToSize(textoTemp, 160), 25, 120);
 
@@ -78,7 +78,7 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     doc.rect(20, 150, 170, 38, 'F');
     doc.setFont("helvetica", "bold");
     doc.setTextColor(13, 71, 161); // Azul
-    doc.text(`NIVEL DE pH MONITOREADO: ${ph}`, 25, 158);
+    doc.text(`NIVEL DE PH MONITOREADO: ${ph}`, 25, 158);
     
     doc.setTextColor(50, 50, 50);
     doc.setFont("helvetica", "normal");
@@ -89,7 +89,7 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     doc.setTextColor(0, 0, 0);
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
-    doc.text("OBSERVACIONES ADICIONALES Y DIAGNÓSTICO", 20, 200);
+    doc.text("OBSERVACIONES ADICIONALES Y DIAGNÓSTICO", 105, 200, { align: "center" });
     doc.line(20, 202, 190, 202);
 
     doc.setFont("helvetica", "normal");
@@ -98,11 +98,11 @@ document.getElementById('descargarBtn').addEventListener('click', function() {
     doc.text(lineasNotas, 20, 210);
 
     // --- 7. PIE DE PÁGINA ---
-    doc.setFontSize(8);
+    doc.setFontSize(10);
     doc.setTextColor(150, 150, 150);
-    doc.text("Informe técnico validado por sistema BioKuaM. Datos procesados vía ThingSpeak IoT Cloud.", 105, 280, { align: "center" });
-    doc.text("Simijaca, Cundinamarca - Tecnología de Agricultura de Precisión.", 105, 285, { align: "center" });
+    doc.text("INFORME TÉCNICO VALIDO POR EL SISTEMA BIOKUAM. DATOS PROCESADOS VÍA THINGSPEAK IOT CLOUD.", 105, 280, { align: "center" });
+    doc.text("SIMIJACA, CUNDINAMARCA - TECNOGOLOGÍA IOT.", 105, 285, { align: "center" });
 
     // DESCARGAR
-    doc.save(`Informe_BioKuaM_${finca}.pdf`);
+    doc.save(`INFORME-BIOKUAM-DOC-FINCA${finca}.pdf`);
 });
