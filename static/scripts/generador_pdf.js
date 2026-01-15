@@ -1,76 +1,108 @@
 document.getElementById('descargarBtn').addEventListener('click', function() {
-    // 1. Acceder a la librería
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    // 2. Obtener los valores del formulario
+    // --- 1. CAPTURA DE DATOS (IDs sincronizados con tu HTML) ---
     const finca = document.getElementById('nombreFinca').value || "Sin Nombre";
     const responsable = document.getElementById('nombreResponsable').value || "N/A";
     const folio = document.getElementById('folioFinca').value || "---";
-    const fecha = document.getElementById('fechaReporte').value || "---";
-    const proto = document.getElementById('refPrototipo').value || "---";
-    const temp = document.getElementById('tempReportada').value || "0";
-    const ph = document.getElementById('phReportado').value || "0";
+    const fecha = document.getElementById('fechaReporte').value || "14/01/2026";
+    const prototipo = document.getElementById('refPrototipo').value || "N/A";
+    const hora = document.getElementById('horaToma').value || "--:--";
+    const area = document.getElementById('hectareas').value || "0";
+    const produccion = document.getElementById('produccionMaiz').value || "0";
+    const temp = parseFloat(document.getElementById('tempReportada').value) || 0;
+    const ph = parseFloat(document.getElementById('phReportado').value) || 0;
     const notas = document.getElementById('observaciones').value || "Sin observaciones adicionales.";
 
-    // 3. Diseño del PDF (Dibujando directamente)
-    
-    // Encabezado
-    doc.setFillColor(13, 71, 161); // Azul oscuro
-    doc.rect(0, 0, 210, 40, 'F');
+    // --- 2. ENCABEZADO CORPORATIVO ---
+    doc.setFillColor(13, 71, 161); // Azul Profundo
+    doc.rect(0, 0, 210, 45, 'F');
     
     doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
-    doc.setFont("helvetica", "bold");
-    doc.text("REPORTE TÉCNICO BIOKUAM", 105, 20, { align: "center" });
+    doc.text("INFORME TÉCNICO INTEGRAL BIOKUAM", 105, 22, { align: "center" });
     
-    doc.setFontSize(12);
-    doc.text("MONITOREO DE LA CALIDAD DEL AGUA (VALLADOS DE AGUA - SIMIJACA, CUNDINAMARCA)", 105, 30, { align: "center" });
-
-    // Cuerpo del Reporte
-    doc.setTextColor(0, 0, 0);
-    doc.setFontSize(14);
-    doc.text("INFORMACIÓN GENERAL ACERCA DEL DIAGNOSTICO TÉCNICO", 20, 55, { align: "center" });
-    doc.line(20, 57, 190, 57); // Línea divisoria
-
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-    doc.text(`- NOMBRE DE LA FINCA: ${finca}`, 20, 65);
-    doc.text(`- PROPIETARIO DE LA FINCA: ${responsable}`, 20, 72);
-    doc.text(`- N° DE FOLIO DE LA FINCA "${finca}": ${folio}`, 20, 79);
-    doc.text(`- FECHA DE LAS MUESTRAS: ${fecha}`, 130, 65);
-    doc.text(`- REFERENCIA PROTOTIPO: ${proto}`, 130, 72);
-
-    // Cuadro de Métricas
-    doc.setDrawColor(239, 108, 0); // Naranja BioKuaM
-    doc.setLineWidth(1);
-    doc.rect(20, 90, 170, 30);
-    
-    doc.setFont("helvetica", "bold");
-    doc.text("RESULTADOS DE LOS SENSORES (PH Y TEMPERATURA)", 105, 100, { align: "center" });
-    doc.setFontSize(16);
-    doc.text(`TEMPERATURA: ${temp} °C`, 60, 112, { align: "center" });
-    doc.text(`PH: ${ph}`, 150, 112, { align: "center" });
-
-    // Observaciones
-    doc.setFontSize(14);
-    doc.text("OBSERVACIONES DEL CULTIVO", 20, 140, { align: "center" });
-    doc.line(20, 142, 190, 142);
-    
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "normal");
-    
-    // Ajustar texto largo (notas) para que no se salga de la hoja
-    const notasDivididas = doc.splitTextToSize(notas, 170);
-    doc.text(notasDivididas, 20, 150);
-
-    // Pie de página
     doc.setFontSize(10);
-    doc.setTextColor(150, 150, 150);
-    doc.text("ESTE ES UN DOCUMENTO DE VALIDACIÓN TÉCNICA GENERADO POR EL SISTEMA DE BIOKUAM.", 105, 280, { align: "center" });
-    doc.text("GRACIAS POR SER PARTE DE BIOKUAM.", 105, 280, { align: "center" });
-    doc.text("CONTACTO: ayudabiokaum@gmail.com", 105, 280, { align: "center" });
+    doc.setFont("helvetica", "normal");
+    doc.text("SISTEMA DE MONITOREO IoT PARA AGRICULTURA DE PRECISIÓN EN MAÍZ", 105, 32, { align: "center" });
 
-    // 4. DESCARGA AUTOMÁTICA
-    doc.save(`REPORTE-BIOKUAM-DOCUMENTO-FINCA-${finca}.pdf`);
+    // --- 3. INFORMACIÓN GENERAL Y ESTADÍSTICAS ---
+    doc.setTextColor(0, 0, 0);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text("DATOS DE IDENTIFICACIÓN Y PRODUCCIÓN", 20, 58);
+    doc.line(20, 60, 190, 60);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    // Columna 1
+    doc.text(`FINCA: ${finca.toUpperCase()}`, 20, 70);
+    doc.text(`PROPIETARIO: ${responsable.toUpperCase()}`, 20, 78);
+    doc.text(`FOLIO (ID): ${folio}`, 20, 86);
+    doc.text(`ÁREA CULTIVADA: ${area} Hectáreas`, 20, 94);
+    // Columna 2
+    doc.text(`FECHA: ${fecha}`, 120, 70);
+    doc.text(`HORA MUESTREO: ${hora}`, 120, 78);
+    doc.text(`PROTOTIPO: ${prototipo}`, 120, 86);
+    doc.text(`PRODUCCIÓN EST.: ${produccion} Toneladas`, 120, 94);
+
+    // --- 4. SECCIÓN TÉCNICA: TEMPERATURA ---
+    // Lógica de consejos para temperatura
+    let consejoTemp = "";
+    if (temp < 15) { consejoTemp = "CONSEJO: Temperatura baja. Monitorear posible estrés radicular por frío."; }
+    else if (temp > 25) { consejoTemp = "CONSEJO: Temperatura elevada. Aumentar frecuencia de riego para mitigar evaporación."; }
+    else { consejoTemp = "CONSEJO: Rango térmico óptimo para el desarrollo vegetativo del maíz."; }
+
+    doc.setFillColor(240, 240, 240);
+    doc.rect(20, 105, 170, 38, 'F');
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(230, 81, 0); // Naranja
+    doc.text(`TEMPERATURA REGISTRADA: ${temp} °C`, 25, 113);
+    
+    doc.setTextColor(50, 50, 50);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    const textoTemp = `ORIGEN: Dato obtenido mediante sensor digital DS18B20. ${consejoTemp} El agua influye en la tasa metabólica del maíz; valores entre 15°C y 22°C facilitan la absorción de nutrientes.`;
+    doc.text(doc.splitTextToSize(textoTemp, 160), 25, 120);
+
+    // --- 5. SECCIÓN TÉCNICA: pH ---
+    // Lógica de consejos para pH
+    let consejoPh = "";
+    if (ph < 6) { consejoPh = "CONSEJO: Acidez detectada. El maíz presenta deficiencia de fósforo en suelos con pH bajo."; }
+    else if (ph > 7.5) { consejoPh = "CONSEJO: Tendencia alcalina. Riesgo de bloqueo de micronutrientes (Hierro/Zinc)."; }
+    else { consejoPh = "CONSEJO: pH en rango de neutralidad. Disponibilidad química ideal de fertilizantes."; }
+
+    doc.setFillColor(240, 240, 240);
+    doc.rect(20, 150, 170, 38, 'F');
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(13, 71, 161); // Azul
+    doc.text(`NIVEL DE pH MONITOREADO: ${ph}`, 25, 158);
+    
+    doc.setTextColor(50, 50, 50);
+    doc.setFont("helvetica", "normal");
+    const textoPh = `ORIGEN: Medición capturada con sensor analógico industrial de alta precisión. ${consejoPh} Un pH de 6.0 a 7.2 es el estándar agronómico para maximizar la calidad hídrica.`;
+    doc.text(doc.splitTextToSize(textoPh, 160), 25, 165);
+
+    // --- 6. OBSERVACIONES DE CAMPO (Texto Dinámico) ---
+    doc.setTextColor(0, 0, 0);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("OBSERVACIONES ADICIONALES Y DIAGNÓSTICO", 20, 200);
+    doc.line(20, 202, 190, 202);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    const lineasNotas = doc.splitTextToSize(notas, 170);
+    doc.text(lineasNotas, 20, 210);
+
+    // --- 7. PIE DE PÁGINA ---
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text("Informe técnico validado por sistema BioKuaM. Datos procesados vía ThingSpeak IoT Cloud.", 105, 280, { align: "center" });
+    doc.text("Simijaca, Cundinamarca - Tecnología de Agricultura de Precisión.", 105, 285, { align: "center" });
+
+    // DESCARGAR
+    doc.save(`Informe_BioKuaM_${finca}.pdf`);
 });
