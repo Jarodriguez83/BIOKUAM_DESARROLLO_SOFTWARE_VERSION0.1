@@ -30,3 +30,25 @@ class Proyecto(BaseModel, table=True):
         # Configuración adicional si es necesario
         pass
 
+#MODELO DE USUARIO - BASE DE DATOS  
+class Usuario(SQLModel, table=True): 
+    #ID DEL USUARIO
+    id: Optional[int] = Field(default=None, primary_key=True)
+    #DATOS PERSONALES DEL USUARIO  
+    nombres: str  
+    apellidos: str  
+    telefono: str  
+    correo:str = Field(unique=True, index=True) #ESTO PERMITE QUE NO SE REPITAN CORREOS  
+    #IDENTIFICACIÓN DEL USUARIO 
+    tipo_identificacion: str
+    numero_identificacion: str = Field(unique=True, index=True) #ESTO PERMITE QUE NO SE REPITAN NÚMEROS DE IDENTIFICACIÓN
+    #DATOS DE LA FINCA 
+    vereda: str  
+    nombre_finca: Optional[str] = None
+    folio_finca: Optional[str]= None
+    #DATOS TÉCNICOS DEL USUARIO 
+    referencia_prototipo: str  
+    contrasena: str  
+    foto_perfil: Optional[str] = None #RUTA DE LA FOTO DE PERFIL 
+       
+    
