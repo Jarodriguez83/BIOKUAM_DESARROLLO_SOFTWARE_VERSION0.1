@@ -34,7 +34,7 @@
         .hero-side {
             flex: 1.3;
             background: linear-gradient(rgba(13, 71, 161, 0.5), rgba(13, 71, 161, 0.5)), 
-                        url('https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/BIOKUAM_ACCESO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9CSU9LVUFNX0FDQ0VTTy5wbmciLCJpYXQiOjE3Njc4MzYxMzksImV4cCI6MTc2ODQ0MDkzOX0.CpLZ6gkgVa66hzDEcDTlsEn3tvXh30XImlQXA_rSMms');
+                        url('https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/BIOKUAM_ACCESO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9CSU9LVUFNX0FDQ0VTTy5wbmciLCJpYXQiOjE3Njg1MjE3NDMsImV4cCI6MTc3MTExMzc0M30.IoaqxTDhIMQxY-cF5E1uMDejFaNg4b6mSJIcL0vbPy4');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -55,9 +55,9 @@
             background: var(--bkm-white);
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             padding: 40px;
+            overflow-y: auto;
         }
 
         .auth-card {
@@ -156,6 +156,20 @@
         .tab-btn{
             font-size: 1.0rem;
         }
+
+        .tab-content active{
+            justify-content: center;
+        }
+
+        #login form, #password form{
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        #login h2, #password h2{
+            margin-top: 230px;
+        }
     </style>
 </head>
 <body>
@@ -181,11 +195,11 @@
                     <form>
                         <div class="form-group">
                             <label>USUARIO / EMAIL</label>
-                            <input type="text" placeholder="nombre_usuario@biokuam.com" style="font-family: 'Cause', cursive;">
+                            <input type="text" placeholder="nombre_usuario@biokuam.com" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>CONTRASEÑA</label>
-                            <input type="password" placeholder="••••••••">
+                            <input type="password" placeholder="••••••••" required>
                         </div>
                         <a onclick="window.location.href='/home'"><button type="button" class="btn-submit">INICIAR SESIÓN</button></a>
                     </form>
@@ -196,16 +210,80 @@
                     <center><h2>CREAR CUENTA BIOKUAM</h2></center>
                     <form>
                         <div class="form-group">
-                            <label>NOMBRE COMPLETO</label>
-                            <input type="text" placeholder="Ej: Juan Pérez" style="font-family: 'Cause', cursive;">
+                            <label>NOMBRES COMPLETOS:</label>
+                            <input type="text" placeholder="EJ: JUAN DAVID" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
-                            <label>CORREO ELECTRÓNICO</label>
-                            <input type="email" placeholder="correo@ejemplo.com" style="font-family: 'Cause', cursive;">
+                            <label>APELLIDOS COMPLETOS:</label>
+                            <input type="text" placeholder="EJ: RODRIGUEZ TAMI" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
-                            <label>CONTRASEÑA</label>
-                            <input type="password" placeholder="Mínimo 8 caracteres" style="font-family: 'Cause', cursive;">
+                            <label>NÚMERO TELEFÓNICO:</label>
+                            <input type="tel" placeholder="EJ: 3001234567" style="font-family: 'Cause', cursive;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CORREO ELECTRÓNICO:</label>
+                            <input type="email" placeholder="correo@ejemplo.com" style="font-family: 'Cause', cursive;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>TIPO DE IDENTIFICACIÓN:</label>
+                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                                <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
+                                <option value="cc">CÉDULA DE CIUDADANÍA</option>
+                                <option value="ce">CÉDULA DE EXTRANJERÍA</option>
+                                <option value="ti">TARJETA DE IDENTIDAD</option>
+                                <option value="pp">PASAPORTE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>NÚMERO DE IDENTIFICACIÓN:</label>
+                            <input type="number" placeholder="EJ: 1698523698" style="font-family: 'Cause', cursive;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>VEREDA EN LA CUÁL VIVE:</label>
+                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                                <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
+                                <option value="aposentos">APOSENTOS</option>
+                                <option value="centro">CENTRO</option>
+                                <option value="pantano">PANTANO</option>
+                                <option value="churnica">CHURNICA</option>
+                                <option value="salitre">SALITRE</option>
+                                <option value="taquira">TAQUIRA</option>
+                                <option value="pblanca">PEÑA BLANCA</option>
+                                <option value="hchico">HATO CHICO</option>
+                                <option value="fical">EL FICAL</option>
+                                <option value="juncal">JUNCAL</option>
+                                <option value="lope">DON LOPE</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>NOMBRE DE LA FINCA:</label>
+                            <input type="text" placeholder="EJ: EL MIRADOR (OPCIONAL)" style="font-family: 'Cause', cursive;">
+                        </div>
+                        <div class="form-group">
+                            <label>FOLIO DE LA FINCA:</label>
+                            <input type="text" placeholder="EJ: UTY-515-COL (OPCIONAL)" style="font-family: 'Cause', cursive;">
+                        </div>
+                        <div class="form-group">
+                            <label>REFERENCIA DEL PROTOTIPO:</label>
+                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                                <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
+                                <option value="bkm1">BIOKUAM V1.0 (BKM-001)</option>
+                                <option value="bkm2">BIOKUAM V2.0 (BKM-002)</option>
+                                <option value="bkm3">BIOKUAM V3.0 (BKM-003)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>CREAR UNA CONTRASEÑA:</label>
+                            <input type="password" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CONFIRMAR CONTRASEÑA:</label>
+                            <input type="password" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>FOTO DE PERFIL:</label>
+                            <input type="file" style="font-family: 'Cause', cursive;" accept="image/*" required>
                         </div>
                         <button type="submit" class="btn-submit">REGISTRARSE</button>
                     </form>
@@ -220,7 +298,7 @@
                     <form>
                         <div class="form-group">
                             <label>CORREO REGISTRADO</label>
-                            <input type="email" placeholder="correo@biokuam.com" style="font-family: 'Cause', cursive;">
+                            <input type="email" placeholder="correo@biokuam.com" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <button type="submit" class="btn-submit">ENVIAR INSTRUCCIONES</button>
                     </form>
