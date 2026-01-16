@@ -12,32 +12,44 @@
 </header>
 <body>
    <br>
+   <div class="container-asistent">
+        <aside class="ad-sidebar" id="sidebar-izquierdo">
+                <div class="banner-grande" id="banner-one">
+                </div>
+        </aside>
 
-   <div class="biokuam-chat-container">
+        <div class="biokuam-chat-container">
 
-        <div class="biokuam-chat-header">
-            <h1 style="  font-family: 'Cause', cursive">ASISTENTE BIOKUAM CON IA 'GEMINI'</h1>
-            <h2>SIMIJACA, CUNDINAMARCA</h2>
-        </div>
+                <div class="biokuam-chat-header">
+                    <h1 style="  font-family: 'Cause', cursive">ASISTENTE BIOKUAM CON IA 'GEMINI'</h1>
+                    <h2>SIMIJACA, CUNDINAMARCA</h2>
+                </div>
 
-        <div class="biokuam-chat-description">
-            ESTE CHAT USA EL APOYO DE IA PARA AYUDARTE CON LA SOLUCIÓN DE LAS DUDAS QUE TENGAS SOBRE TUS CULTIVOS. TE RECOMENDAMOS USAR LOS DATOS DE: PH Y TEMPERATURA, PARA QUE TE PUEDA AYUDAR DE UNA FORMA MÁS REAL.
-        </div>
+                <div class="biokuam-chat-description">
+                    ESTE CHAT USA EL APOYO DE IA PARA AYUDARTE CON LA SOLUCIÓN DE LAS DUDAS QUE TENGAS SOBRE TUS CULTIVOS. TE RECOMENDAMOS USAR LOS DATOS DE: PH Y TEMPERATURA, PARA QUE TE PUEDA AYUDAR DE UNA FORMA MÁS REAL.
+                </div>
 
-        <div id="biokuamChatBox" class="biokuam-chat-box">
-            <!-- Mensaje inicial de bienvenida de la IA -->
-            <div class="biokuam-msg-ai">
-                ¡Hola! Soy el asistente virtual de Biokuam. Estoy aquí para ayudarte a optimizar tus cultivos de maíz. Pregúntame sobre el pH ideal, la temperatura del agua o cualquier duda que tengas sobre tu cosecha en Simijaca.
+                <div id="biokuamChatBox" class="biokuam-chat-box">
+                    <!-- Mensaje inicial de bienvenida de la IA -->
+                    <div class="biokuam-msg-ai">
+                        ¡Hola! Soy el asistente virtual de Biokuam. Estoy aquí para ayudarte a optimizar tus cultivos de maíz. Pregúntame sobre el pH ideal, la temperatura del agua o cualquier duda que tengas sobre tu cosecha en Simijaca.
+                    </div>
+                </div>
+
+                <div class="biokuam-input-area">
+                    <textarea id="biokuamUserInput" placeholder="ESCRIBE TU PREGUNTA AQUÍ..." style="font-family: 'Cause', cursive;"></textarea>
+                    <button id="biokuamSendBtn" style="font-family: 'Cause', cursive;">ENVIAR</button>
+                </div>
+
             </div>
-        </div>
+            </section>
 
-        <div class="biokuam-input-area">
-            <textarea id="biokuamUserInput" placeholder="ESCRIBE TU PREGUNTA AQUÍ..." style="font-family: 'Cause', cursive;"></textarea>
-            <button id="biokuamSendBtn" style="font-family: 'Cause', cursive;">ENVIAR</button>
-        </div>
-
+        <aside class="ad-sidebar" id="sidebar-derecho">
+                <div class="banner-grande" id="banner-two">
+                </div>
+        </aside>
     </div>
-    </section>
+
     <script src="{{ url_for('static', path='scripts/api_asistente.js') }}"></script>
 
    <br>
@@ -97,8 +109,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background: linear-gradient(rgba(13, 71, 161, 0.7), rgba(13, 71, 161, 0.7)), 
-                        url('https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/BIOKUAM_ACCESO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9CSU9LVUFNX0FDQ0VTTy5wbmciLCJpYXQiOjE3Njc4MzYxMzksImV4cCI6MTc2ODQ0MDkzOX0.CpLZ6gkgVa66hzDEcDTlsEn3tvXh30XImlQXA_rSMms');
+            background: white;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -184,6 +195,69 @@
         .biokuam-input-area button:disabled {
             background: #ccc;
             cursor: not-allowed;
+        }
+
+        /* BANNERS PUBLICITARIOS GRANDES (SKYSCRAPERS) */
+        .ad-sidebar {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .banner-grande {
+            width: 20rem;
+            height: 800px; 
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 20px;
+            color: #aaa;
+            text-align: center;
+        }
+
+        .highlight-box {
+            background: rgba(239, 108, 0, 0.05);
+            border-left: 5px solid #EF6C00;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        @media (max-width: 900px) {
+            .main-content-cultivos { flex-direction: column; }
+            .ad-sidebar { order: -1; }
+            .banner-grande { height: 200px; position: static; }
+        }
+
+        #banner-one{
+            background-image: url('https://img.freepik.com/fotos-premium/disparo-vertical-agricultor-hispano-su-plantacion-mexico_543270-807.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover; 
+
+        }
+
+        #banner-two{
+            background-image: url('https://media.istockphoto.com/id/965148186/es/foto/verde-de-maduraci%C3%B3n-soja-campo-parajes-agr%C3%ADcolas.jpg?s=612x612&w=0&k=20&c=anJnOB9ePJ1ygfamdoOEyk-HXSaamBCpee2jqeEF_sI=');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover; 
+        }
+
+        .container-asistent{
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 0px;
+            padding: 0px;
+            width: 100%;
         }
 </style>
 </html>
