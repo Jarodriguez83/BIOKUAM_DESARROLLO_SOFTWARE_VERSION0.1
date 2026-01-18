@@ -11,9 +11,9 @@ from typing import List
 from pathlib import Path
 import uvicorn
 
-# Importar configuración de base de datos
-from database import get_session, init_db
-from models import Proyecto
+# IMPORTAR CONFIGURACIÓN DE LAS BASES DE DATOS
+from database import create_db_and_tables, get_session
+from models import Proyecto, Usuario
 
 # INSTANCIAS DE FASTAPI
 app = FastAPI(
@@ -26,7 +26,7 @@ app = FastAPI(
 app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
 templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
 
-# Configurar CORS (permite peticiones desde el frontend)
+# CONFIGURAR EL CORS QUE PERMITE LAS PETICIONES DESDE EL FRONTEND
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # En producción, especifica los orígenes permitidos
@@ -42,7 +42,7 @@ def on_startup():
     """
     EN CASO DE QUE NO EXISTAN LAS TABLAS PARA LA BASE DE DATOS LAS CREA.
     """
-    init_db()
+    create_db_and_tables()
     print("✅ LA BASE DE DATOS HA SIDO INICIALIZADA")
 
 
@@ -119,6 +119,17 @@ def read_perfil(request: Request): # Agrega request como parámetro
     """
     return templates.TemplateResponse("perfil.html", {"request": request})  # Usa TemplateResponse
 
+@app.post("/registro", tags=["REGISTRO"])
+def registro_usuario(usuario: Usuario, session: Session = Depends(get_session)):  
+    try:  
+        session.add(usuario)  
+        session.commit()
+        session.refresh(usuario)
+        return {"status": "success", "usuario_id": usuario.id, "message": "EL USUARIO SE REGISTRO EXITOSAMENTE."}
+    except Exception as e:  
+        session.rollback()
+        raise HTTPException(status_code=400, detail=f"ERROR AL REGISTRAR EL USUARIO: {str(e)}")
+    
 @app.post("/register/user", response_model=Proyecto)
 def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
     """
