@@ -229,10 +229,10 @@
                             <label>TIPO DE IDENTIFICACIÓN:</label>
                             <select id="reg_tipo_doc" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
-                                <option value="cc">CÉDULA DE CIUDADANÍA</option>
-                                <option value="ce">CÉDULA DE EXTRANJERÍA</option>
-                                <option value="ti">TARJETA DE IDENTIDAD</option>
-                                <option value="pp">PASAPORTE</option>
+                                <option value="C.C">CÉDULA DE CIUDADANÍA</option>
+                                <option value="C.E">CÉDULA DE EXTRANJERÍA</option>
+                                <option value="T.I">TARJETA DE IDENTIDAD</option>
+                                <option value="P.P">PASAPORTE</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -243,17 +243,17 @@
                             <label>VEREDA EN LA CUÁL VIVE:</label>
                             <select id="reg_vereda" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
-                                <option value="aposentos">APOSENTOS</option>
-                                <option value="centro">CENTRO</option>
-                                <option value="pantano">PANTANO</option>
-                                <option value="churnica">CHURNICA</option>
-                                <option value="salitre">SALITRE</option>
-                                <option value="taquira">TAQUIRA</option>
-                                <option value="pblanca">PEÑA BLANCA</option>
-                                <option value="hchico">HATO CHICO</option>
-                                <option value="fical">EL FICAL</option>
-                                <option value="juncal">JUNCAL</option>
-                                <option value="lope">DON LOPE</option>
+                                <option value="APOSENTOS">APOSENTOS</option>
+                                <option value="CENTRO">CENTRO</option>
+                                <option value="PANTANO">PANTANO</option>
+                                <option value="CHURNICA">CHURNICA</option>
+                                <option value="SALITRE">SALITRE</option>
+                                <option value="TAQUIRA">TAQUIRA</option>
+                                <option value="PENA_BLANCA">PEÑA BLANCA</option>
+                                <option value="HATO_CHICO">HATO CHICO</option>
+                                <option value="EL_FICAL">EL FICAL</option>
+                                <option value="JUNCAL">JUNCAL</option>
+                                <option value="DON_LOPE">DON LOPE</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -268,14 +268,14 @@
                             <label>REFERENCIA DEL PROTOTIPO:</label>
                             <select id="reg_prototipo" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
-                                <option value="bkm1">BIOKUAM V1.0 (BKM-001)</option>
-                                <option value="bkm2">BIOKUAM V2.0 (BKM-002)</option>
-                                <option value="bkm3">BIOKUAM V3.0 (BKM-003)</option>
+                                <option value="BKM-REF-001">BIOKUAM V1.0 (BKM-001)</option>
+                                <option value="BKM-REF-002">BIOKUAM V2.0 (BKM-002)</option>
+                                <option value="BKM-REF-003">BIOKUAM V3.0 (BKM-003)</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>CREAR UNA CONTRASEÑA:</label>
-                            <input type="password" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
+                            <input type="password" id="reg_crear_pass" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>CONFIRMAR CONTRASEÑA:</label>
@@ -283,7 +283,7 @@
                         </div>
                         <div class="form-group">
                             <label>FOTO DE PERFIL:</label>
-                            <input type="file" id="reg_foto" style="font-family: 'Cause', cursive;" accept="image/*" required>
+                            <input type="file" id="reg_foto" style="font-family: 'Cause', cursive;" accept="image/*">
                         </div>
                         <button type="submit" class="btn-submit">REGISTRARSE</button>
                     </form>
@@ -309,5 +309,7 @@
     </div>
     <!--LLAMADO DEL SCRIPT PARA LE FUNCIONAMIENTO DE LA PESTAÑA-->
 <script src="{{ url_for('static', path='scripts/script_inicio.js') }}"></script>
+<script src="{{ url_for('static', path='scripts/form_register_user.js') }}"></script>
+
 </body>
 </html>
