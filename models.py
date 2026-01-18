@@ -47,7 +47,8 @@ class Usuario(SQLModel, table=True):
     nombre_finca: Optional[str] = None
     folio_finca: Optional[str]= None
     #DATOS TÉCNICOS DEL USUARIO 
-    referencia_prototipo: str  
+    referencia_prototipo: str 
+    crear_contrasena: str 
     contrasena: str  
     foto_perfil: Optional[str] = None #RUTA DE LA FOTO DE PERFIL 
        
