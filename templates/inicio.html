@@ -185,9 +185,9 @@
         <section class="auth-side">
             <div class="auth-card">
                 <div class="tabs-header">
-                    <button class="tab-btn active" onclick="openTab(event, 'login')">INICIAR SESIÓN</button>
-                    <button class="tab-btn" onclick="openTab(event, 'register')">REGISTRARME</button>
-                    <button class="tab-btn" onclick="openTab(event, 'password')">OLVIDE LA CONTRASEÑA</button>
+                    <button type="button" class="tab-btn active" onclick="openTab(event, 'login')">INICIAR SESIÓN</button>
+                    <button type="button" class="tab-btn" onclick="openTab(event, 'registro')">REGISTRARME</button>
+                    <button type="button" class="tab-btn" onclick="openTab(event, 'password')">OLVIDE LA CONTRASEÑA</button>
                 </div>
 
                 <div id="login" class="tab-content active">
@@ -206,28 +206,28 @@
                     <p class="helper-text">¿NO TIENES CUENTA? <a onclick="triggerTab(1)">REGÍSTRATE</a></p>
                 </div>
 
-                <div id="register" class="tab-content">
+                <div id="registro" class="tab-content">
                     <center><h2>CREAR CUENTA BIOKUAM</h2></center>
-                    <form>
+                    <form id="formRegistro">
                         <div class="form-group">
                             <label>NOMBRES COMPLETOS:</label>
-                            <input type="text" placeholder="EJ: JUAN DAVID" style="font-family: 'Cause', cursive;" required>
+                            <input type="text" id="reg_nombres" placeholder="EJ: JUAN DAVID" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>APELLIDOS COMPLETOS:</label>
-                            <input type="text" placeholder="EJ: RODRIGUEZ TAMI" style="font-family: 'Cause', cursive;" required>
+                            <input type="text" id="reg_apellidos" placeholder="EJ: RODRIGUEZ TAMI" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>NÚMERO TELEFÓNICO:</label>
-                            <input type="tel" placeholder="EJ: 3001234567" style="font-family: 'Cause', cursive;" required>
+                            <input type="tel" id="reg_telefono" placeholder="EJ: 3001234567" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>CORREO ELECTRÓNICO:</label>
-                            <input type="email" placeholder="correo@ejemplo.com" style="font-family: 'Cause', cursive;" required>
+                            <input type="email" id="reg_correo" placeholder="correo@ejemplo.com" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>TIPO DE IDENTIFICACIÓN:</label>
-                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                            <select id="reg_tipo_doc" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
                                 <option value="cc">CÉDULA DE CIUDADANÍA</option>
                                 <option value="ce">CÉDULA DE EXTRANJERÍA</option>
@@ -237,11 +237,11 @@
                         </div>
                         <div class="form-group">
                             <label>NÚMERO DE IDENTIFICACIÓN:</label>
-                            <input type="number" placeholder="EJ: 1698523698" style="font-family: 'Cause', cursive;" required>
+                            <input type="number" id="reg_num_doc" placeholder="EJ: 1698523698" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>VEREDA EN LA CUÁL VIVE:</label>
-                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                            <select id="reg_vereda" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
                                 <option value="aposentos">APOSENTOS</option>
                                 <option value="centro">CENTRO</option>
@@ -258,15 +258,15 @@
                         </div>
                         <div class="form-group">
                             <label>NOMBRE DE LA FINCA:</label>
-                            <input type="text" placeholder="EJ: EL MIRADOR (OPCIONAL)" style="font-family: 'Cause', cursive;">
+                            <input type="text" id="reg_finca" placeholder="EJ: EL MIRADOR (OPCIONAL)" style="font-family: 'Cause', cursive;">
                         </div>
                         <div class="form-group">
                             <label>FOLIO DE LA FINCA:</label>
-                            <input type="text" placeholder="EJ: UTY-515-COL (OPCIONAL)" style="font-family: 'Cause', cursive;">
+                            <input type="text" id="reg_folio" placeholder="EJ: UTY-515-COL (OPCIONAL)" style="font-family: 'Cause', cursive;">
                         </div>
                         <div class="form-group">
                             <label>REFERENCIA DEL PROTOTIPO:</label>
-                            <select style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
+                            <select id="reg_prototipo" style="font-family: 'Cause', cursive; width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 8px; outline: none; transition: 0.3s;" required>
                                 <option value="" disabled selected>SELECCIONA UNA OPCIÓN:</option>
                                 <option value="bkm1">BIOKUAM V1.0 (BKM-001)</option>
                                 <option value="bkm2">BIOKUAM V2.0 (BKM-002)</option>
@@ -279,11 +279,11 @@
                         </div>
                         <div class="form-group">
                             <label>CONFIRMAR CONTRASEÑA:</label>
-                            <input type="password" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
+                            <input type="password" id="reg_pass" placeholder="MÍNIMO 6 CARACTERES" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>FOTO DE PERFIL:</label>
-                            <input type="file" style="font-family: 'Cause', cursive;" accept="image/*" required>
+                            <input type="file" id="reg_foto" style="font-family: 'Cause', cursive;" accept="image/*" required>
                         </div>
                         <button type="submit" class="btn-submit">REGISTRARSE</button>
                     </form>
