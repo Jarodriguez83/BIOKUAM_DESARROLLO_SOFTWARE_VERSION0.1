@@ -1,44 +1,23 @@
 """
-Configuración de la base de datos usando SQLModel y SQLAlchemy
+CONFIGURACIÓN DE LA BASE DE DATOS
 """
 from sqlmodel import SQLModel, create_engine, Session
-from typing import Generator
-import os
-from dotenv import load_dotenv
+import models
 
-# Cargar variables de entorno
-load_dotenv()
+#DEFINIR EL NOMBRE DEL ARCHIVO DE LAS BASES DE DATOS
+sqlite_file_name = "biokuam-database.db"
+sqlite_url = f"sqlite:///{sqlite_file_name}"
 
-# URL de conexión a la base de datos
-# Por defecto usa SQLite, pero puedes cambiarlo a PostgreSQL
-DATABASE_URL = os.getenv(
-    "DATABASE_URL", 
-    "sqlite:///./biokuam.db"
-)
+#CREAR EL ENGINE  
+engine = create_engine(sqlite_url, echo=True)
 
-# Crear el motor de la base de datos
-# Para PostgreSQL usar: create_engine(DATABASE_URL, echo=True)
-# Para SQLite (desarrollo): create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
-engine = create_engine(
-    DATABASE_URL,
-    echo=True,  # Muestra las consultas SQL en consola (útil para desarrollo)
-    connect_args={"check_same_thread": False} if "sqlite" in DATABASE_URL else {}
-)
-
-
-def init_db():
-    """
-    Inicializa la base de datos creando todas las tablas
-    """
+#DEFINIR UNA FUNCIÓN PARA LA CREACIÓN DE LAS TABLAS  
+def create_db_and_tables():  
+    #HEREDAR DESDE SQLMODEL Y CREAR LAS TABLAS EN EL MOTOR  
     SQLModel.metadata.create_all(engine)
 
-
-def get_session() -> Generator[Session, None, None]:
-    """
-    Generador de sesiones de base de datos
-    Úsalo como dependencia en FastAPI
-    """
-    with Session(engine) as session:
-        yield session
-
-
+#FUNCIÓN PARA OBTENER LA SESIÓN DE LA BASE DE DATOS
+def get_session():  
+    with Session(engine) as session:  
+        yield session 
+    
