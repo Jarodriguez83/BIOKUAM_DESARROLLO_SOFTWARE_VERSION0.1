@@ -119,7 +119,7 @@ def read_perfil(request: Request): # Agrega request como parámetro
     """
     return templates.TemplateResponse("perfil.html", {"request": request})  # Usa TemplateResponse
 
-@app.post("/registro", tags=["REGISTRO"])
+@app.post("/", tags=["REGISTRO"])
 def registro_usuario(usuario: Usuario, session: Session = Depends(get_session)):  
     try:  
         session.add(usuario)  
