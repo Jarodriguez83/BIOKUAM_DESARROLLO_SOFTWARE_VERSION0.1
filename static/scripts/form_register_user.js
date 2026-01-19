@@ -1,3 +1,4 @@
+console.log("EL SCRIPT DEL FORMULARIO HA SIDO CARGADO EXITOSAMENTE");
 // CONFIGURACIÓN DE SUPABASE
 const SUPABASE_URL = 'https://tgdolalsmimxcxkuiehl.supabase.co'; 
 const SUPABASE_KEY = 'sb_publishable_3iG9laPzWQ8CGRbQTxrU4Q_g29s6mkn'; 
@@ -31,10 +32,10 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
             if (uploadRes.ok) {
                 // URL Pública corregida para el bucket PERFIL_IMG
                 fotoPublicUrl = `${SUPABASE_URL}/storage/v1/object/public/PERFIL_IMG/${nombreArchivo}`;
-                console.log("Imagen en Supabase:", fotoPublicUrl);
+                console.log("IMAGEN EN SUPABASE:", fotoPublicUrl);
             } else {
                 const errorSupabase = await uploadRes.json();
-                console.error("Fallo Supabase:", errorSupabase);
+                console.error("HAY UN FALLO EN SUPABASE:", errorSupabase);
             }
         }
 
@@ -51,11 +52,15 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
             nombre_finca: document.getElementById('reg_finca').value || "SIN NOMBRE",  
             folio_finca: document.getElementById('reg_folio').value || "SIN FOLIO",
             referencia_prototipo: document.getElementById('reg_prototipo').value,
-            contrasena: document.getElementById('reg_pass').value, // Solo el campo que espera Python
+            
+            // AGREGAMOS EL CAMPO QUE FALTA (Debe ser igual al de tu modelo Python)
+            crear_contrasena: document.getElementById('reg_crear_pass').value, 
+            
+            contrasena: document.getElementById('reg_pass').value,
             foto_perfil: fotoPublicUrl 
-        };  
-
-        const repuesta = await fetch('http://127.0.0.1:8000/registro', {
+        };
+        console.log("JSON final enviado:", JSON.stringify(datosUsuario));
+        const repuesta = await fetch('http://127.0.0.1:8000/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosUsuario)
@@ -64,13 +69,13 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
         const resultado = await repuesta.json();
 
         if (repuesta.ok) {
-            alert(`¡BIENVENIDO ${datosUsuario.nombres}!`);
+            alert(`¡BIENVENIDO ${datosUsuario.nombres}, GRACIAS POR HACER PARTE DE BIOKUAM!`);
             localStorage.setItem('usuario_id_biokuam', resultado.usuario_id);
             window.location.href = '/'; 
         } else {
             // Esto imprimirá en consola el error exacto (ej: "Falta el campo X")
             console.error("DETALLE ERROR FASTAPI:", resultado.detail);
-            alert('Error en el registro. Revisa la consola para más detalles.');
+            alert('ERROR EN EL REGISTRO. REVIRSAR LA CONSOLA PARA MÁS DETALLES.');
         }
 
     } catch (error) {
