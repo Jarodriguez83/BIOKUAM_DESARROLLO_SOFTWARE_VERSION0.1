@@ -50,6 +50,6 @@ class Usuario(SQLModel, table=True):
     referencia_prototipo: str 
     crear_contrasena: str 
     contrasena: str  
-    foto_perfil: Optional[str] = None #RUTA DE LA FOTO DE PERFIL 
+    foto_perfil: Optional[str] = Field(default="https://cdn-icons-png.flaticon.com/512/149/149071.png") #RUTA DE LA FOTO DE PERFIL 
        
     
