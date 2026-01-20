@@ -192,14 +192,14 @@
 
                 <div id="login" class="tab-content active">
                     <center><h2>BIENVENIDO A BIOKUAM</h2></center>
-                    <form>
+                    <form id="formLogin">
                         <div class="form-group">
                             <label>USUARIO / EMAIL</label>
-                            <input type="text" placeholder="nombre_usuario@biokuam.com" style="font-family: 'Cause', cursive;" required>
+                            <input type="text" id="login_usuario" placeholder="nombre_usuario@biokuam.com" style="font-family: 'Cause', cursive;" required>
                         </div>
                         <div class="form-group">
                             <label>CONTRASEÑA</label>
-                            <input type="password" placeholder="••••••••" required>
+                            <input type="password" id="login_pass" placeholder="••••••••" required>
                         </div>
                         <a onclick="window.location.href='/home'"><button type="button" class="btn-submit">INICIAR SESIÓN</button></a>
                     </form>
@@ -310,6 +310,7 @@
     <!--LLAMADO DEL SCRIPT PARA LE FUNCIONAMIENTO DE LA PESTAÑA-->
 <script src="{{ url_for('static', path='scripts/script_inicio.js') }}"></script>
 <script src="{{ url_for('static', path='scripts/form_register_user.js') }}"></script>
+<script src="{{ url_for('static', path='scripts/form_login_user.js') }}"></script>
 
 </body>
 </html>
