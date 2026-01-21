@@ -129,17 +129,26 @@ def registro_usuario(usuario: Usuario, session: Session = Depends(get_session)):
     except Exception as e:  
         session.rollback()
         raise HTTPException(status_code=400, detail=f"ERROR AL REGISTRAR EL USUARIO: {str(e)}")
-    
-@app.post("/register/user", response_model=Proyecto)
-def crear_proyecto(proyecto: Proyecto, session: Session = Depends(get_session)):
-    """
-    REGISTRO PARA CADA UNO DE LOS USUARIOS
-    """
-    session.add(proyecto)
-    session.commit()
-    session.refresh(proyecto)
-    return proyecto
 
+@app.post("/login", tags=["LOGIN"])
+def login_usuario(datos: dict, session: Session = Depends(get_session)): 
+    correo = datos.get("correo")
+    contrasena = datos.get("contrasena")
+    #BUSCAR AL USUARIO POR CORREO  
+    statement = select(Usuario).where(Usuario.correo == correo)
+    usuario = session.exec(statement).first()
+    if not usuario:  
+        raise HTTPException(status_code=404, detail="USUARIO NO ENCONTRADO.")
+    if usuario.contrasena != contrasena:
+        raise HTTPException(status_code=401, detail="CONTRASEÑA INCORRECTA.")
+    return {
+        "status": "success",
+        "usuario_id": usuario.id,
+        "nombres": usuario.nombres,
+        "apellidos": usuario.apellidos,
+        "foto_perfil": usuario.foto_perfil,
+        "message": f"BIENVENIDO A BIOKUAM, {usuario.nombres} {usuario.apellidos}."
+    }
 
 @app.get("/proyectos/", response_model=List[Proyecto])
 def listar_proyectos(session: Session = Depends(get_session)):
