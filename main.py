@@ -137,11 +137,7 @@ def login_usuario(datos: dict, session: Session = Depends(get_session)):
     #BUSCAR AL USUARIO POR CORREO  
     statement = select(Usuario).where(Usuario.correo == correo)
     usuario = session.exec(statement).first()
-    if usuario:  
-        print(f"🔐 USUARIO ENCONTRADO: {usuario.nombres} {usuario.apellidos}")
-        print(f"CONTRASEÑA EN LA BASE DE DATOS: '{usuario.contrasena.strip()}'")
-        print(f"CONTRASEÑA INGRESADA: '{contrasena}'")
-        
+      
     if not usuario:  
         raise HTTPException(status_code=404, detail="USUARIO NO ENCONTRADO.")
     if usuario.contrasena.strip() != contrasena:
@@ -155,71 +151,21 @@ def login_usuario(datos: dict, session: Session = Depends(get_session)):
         "message": f"BIENVENIDO A BIOKUAM, {usuario.nombres} {usuario.apellidos}."
     }
 
-@app.get("/proyectos/", response_model=List[Proyecto])
-def listar_proyectos(session: Session = Depends(get_session)):
-    """
-    Listar todos los proyectos
-    """
-    statement = select(Proyecto)
-    proyectos = session.exec(statement).all()
-    return proyectos
-
-
-@app.get("/proyectos/{proyecto_id}", response_model=Proyecto)
-def obtener_proyecto(proyecto_id: int, session: Session = Depends(get_session)):
-    """
-    Obtener un proyecto por ID
-    """
-    proyecto = session.get(Proyecto, proyecto_id)
-    if not proyecto:
-        raise HTTPException(status_code=404, detail="Proyecto no encontrado")
-    return proyecto
-
-
-@app.put("/proyectos/{proyecto_id}", response_model=Proyecto)
-def actualizar_proyecto(
-    proyecto_id: int, 
-    proyecto_update: Proyecto, 
-    session: Session = Depends(get_session)
-):
-    """
-    Actualizar un proyecto
-    """
-    proyecto = session.get(Proyecto, proyecto_id)
-    if not proyecto:
-        raise HTTPException(status_code=404, detail="Proyecto no encontrado")
-    
-    # Actualizar campos
-    for key, value in proyecto_update.dict(exclude_unset=True).items():
-        setattr(proyecto, key, value)
-    
-    session.add(proyecto)
-    session.commit()
-    session.refresh(proyecto)
-    return proyecto
-
-
-@app.delete("/proyectos/{proyecto_id}")
-def eliminar_proyecto(proyecto_id: int, session: Session = Depends(get_session)):
-    """
-    Eliminar un proyecto
-    """
-    proyecto = session.get(Proyecto, proyecto_id)
-    if not proyecto:
-        raise HTTPException(status_code=404, detail="Proyecto no encontrado")
-    
-    session.delete(proyecto)
-    session.commit()
-    return {"message": "Proyecto eliminado correctamente"}
-
-
-# Punto de entrada para ejecutar el servidor
-if __name__ == "__main__":
-    uvicorn.run(
-        "main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True  # Recarga automática en desarrollo
-    )
+@app.get("/perfil/usuario/{usuario_id}", tags=["PERFIL"])
+def obtener_perfil_usuario(usuario_id: int, session: Session = Depends(get_session)):  
+    usuario = session.get(Usuario, usuario_id)  
+    if not usuario:  
+        raise HTTPException(status_code=404, detail="USUARIO NO ENCONTRADO.")  
+    return {
+        "nombres": usuario.nombres,
+        "apellidos": usuario.apellidos,
+        "correo": usuario.correo,
+        "telefono": usuario.telefono,
+        "vereda": usuario.vereda,
+        "foto_perfil": usuario.foto_perfil, 
+        "finca": usuario.nombre_finca,     
+        "identificacion": usuario.numero_identificacion, 
+        "tipo_identificacion": usuario.tipo_identificacion
+        }
 
 
