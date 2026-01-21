@@ -19,10 +19,21 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('userFinca').textContent  = datos.nombre_finca;
             document.getElementById('userNumDoc').textContent = datos.tipo_identificacion;
             document.getElementById('userFolio').textContent = datos.numero_identificacion;
+            document.getElementById('userBKM').textContent = datos.referencia_prototipo;
             //CARGAR LA FOTO DE SUPABASE  
             const imgPerfil = document.getElementById('userFoto');
             if (imgPerfil && datos.foto_perfil) {
                 imgPerfil.src = datos.foto_perfil;
+            }
+            const mensajeRefBarcos = {
+                "BKM-REF-001": "Prototipo BKM-001 asignado: Sistema de monitoreo de humedad y temperatura para cultivos en invernadero.",
+                "BKM-REF-002": "Prototipo BKM-002 asignado: Sistema de riego automatizado basado en sensores de humedad del suelo.",
+                "BKM-REF-003": "Prototipo BKM-003 asignado: Plataforma de análisis de datos agrícolas con IA para optimización de cultivos.",
+            };  
+            const elementoDescripcion = document.getElementById('descriptionBKM');
+            if (elementoDescripcion) {
+                const mensajeparaBarcos = mensajeRefBarcos[datos.referencia_prototipo] || "Prototipo asignado sin descripción específica0.";
+                elementoDescripcion.textContent = mensajeparaBarcos;
             }
         }
     } catch (error){
