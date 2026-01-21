@@ -163,9 +163,10 @@ def obtener_perfil_usuario(usuario_id: int, session: Session = Depends(get_sessi
         "telefono": usuario.telefono,
         "vereda": usuario.vereda,
         "foto_perfil": usuario.foto_perfil, 
-        "finca": usuario.nombre_finca,     
-        "identificacion": usuario.numero_identificacion, 
-        "tipo_identificacion": usuario.tipo_identificacion
+        "nombre_finca": usuario.nombre_finca,     
+        "numero_identificacion": usuario.numero_identificacion, 
+        "tipo_identificacion": usuario.tipo_identificacion,
+        "referencia_prototipo": usuario.referencia_prototipo
         }
 
 
