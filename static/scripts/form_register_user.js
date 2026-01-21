@@ -1,4 +1,4 @@
-console.log("EL SCRIPT DEL FORMULARIO HA SIDO CARGADO EXITOSAMENTE");
+console.log("EL SCRIPT PARA EL REGISTRO DEL USUARIO HA SIDO CARGADO EXITOSAMENTE");
 // CONFIGURACIÓN DE SUPABASE
 const SUPABASE_URL = 'https://tgdolalsmimxcxkuiehl.supabase.co'; 
 const SUPABASE_KEY = 'sb_publishable_3iG9laPzWQ8CGRbQTxrU4Q_g29s6mkn'; 
@@ -60,7 +60,7 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
             foto_perfil: fotoPublicUrl 
         };
         console.log("JSON final enviado:", JSON.stringify(datosUsuario));
-        const repuesta = await fetch('http://127.0.0.1:8000/', {
+        const repuesta = await fetch('http://127.0.0.1:8000/registration', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosUsuario)
