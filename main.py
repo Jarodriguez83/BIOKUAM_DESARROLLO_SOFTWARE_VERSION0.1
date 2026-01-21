@@ -132,14 +132,19 @@ def registro_usuario(usuario: Usuario, session: Session = Depends(get_session)):
 
 @app.post("/login", tags=["LOGIN"])
 def login_usuario(datos: dict, session: Session = Depends(get_session)): 
-    correo = datos.get("correo")
-    contrasena = datos.get("contrasena")
+    correo = datos.get("correo").strip() if datos.get("correo") else ""
+    contrasena = datos.get("contrasena").strip() if datos.get("contrasena") else ""
     #BUSCAR AL USUARIO POR CORREO  
     statement = select(Usuario).where(Usuario.correo == correo)
     usuario = session.exec(statement).first()
+    if usuario:  
+        print(f"🔐 USUARIO ENCONTRADO: {usuario.nombres} {usuario.apellidos}")
+        print(f"CONTRASEÑA EN LA BASE DE DATOS: '{usuario.contrasena.strip()}'")
+        print(f"CONTRASEÑA INGRESADA: '{contrasena}'")
+        
     if not usuario:  
         raise HTTPException(status_code=404, detail="USUARIO NO ENCONTRADO.")
-    if usuario.contrasena != contrasena:
+    if usuario.contrasena.strip() != contrasena:
         raise HTTPException(status_code=401, detail="CONTRASEÑA INCORRECTA.")
     return {
         "status": "success",
