@@ -158,13 +158,17 @@
         .text-description-perfil{
             text-align: justify;
         }
+
+        #userFincaBadge{
+            justify-content: center;
+        }
     </style>
 
     <div class="dashboard-container">
         <aside class="sidebar-profile">
             <div class="profile-card-main">
                 <div class="profile-pic-wrapper">
-                    <img id="userFoto" src="https://img.freepik.com/foto-gratis/retrato-granjero-agronomo-que-trabaja-duro-campo-maiz-comprobando-cultivos-antes-cosecha_342744-1258.jpg?semt=ais_hybrid&w=740&q=80" alt="Agricultor">
+                    <img id="userFoto" alt="FOTO DE PERFIL">
                     <div class="status-indicator"></div>
                 </div>
                 <h2 id="userFullname">CARGANDO...</h2>
@@ -223,11 +227,11 @@
                 <div class="data-card wide-card animate-card">
                     <div class="card-icon icon-green"><i class="fas fa-map-marked-alt"></i></div>
                     <center><h3>INFORMACIÓN DEL PREDIO E INFRAESTRUCTURA</h3></center>
-                    <div class="finca-badge">
+                    <div class="finca-badge" id="userFincaBadge">
                         <i class="fas fa-warehouse"></i> <span id="userFinca"> </span>
                     </div>
                     <div class="finca-footer">
-                        <p id="descriptionBKM">REFERENCIA TÉCNICA DEL PROTOTIPO ASIGNADO.</p>
+                        <p id="descriptionBKM" style="text-align: justify;">REFERENCIA TÉCNICA DEL PROTOTIPO ASIGNADO.</p>
                     </div>
                 </div>
             </div>
