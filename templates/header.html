@@ -2,6 +2,7 @@
 <head>
 <link rel="shortcut icon" href="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/PRUEBA-LOGO.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9QUlVFQkEtTE9HTy5wbmciLCJpYXQiOjE3Njg0NDgwMjgsImV4cCI6MTc2OTA1MjgyOH0.m_JbYdNe5If98lSiX64SRP7tK3iSSo203W46nnaqBlM" type="image/x-icon">
 </head> 
+
 <header class="bkm-header">
     <div class="header-container">
         <div class="brand-section">
@@ -9,25 +10,32 @@
             <h1 class="brand-name">BIOKUAM</h1>
         </div>
 
-        <nav class="nav-links">
-            <a onclick="window.location.href='/home'">HOME</a>
-            <a onclick="window.location.href='/monitoreo'">MONITOREO</a>
-            <a onclick="window.location.href='/cultivos'">CULTIVOS</a>
-            <a onclick="window.location.href='/prototipo'">PROTOTIPO</a>
-            <a onclick="window.location.href='/ubicacion'">UBICACIÓN</a>
-            <a onclick="window.location.href='/asistente'">ASISTENTE IA</a>
-        </nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
 
-        <div class="user-section">
-            <a onclick="window.location.href='/'"><button class="btn-logout">CERRAR SESIÓN</button></a>
-            <div class="user-profile">
-                <a href="/perfil"><span class="username" style="color: white;">PERFIL</span></a>
-                <div class="avatar">
-                    <a href="/perfil"><i class="fas fa-user"></i></a>
+        <div class="nav-wrapper" id="nav-wrapper">
+            <nav class="nav-links">
+                <a onclick="window.location.href='/home'">HOME</a>
+                <a onclick="window.location.href='/monitoreo'">MONITOREO</a>
+                <a onclick="window.location.href='/cultivos'">CULTIVOS</a>
+                <a onclick="window.location.href='/prototipo'">PROTOTIPO</a>
+                <a onclick="window.location.href='/ubicacion'">UBICACIÓN</a>
+                <a onclick="window.location.href='/asistente'">ASISTENTE IA</a>
+            </nav>
+
+            <div class="user-section">
+                <a onclick="window.location.href='/'"><button class="btn-logout">CERRAR SESIÓN</button></a>
+                <div class="user-profile">
+                    <a href="/perfil" style="text-decoration: none;"><span class="username" style="color: white;">PERFIL</span></a>
+                    <div class="avatar">
+                        <a href="/perfil" style="color: white;"><i class="fas fa-user"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', path='scripts/script_header.js') }}"></script>
 </header>
 
 <!-- ESTILOS CSS DEL HEADER PARA LOS HTML-->
@@ -48,11 +56,14 @@
 
     .bkm-header {
         background-color: var(--bkm-blue);
-        height: 70px;
+        min-height: 70px; /* Cambiado de height a min-height */
         display: flex;
         align-items: center;
-        padding: 0 30px;
+        padding: 10px 30px;
         color: var(--bkm-white);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 
     .header-container {
@@ -74,82 +85,90 @@
         border-radius: 8px;
         font-weight: bold;
         font-size: 1.3rem;
-        margin-left: 9rem;
-    }
-
-    .logo-box:hover {
-        background-color: #0D47A1;
-        cursor: pointer;
+        /* Eliminado el margin-left: 9rem que rompía el responsive */
     }
 
     .brand-name {
-        font-size: 2.1rem;
+        font-size: 1.8rem; /* Un poco más pequeño para evitar saltos de línea */
         font-weight: 400;
         letter-spacing: 1px;
         margin: 0;
     }
 
-    .brand-name:hover {
-        color: #EF6C00;
-        cursor: pointer;
+    /* Contenedor que agrupa links y usuario */
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 40px;
     }
 
     .nav-links {
         display: flex;
-        gap: 40px;        
+        gap: 25px;        
     }
 
     .nav-links a {
         color: var(--bkm-white);
         text-decoration: none;
-        font-size: 1.2rem;
-        font-weight: 400;
-        transition: opacity 0.3s;
-
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
-    .nav-links a:hover {
-        color: #EF6C00;
-    }
+    .nav-links a:hover { color: var(--bkm-orange); }
 
     .user-section {
         display: flex;
         align-items: center;
-        gap: 25px;
+        gap: 20px;
     }
 
-    .btn-logout {
-        background-color: var(--bkm-red);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 6px;
-        font-weight: bold;
+    .menu-toggle {
+        display: none; /* Oculto en PC */
+        font-size: 1.8rem;
         cursor: pointer;
-        font-size: 1.05rem;
-        font-family: "Cause", cursive;
     }
 
-    .user-profile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1.2rem;
-    }
+    /* --- MEDIA QUERIES PARA MÓVIL --- */
+    @media (max-width: 1024px) {
+        .nav-wrapper {
+            position: fixed;
+            top: 70px;
+            right: -100%; /* Oculto a la derecha */
+            background-color: var(--bkm-blue);
+            width: 80%;
+            height: calc(100vh - 70px);
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 40px;
+            transition: 0.4s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        }
 
-    .user-profile:hover {
-        cursor: pointer;
-        color: #EF6C00;
-    }
+        .nav-wrapper.active {
+            right: 0; /* Aparece */
+        }
 
-    .avatar {
-        background-color: var(--bkm-orange);
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .nav-links a {
+            font-size: 1.5rem;
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .user-section {
+            flex-direction: column;
+            margin-top: 30px;
+        }
+
+        .menu-toggle {
+            display: block; /* Se muestra en móviles */
+        }
     }
 </style>
