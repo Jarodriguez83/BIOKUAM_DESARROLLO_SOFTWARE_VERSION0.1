@@ -69,7 +69,7 @@
         .tabs-header {
             display: flex;
             border-bottom: 2px solid #eee;
-            margin-bottom: 30px;
+            margin-bottom: 3%;
         }
 
         .tab-btn {
@@ -93,7 +93,14 @@
 
         /* Contenido de las pestañas */
         .tab-content { display: none; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+        .tab-content.active {   display: block; 
+                                animation: fadeIn 0.4s ease; 
+                                margin-top: -25%;
+                                margin-bottom: 5%;}
+
+        #registro{
+            margin-top: 20%;
+        }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
