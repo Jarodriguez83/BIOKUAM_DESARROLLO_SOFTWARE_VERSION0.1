@@ -25,9 +25,16 @@
         max-width: 1300px;
         margin: 0 auto;
         padding: 60px 5%;
-        display: flex;
         gap: 30px;
+        display: grid;
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-areas: 
+            "izq centro der";
     }
+
+    #sidebar-izquierdo{ grid-area: izq; }
+    .articulos-col{ grid-area: centro; }
+    #sidebar-derecho{ grid-area: der; }
 
     .articulos-col {
         flex: 3;
@@ -114,10 +121,24 @@
         font-style: italic;
     }
 
-    @media (max-width: 900px) {
-        .main-content-cultivos { flex-direction: column; }
-        .ad-sidebar { order: -1; }
-        .banner-grande { height: 200px; position: static; }
+    @media (max-width: 1000px) {
+        .main-content-cultivos{
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "izq"
+                "centro"
+                "der";
+            gap: 10px;
+            padding: 10px;
+        }
+        .ad-sidebar {
+            margin: 0;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .referencias-seccion{
+            width: 60%;
+        }
     }
 
     #banner-one{
@@ -137,75 +158,85 @@
 
 
     /* --- SECCIÓN DE REFERENCIAS --- */
-.referencias-seccion {
-    padding: 20px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
+    .referencias-seccion {
+        padding: 20px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-.titulo-seccion {
-    text-align: center;
-    color: #0d47a1;
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
+    .titulo-seccion {
+        text-align: center;
+        color: #0d47a1;
+        margin-bottom: 40px;
+        font-size: 2rem;
+    }
 
-.contenedor-referencias {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.tarjeta-referencia {
-    display: flex;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border-left: 6px solid #ef6c00; /* Naranja BioKuaM */
-}
-
-/* Apartado de Cita (Izquierda) */
-.bloque-cita {
-    flex: 6;
-    padding: 30px;
-    border-right: 1px solid #eee;
-    width: 50%;
-}
-
-.cita-textual {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: #444;
-    margin: 15px 0;
-    line-height: 1.6;
-}
-
-.enlace-fuente {
-    display: inline-block;
-    color: #0d47a1;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.enlace-fuente:hover {
-    text-decoration: underline;
-}
-
-/* Adaptabilidad para Celulares */
-@media (max-width: 768px) {
-    .tarjeta-referencia {
+    .contenedor-referencias {
+        display: flex;
         flex-direction: column;
+        gap: 30px;
     }
-    .bloque-cita{
-        flex: none;
-        border-right: none;
+
+    .tarjeta-referencia {
+        display: flex;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-left: 6px solid #ef6c00; /* Naranja BioKuaM */
     }
+
+    /* Apartado de Cita (Izquierda) */
     .bloque-cita {
-        border-bottom: 1px solid #eee;
+        flex: 6;
+        padding: 30px;
+        border-right: 1px solid #eee;
+        width: 50%;
     }
-}
+
+    .cita-textual {
+        font-style: italic;
+        font-size: 1.1rem;
+        color: #444;
+        margin: 15px 0;
+        line-height: 1.6;
+    }
+
+    .enlace-fuente {
+        display: inline-block;
+        color: #0d47a1;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    .enlace-fuente:hover {
+        text-decoration: underline;
+    }
+
+    /* Adaptabilidad para Celulares */
+    @media (max-width: 768px) {
+        .tarjeta-referencia {
+            flex-direction: column;
+        }
+        .bloque-cita{
+            flex: none;
+            border-right: none;
+        }
+        .bloque-cita {
+            border-bottom: 1px solid #eee;
+        }
+    }
+
+    #sidebar-izquierdo, #sidebar-derecho {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .articulos-col{
+        margin-left: -70px;  
+        margin-right: -70px;
+    }
 </style>
 
 <div class="main-content-cultivos">
