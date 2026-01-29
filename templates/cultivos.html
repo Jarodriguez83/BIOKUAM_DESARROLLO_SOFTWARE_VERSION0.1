@@ -12,43 +12,48 @@
 </header>
 <body>
 <style>
+    /* CONFIGURACIÓN BASE */
+    body {
+        margin: 0;
+        font-family: "Cause", cursive;
+        overflow-x: hidden; /* Evita scroll horizontal */
+    }
+
     .cultivos-hero {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('static/img/campos-maiz.jpg');
         background-size: cover;
         background-position: center;
         color: white;
-        padding: 100px 8%;
+        padding: 80px 5%;
         text-align: center;
     }
 
+    /* GRID PRINCIPAL RESPONSIVE */
     .main-content-cultivos {
-        max-width: 1300px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 60px 5%;
-        gap: 30px;
+        padding: 40px 2%;
         display: grid;
-        grid-template-columns: 200px 1fr 200px;
-        grid-template-areas: 
-            "izq centro der";
+        /* Desktop: 3 columnas */
+        grid-template-columns: 250px 1fr 250px;
+        grid-template-areas: "izq centro der";
+        gap: 20px;
     }
 
-    #sidebar-izquierdo{ grid-area: izq; }
-    .articulos-col{ grid-area: centro; }
-    #sidebar-derecho{ grid-area: der; }
+    /* ASIGNACIÓN DE ÁREAS */
+    #sidebar-izquierdo { grid-area: izq; }
+    .articulos-col { grid-area: centro; }
+    #sidebar-derecho { grid-area: der; }
 
-    .articulos-col {
-        flex: 3;
-    }
-
+    /* CONTENIDO CENTRAL */
     .tema-section {
-        margin-bottom: 20px; /* Mayor espacio para extender la página */
-        padding-right: 9rem;
-        padding-left: 9rem;
+        margin-bottom: 50px;
+        padding: 0 20px; /* Eliminamos los 9rem fijos que rompen el móvil */
     }
 
     .texto-detalle h2 {
         color: #0D47A1;
-        font-size: 2.3rem;
+        font-size: 2rem;
         margin-bottom: 25px;
         position: relative;
         text-align: center;
@@ -56,187 +61,118 @@
 
     .texto-detalle h2::after {
         content: '';
-        width: 100%;
-        height: 5px;
+        width: 60%; /* Reducido para que no se vea tan pesado */
+        height: 4px;
         background: #EF6C00;
         position: absolute;
         bottom: -10px;
-        left: 0;
+        left: 20%;
     }
 
     .texto-detalle p {
         font-size: 1.1rem;
-        line-height: 1.8;
+        line-height: 1.7;
         color: #444;
-        margin-bottom: 30px;
         text-align: justify;
     }
 
     .imagen-detalle {
         width: 100%;
-        border-radius: 30px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        margin-top: 20px;
     }
 
     .imagen-detalle img {
         width: 100%;
-        transition: transform 0.8s ease;
+        display: block;
+        transition: transform 0.5s ease;
     }
 
-    .imagen-detalle:hover img {
-        transform: scale(1.05);
-    }
-
-    /* BANNERS PUBLICITARIOS GRANDES (SKYSCRAPERS) */
+    /* BANNERS PUBLICITARIOS */
     .ad-sidebar {
-        flex: 0.8;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-left: -130px;
-        margin-right: -130px;
+        gap: 15px;
     }
 
     .banner-grande {
-        width: 20rem;
+        width: 100%;
         height: 800px; 
-        border: 2px solid #e0e0e0;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        border-radius: 15px;
         position: sticky;
-        top: 20px;
-        color: #aaa;
-        text-align: center;
+        top: 60px; 
+        background-position: center;
+        background-size: cover;
     }
 
     .highlight-box {
-        background: rgba(239, 108, 0, 0.05);
+        background: rgba(239, 108, 0, 0.08);
         border-left: 5px solid #EF6C00;
         padding: 20px;
         margin: 20px 0;
         font-style: italic;
     }
 
-    @media (max-width: 1000px) {
-        .main-content-cultivos{
+    /* --- RESPONSIVE TABLET (1100px) --- */
+    @media (max-width: 1100px) {
+        .main-content-cultivos {
+            grid-template-columns: 200px 1fr; /* Quitamos la publicidad derecha para dar espacio */
+            grid-template-areas: 
+                "izq centro"
+                "der der"; /* La segunda publicidad se va abajo */
+        }
+    }
+
+    /* --- RESPONSIVE MÓVIL (800px) --- */
+    @media (max-width: 800px) {
+        .main-content-cultivos {
             grid-template-columns: 1fr;
-            grid-template-areas:
+            grid-template-areas: 
                 "izq"
                 "centro"
                 "der";
-            gap: 10px;
-            padding: 10px;
+            padding: 20px;
         }
-        .ad-sidebar {
-            margin: 0;
-            flex-direction: row;
-            justify-content: center;
+
+        .banner-grande {
+            height: 650px; /* En móvil no deben ser tan largos */
+            position: static; /* Quitamos el sticky en móvil */
         }
-        .referencias-seccion{
-            width: 60%;
+
+        .tema-section {
+            padding: 0; /* Quitamos paddings laterales */
+        }
+
+        .texto-detalle h2 {
+            font-size: 1.6rem;
         }
     }
 
-    #banner-one{
-        background-image: url('https://img.freepik.com/fotos-premium/disparo-vertical-agricultor-hispano-su-plantacion-mexico_543270-807.jpg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover; 
-
-    }
-
-    #banner-two{
-        background-image: url('https://media.istockphoto.com/id/965148186/es/foto/verde-de-maduraci%C3%B3n-soja-campo-parajes-agr%C3%ADcolas.jpg?s=612x612&w=0&k=20&c=anJnOB9ePJ1ygfamdoOEyk-HXSaamBCpee2jqeEF_sI=');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover; 
-    }
-
-
-    /* --- SECCIÓN DE REFERENCIAS --- */
+    /* REFERENCIAS */
     .referencias-seccion {
-        padding: 20px 20px;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .titulo-seccion {
-        text-align: center;
-        color: #0d47a1;
-        margin-bottom: 40px;
-        font-size: 2rem;
-    }
-
-    .contenedor-referencias {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
+        padding: 40px 10px;
     }
 
     .tarjeta-referencia {
         display: flex;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border-left: 6px solid #ef6c00; /* Naranja BioKuaM */
+        background: #f9f9f9;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 5px solid #ef6c00;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    /* Apartado de Cita (Izquierda) */
     .bloque-cita {
-        flex: 6;
-        padding: 30px;
-        border-right: 1px solid #eee;
-        width: 50%;
+        padding: 20px;
+        width: 100%;
     }
 
-    .cita-textual {
-        font-style: italic;
-        font-size: 1.1rem;
-        color: #444;
-        margin: 15px 0;
-        line-height: 1.6;
-    }
-
-    .enlace-fuente {
-        display: inline-block;
-        color: #0d47a1;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 0.9rem;
-    }
-
-    .enlace-fuente:hover {
-        text-decoration: underline;
-    }
-
-    /* Adaptabilidad para Celulares */
-    @media (max-width: 768px) {
-        .tarjeta-referencia {
-            flex-direction: column;
-        }
-        .bloque-cita{
-            flex: none;
-            border-right: none;
-        }
-        .bloque-cita {
-            border-bottom: 1px solid #eee;
-        }
-    }
-
-    #sidebar-izquierdo, #sidebar-derecho {
-        flex-direction: row;
-        justify-content: center;
-    }
-
-    .articulos-col{
-        margin-left: -70px;  
-        margin-right: -70px;
-    }
+    /* BANNERS IMAGES */
+    #banner-one { background-image: url('https://img.freepik.com/fotos-premium/disparo-vertical-agricultor-hispano-su-plantacion-mexico_543270-807.jpg'); }
+    #banner-two { background-image: url('https://media.istockphoto.com/id/965148186/es/foto/verde-de-maduraci%C3%B3n-soja-campo-parajes-agr%C3%ADcolas.jpg?s=612x612&w=0&k=20&c=anJnOB9ePJ1ygfamdoOEyk-HXSaamBCpee2jqeEF_sI='); }
+</style>
 </style>
 
 <div class="main-content-cultivos">
