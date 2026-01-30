@@ -60,7 +60,7 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
             foto_perfil: fotoPublicUrl 
         };
         console.log("JSON final enviado:", JSON.stringify(datosUsuario));
-        const repuesta = await fetch('http://127.0.0.1:8000/registration', {
+        const repuesta = await fetch('/registration', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(datosUsuario)
