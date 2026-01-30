@@ -14,154 +14,208 @@
    <br>
     <style>
         :root {
-            --primary-green: #0D47A1;
-            --accent-yellow: #EF6C00;
-            --dark-bg: #1a1a1a;
-            --glass-white: rgba(255, 255, 255, 0.95);
-        }
+        --primary-green: #0D47A1;
+        --accent-yellow: #EF6C00;
+        --dark-bg: #1a1a1a;
+        --glass-white: rgba(255, 255, 255, 0.95);
+    }
+
+    /* CONTENEDOR PRINCIPAL - Ahora más flexible */
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 40px; /* Reducido un poco para ganar espacio */
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    /* SIDEBAR ESTILO MODERNO */
+    .sidebar-profile {
+        background: var(--primary-green);
+        border-radius: 30px;
+        padding: 40px 20px;
+        color: white;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(13, 71, 161, 0.2);
+        height: fit-content; /* Para que no se estire innecesariamente */
+    }
+
+    .profile-pic-wrapper {
+        position: relative;
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 20px;
+    }
+
+    .profile-pic-wrapper img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 4px solid var(--accent-yellow);
+        object-fit: cover;
+    }
+
+    .status-indicator {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        background: #04df25;
+        border: 3px solid var(--primary-green);
+        border-radius: 50%;
+    }
+
+    .quick-stats {
+        display: flex;
+        justify-content: space-around;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 15px;
+        border-radius: 20px;
+        margin: 25px 0;
+    }
+
+    .stat span { font-weight: bold; display: block; font-size: 1rem; }
+    .stat small { font-size: 0.7rem; color: var(--accent-yellow); letter-spacing: 1px; }
+
+    /* MAIN CONTENT */
+    .welcome-banner h1 { 
+        color: var(--primary-green); 
+        font-size: 1.8rem; 
+        margin-bottom: 15px; 
+    }
+    
+    .text-description-perfil {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .data-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .data-card {
+        background: white;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .wide-card { grid-column: span 2; }
+
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px auto;
+        font-size: 1.5rem;
+    }
+
+    .icon-blue { background: #e3f2fd; color: #2196f3; }
+    .icon-yellow { background: #fffde7; color: #fbc02d; }
+    .icon-green { background: #e8f5e9; color: #4caf50; }
+
+    .data-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #f0f0f0;
+        gap: 10px;
+    }
+
+    .data-row span { font-size: 0.75rem; color: #888; font-weight: bold; text-transform: uppercase; }
+    .data-row p { font-size: 0.9rem; font-weight: 600; color: #333; margin: 0; }
+
+    .finca-badge {
+        background: var(--primary-green);
+        color: white;
+        padding: 15px;
+        border-radius: 15px;
+        font-size: 1.1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 10px;
+    }
+
+    .btn-logout-exp {
+        background: #ff5252;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .btn-logout-exp a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 12px;
+        font-weight: bold;
+        font-family: 'Cause', cursive;
+    }
+
+    .btn-logout-exp:hover { background: #d32f2f; }
+
+    /* --- MEDIA QUERIES --- */
+
+    /* TABLETS */
+    @media (max-width: 992px) {
         .dashboard-container {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 60px;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 10px;
+            grid-template-columns: 1fr; /* Una columna */
+            gap: 30px;
         }
-
-        /* Sidebar Estilo Apple/Moderno */
+        
         .sidebar-profile {
-            background: var(--primary-green);
-            border-radius: 30px;
-            padding: 40px 20px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(45, 90, 39, 0.3);
+            max-width: 500px;
+            margin: 0 auto; /* Centramos el perfil */
         }
+    }
 
-        .profile-pic-wrapper {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
-        }
-
-        .profile-pic-wrapper img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--accent-yellow);
-            object-fit: cover;
-        }
-
-        .status-indicator {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 20px;
-            height: 20px;
-            background: #04df25;
-            border: 3px solid var(--primary-green);
-            border-radius: 50%;
-        }
-
-        .quick-stats {
-            display: flex;
-            justify-content: space-around;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 20px;
-            margin: 25px 0;
-        }
-
-        .stat span { font-weight: bold; display: block; font-size: 1rem; }
-        .stat small { font-size: 0.8rem; color: var(--accent-yellow); letter-spacing: 1px; }
-
-        /* Main Content */
-        .welcome-banner h1 { color: var(--primary-green); font-size: 2rem; margin-bottom: 5px; }
-        .welcome-banner p { color: #666; margin-bottom: 30px; }
-
+    /* CELULARES */
+    @media (max-width: 600px) {
         .data-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: 1fr; /* Las tarjetas de datos también se apilan */
         }
 
-        .data-card {
-            background: white;
-            padding: 25px;
-            border-radius: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-        }
+        .wide-card { grid-column: span 1; }
 
-        .data-card:hover { transform: translateY(-5px); }
-        .wide-card { grid-column: span 2; }
-
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .icon-blue { background: #e3f2fd; color: #2196f3; }
-        .icon-yellow { background: #fffde7; color: #fbc02d; }
-        .icon-green { background: #e8f5e9; color: #4caf50; }
+        .welcome-banner h1 { font-size: 1.4rem; }
 
         .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f0f0f0;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
 
-        .data-row span { font-size: 0.8rem; color: #999; font-weight: bold; }
-        .data-row p { font-size: 0.9rem; font-weight: 600; color: #333; }
+        .data-row p { margin-top: 5px; }
 
-        .finca-badge {
-            background: var(--primary-green);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .sidebar-profile {
+            border-radius: 20px;
+            padding: 30px 15px;
         }
+    }
 
-        .btn-logout-exp {
-            background: #ff5252;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 15px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 20px;
-            font-weight: bold;
-            font-family: 'Cause', cursive;
-            font-size: 1rem;
-        }
-
-        /* Animación */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-card { animation: fadeInUp 0.6s ease forwards; }
-
-        .text-description-perfil{
-            text-align: justify;
-        }
-
-        #userFincaBadge{
-            justify-content: center;
-        }
+    /* Animación */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-card { animation: fadeInUp 0.6s ease forwards; }
     </style>
 
     <div class="dashboard-container">
