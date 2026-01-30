@@ -69,8 +69,6 @@
             flex-direction: column;
             box-shadow: 0 8px 25px rgba(0,0,0,0.35);
             font-family: 'Cause', cursive;
-            margin: auto; /* Centrar el contenedor */
-            max-width: 95%; /* Adaptación móvil */
         }
 
         .biokuam-chat-header {
@@ -199,27 +197,19 @@
 
         /* BANNERS PUBLICITARIOS GRANDES (SKYSCRAPERS) */
         .ad-sidebar {
-            flex: 0.8;
             display: flex;
             flex-direction: column;
-            gap: 0px;
-            margin-left: 100px;
-            margin-right: 100px;
+            gap: 15px;
         }
 
         .banner-grande {
-            width: 20rem;
+            width: 100%;
             height: 800px; 
-            border: 2px solid #e0e0e0;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            border-radius: 15px;
             position: sticky;
-            top: 20px;
-            color: #aaa;
-            text-align: center;
+            top: 60px; 
+            background-position: center;
+            background-size: cover;
         }
 
         .highlight-box {
@@ -256,6 +246,31 @@
             grid-template-areas: "izq centro der";
             gap: 20px;
         }
+
+        #sidebar-izquierdo {grid-area: izq;}
+        .biokuam-chat-container {grid-area: centro;}
+        #sidebar-derecho {grid-area: der;}
+
+        @media (max-width: 800px) {
+        .container-asistent {
+            grid-template-columns: 1fr;
+            grid-template-areas: 
+                "izq"
+                "centro"
+                "der";
+            padding: 20px;
+        }
+
+        .biokuam-chat-container {
+            width: 100%;
+            height: 70vh;
+        }
+
+        .banner-grande {
+            height: 650px; /* En móvil no deben ser tan largos */
+            position: static; /* Quitamos el sticky en móvil */
+        }
+
 </style>
 </html>
 
