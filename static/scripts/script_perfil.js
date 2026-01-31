@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return;  
     }
     try{
-        const respuesta = await fetch(`http://127.0.0.1:8000/perfil/usuario/${usuarioId}`);
+        const respuesta = await fetch(`/perfil/usuario/${usuarioId}`);
         const datos = await respuesta.json();
         console.log("DATOS RECIBIDOS DEL SERVIDOR:", datos);
         if (respuesta.ok){
