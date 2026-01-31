@@ -87,27 +87,34 @@
         }
 
         .visualizacion-iot {
-            background: white;
+            background: #ffffff;
             border-radius: 15px;
-            overflow: hidden;
             border: 1px solid #eee;
-            margin-bottom: 20px;
-            justify-content: center;    
-
+            padding: 20px;
+            margin: 20px auto;
+            width: 95%;          /* Casi todo el ancho en móvil */
+            max-width: 500px;    /* No crece más de esto en PC para no verse estirado */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            
+            /* Centrado absoluto de lo que haya dentro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Contenedor responsivo para iFrames de ThingSpeak */
+        /* El div que contiene específicamente el iframe */
         .grafico-iot {
-            position: relative;
             width: 100%;
-            height: 260px;
-            margin-bottom: 15px;
+            display: flex;
             justify-content: center;
         }
 
+        /* Estilo para el iframe: Ignoramos los atributos del HTML */
         .grafico-iot iframe {
-            width: 100%;
-            height: 100%;
+            width: 100% !important; /* Forzamos a que use el ancho del contenedor */
+            max-width: 450px;       /* Tamaño ideal para lectura de gráficos */
+            height: 260px;
+            border-radius: 10px;
             border: none;
         }
 
@@ -144,8 +151,9 @@
 
         #table-temperatura{
             justify-content: center;
-            margin-left: 5.5rem;
-            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
         }
 
 
@@ -277,31 +285,32 @@
         .subtitulo-formulario, .ancho-completo, .boton-generar {
             grid-column: span 1;
         }
+
     }
     /* Esto oculta el reporte en la pantalla normal */
-#area-reporte-imprimir {
-    display: none;
-}
-
-/* Esto se activa SOLO al presionar el botón de imprimir/PDF */
-@media print {
-    /* Ocultamos TODO el sitio web (nav, footer, secciones, etc.) */
-    body * {
-        visibility: hidden;
-    }
-    /* Mostramos SOLO el área del reporte y sus hijos */
-    #area-reporte-imprimir, #area-reporte-imprimir * {
-        visibility: visible;
-    }
     #area-reporte-imprimir {
-        display: block !important;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        padding: 20px;
+        display: none;   
     }
-}
+
+    /* Esto se activa SOLO al presionar el botón de imprimir/PDF */
+    @media print {
+        /* Ocultamos TODO el sitio web (nav, footer, secciones, etc.) */
+        body * {
+            visibility: hidden;
+        }
+        /* Mostramos SOLO el área del reporte y sus hijos */
+        #area-reporte-imprimir, #area-reporte-imprimir * {
+            visibility: visible;
+        }
+        #area-reporte-imprimir {
+            display: block !important;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+        }
+    }
     </style>
 
     <section class="seccion-monitoreo">
