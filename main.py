@@ -22,10 +22,6 @@ app = FastAPI(
     version="0.1.0"
 )
 
-# Configurar plantillas Jinja2
-app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
-templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
-
 # CONFIGURAR EL CORS QUE PERMITE LAS PETICIONES DESDE EL FRONTEND
 app.add_middleware(
     CORSMiddleware,
@@ -169,4 +165,8 @@ def obtener_perfil_usuario(usuario_id: int, session: Session = Depends(get_sessi
         "referencia_prototipo": usuario.referencia_prototipo
         }
 
+
+# Configurar plantillas Jinja2
+app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
+templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
 
