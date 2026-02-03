@@ -169,6 +169,14 @@ def obtener_perfil_usuario(usuario_id: int, session: Session = Depends(get_sessi
         "referencia_prototipo": usuario.referencia_prototipo
         }
 
+@app.get("/restablecer-pass", response_class=HTMLResponse, tags=["RESTABLECER CONTRASEÑA"])
+def read_restablecer_pass(request: Request): # Agrega request como parámetro
+    """
+    ENDPOINT DEL RESTABLECER CONTRASEÑA DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DEL RESTABLECER CONTRASEÑA
+    Renderiza la plantilla restablecer_pass.html con Jinja2
+    """
+    return templates.TemplateResponse("restablecer_pass.html", {"request": request})  # Usa TemplateResponse
+
 
 # Configurar plantillas Jinja2
 app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
