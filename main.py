@@ -6,6 +6,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates  # Agrega esto para plantillas
+from httpx import request
 from sqlmodel import Session, select
 from typing import List
 from pathlib import Path
@@ -14,6 +15,10 @@ import uvicorn
 # IMPORTAR CONFIGURACIÓN DE LAS BASES DE DATOS
 from database import create_db_and_tables, get_session
 from models import Proyecto, Usuario
+
+#IMPORTAR PARA RESEND (CONFIGURACIÓN DE EMAILS)
+import resend
+import os
 
 # INSTANCIAS DE FASTAPI
 app = FastAPI(
@@ -30,7 +35,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # Evento de inicio: inicializar base de datos
 @app.on_event("startup")
