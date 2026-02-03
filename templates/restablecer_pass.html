@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIOKUAM - SERVICIO WEB</title>
+    <link rel="shortcut icon" href="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/LOGO-BIOKUAM.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9MT0dPLUJJT0tVQU0ucG5nIiwiaWF0IjoxNzY4NDQ4ODc5LCJleHAiOjE3NzEwNDA4Nzl9._9t8xngolAI-Tqc0x3qw1eb6lmGXOaMFGIf0ynR-wu8" type="image/x-icon">
+
+    <title>RESTABLECER CONTRASEÑA | BIOKUAM</title>
     
 </head>
 <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cause:wght@100..900&display=swap');
         :root {
-            --verde-primario: #2ecc71;
-            --verde-oscuro: #27ae60;
-            --gris-suave: #f4f7f6;
-            --texto-oscuro: #2c3e50;
+            --bkm-blue: #0D47A1;
+            --bkm-orange: #EF6C00;
+            --bkm-white: #FFFFFF;
+            --bkm-gray: #f4f7f6;
+            --bkm-text: #333;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Cause", cursive; 
             background-color: var(--gris-suave);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            background: linear-gradient(rgba(13, 71, 161, 0.6), rgba(13, 71, 161, 0.6));
         }
 
         .contenedor-restablecer {
@@ -30,21 +35,23 @@
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 450px;
+            max-width: 550px;
             text-align: center;
+
         }
 
         .header-biokuam {
-            color: var(--verde-oscuro);
+            color: var(--bkm-blue);
             font-weight: bold;
             letter-spacing: 1px;
             margin-bottom: 20px;
-            border-bottom: 2px solid var(--verde-primario);
-            padding-bottom: 10px;
+            border-bottom: 3.2px solid var(--bkm-orange);
+            padding-bottom: 5px;
+            font-size: 2.1em;
         }
 
         .info-usuario {
-            background: #eef9f1;
+            background: #ffefe6;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 20px;
@@ -55,9 +62,9 @@
         .reglas-pass {
             font-size: 0.8em;
             color: #666;
-            background: #fffbe6;
+            background: #ffefe6;
             padding: 10px;
-            border-left: 4px solid #f1c40f;
+            border-left: 4px solid var(--bkm-orange);
             margin-bottom: 20px;
             text-align: left;
         }
@@ -79,10 +86,11 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             box-sizing: border-box; /* Importante para que no se salga del div */
+            font-family: "Cause", cursive;  
         }
 
         .btn-actualizar {
-            background-color: var(--verde-primario);
+            background-color: var(--bkm-blue);
             color: white;
             border: none;
             padding: 12px 20px;
@@ -91,10 +99,11 @@
             font-size: 1em;
             cursor: pointer;
             transition: background 0.3s;
+            font-family: "Cause", cursive;
         }
 
         .btn-actualizar:hover {
-            background-color: var(--verde-oscuro);
+            background-color: var(--bkm-orange);
         }
 </style>
 <header>
@@ -105,16 +114,16 @@
         <h2 class="header-biokuam">CENTRO DE CONTROL - BIOKUAM</h2>
         
         <div class="info-usuario">
-            <strong>Usuario:</strong> <span id="display-nombre">Cargando...</span><br>
-            <strong>Correo:</strong> <span id="display-correo">Cargando...</span>
+            <strong>NOMBRE DEL USUARIO:</strong> <span id="display-nombre">Cargando...</span><br>
+            <strong>CORREO ELECTRÓNICO:</strong> <span id="display-correo">Cargando...</span>
         </div>
 
         <h3>RESTABLECER CONTRASEÑA</h3>
 
         <div class="reglas-pass">
-            <strong>Reglas de seguridad:</strong>
+            <strong>REGLAS DE SEGURIDAD PARA LA CONTRASEÑA:</strong>
             <ul style="margin: 5px 0; padding-left: 20px;">
-                <li>Mínimo 6 caracteres.</li>
+                <li>Debe contener mínimo 6 caracteres.</li>
                 <li>Ambos campos deben coincidir exactamente.</li>
                 <li>Usa una clave que no hayas usado antes.</li>
             </ul>
@@ -122,16 +131,16 @@
 
         <form id="formRestablecer">
             <div class="form-group">
-                <label for="new_pass">Nueva Contraseña</label>
-                <input type="password" id="new_pass" placeholder="Ingresa tu nueva clave" required>
+                <label for="new_pass">CREAR NUEVA CONTRASEÑA:</label>
+                <input type="password" id="new_pass" placeholder="INGRESA TU NUEVA CLAVE" required>
             </div>
 
             <div class="form-group">
-                <label for="confirm_new_pass">Confirmar Contraseña</label>
-                <input type="password" id="confirm_new_pass" placeholder="Repite tu nueva clave" required>
+                <label for="confirm_new_pass">CONFIRMAR CONTRASEÑA: </label>
+                <input type="password" id="confirm_new_pass" placeholder="REPITE TU NUEVA CLAVE" required>
             </div>
 
-            <button type="submit" class="btn-actualizar" id="btnActualizar">Actualizar Contraseña</button>
+            <button type="submit" class="btn-actualizar" id="btnActualizar">ACTUALIZAR CONTRASEÑA</button>
         </form>
     </div>
 
