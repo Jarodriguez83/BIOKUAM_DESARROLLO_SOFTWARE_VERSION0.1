@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOKUAM - SERVICIO WEB</title>
+    
+</head>
+<style>
+        :root {
+            --verde-primario: #2ecc71;
+            --verde-oscuro: #27ae60;
+            --gris-suave: #f4f7f6;
+            --texto-oscuro: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-suave);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor-restablecer {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .header-biokuam {
+            color: var(--verde-oscuro);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--verde-primario);
+            padding-bottom: 10px;
+        }
+
+        .info-usuario {
+            background: #eef9f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9em;
+        }
+
+        .reglas-pass {
+            font-size: 0.8em;
+            color: #666;
+            background: #fffbe6;
+            padding: 10px;
+            border-left: 4px solid #f1c40f;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box; /* Importante para que no se salga del div */
+        }
+
+        .btn-actualizar {
+            background-color: var(--verde-primario);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-actualizar:hover {
+            background-color: var(--verde-oscuro);
+        }
+</style>
+<header>
+</header>
+<body>
+
+    <div class="contenedor-restablecer">
+        <h2 class="header-biokuam">CENTRO DE CONTROL - BIOKUAM</h2>
+        
+        <div class="info-usuario">
+            <strong>Usuario:</strong> <span id="display-nombre">Cargando...</span><br>
+            <strong>Correo:</strong> <span id="display-correo">Cargando...</span>
+        </div>
+
+        <h3>RESTABLECER CONTRASEÑA</h3>
+
+        <div class="reglas-pass">
+            <strong>Reglas de seguridad:</strong>
+            <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>Mínimo 6 caracteres.</li>
+                <li>Ambos campos deben coincidir exactamente.</li>
+                <li>Usa una clave que no hayas usado antes.</li>
+            </ul>
+        </div>
+
+        <form id="formRestablecer">
+            <div class="form-group">
+                <label for="new_pass">Nueva Contraseña</label>
+                <input type="password" id="new_pass" placeholder="Ingresa tu nueva clave" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_new_pass">Confirmar Contraseña</label>
+                <input type="password" id="confirm_new_pass" placeholder="Repite tu nueva clave" required>
+            </div>
+
+            <button type="submit" class="btn-actualizar" id="btnActualizar">Actualizar Contraseña</button>
+        </form>
+    </div>
+
+    <script src="form_reset_pass.js"></script>
+</body>
+<footer>
+</footer>
+</html>
+
