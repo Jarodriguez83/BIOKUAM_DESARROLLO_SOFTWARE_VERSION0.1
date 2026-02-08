@@ -1,7 +1,7 @@
 """
 Aplicación principal FastAPI
 """
-from fastapi import FastAPI, Depends, HTTPException, Request  # Agrega Request
+from fastapi import FastAPI, Depends, HTTPException, Request, APIRouter  # Agrega Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -11,14 +11,10 @@ from sqlmodel import Session, select
 from typing import List
 from pathlib import Path
 import uvicorn
-
+import sqlite3
 # IMPORTAR CONFIGURACIÓN DE LAS BASES DE DATOS
 from database import create_db_and_tables, get_session
 from models import Proyecto, Usuario
-
-#IMPORTAR PARA RESEND (CONFIGURACIÓN DE EMAILS)
-import resend
-import os
 
 # INSTANCIAS DE FASTAPI
 app = FastAPI(
@@ -177,7 +173,28 @@ def read_restablecer_pass(request: Request): # Agrega request como parámetro
     """
     return templates.TemplateResponse("restablecer_pass.html", {"request": request})  # Usa TemplateResponse
 
+@app.get("/verificar-usuario")
+async def verificar_usuario(correo: str):
+    try: 
+        #SE CONSULTA EN LA BASE DE DATOS SI ESTÁ EL CORREO QUE INGRESA EL USUARIO
+        conn = sqlite3.connect ('biokuam-database.db')
+        cursor = conn.cursor()
+        #BUSCAR AL USUARIO POR CORREO
+        cursor.execute("SELECT nombres FROM usuarios WHERE correo = ?", (correo,))
+        resultado = cursor.fetchone()
+        conn.close()
 
+        if resultado:  
+            return {
+                "status": "encontrado",  
+                "nombre": resultado[0], 
+                "correo": correo
+            }
+        else:  
+            raise HTTPException(status_code=404, detail="CORREO NO ESTÁ REGISTRADO.")
+    except Exception as e: 
+        print(f"ERROR LEYENDO LA DB: {e}")
+        raise HTTPException(status_code=500, detail="ERROR AL LEER LA BASE DE DATOS")
 # Configurar plantillas Jinja2
 app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
 templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
