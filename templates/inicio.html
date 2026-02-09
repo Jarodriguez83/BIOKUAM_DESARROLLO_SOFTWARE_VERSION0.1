@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://tgdolalsmimxcxkuiehl.supabase.co/storage/v1/object/sign/IMG_BIOKUAM/LOGO-BIOKUAM.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV81YTA5NWYzYy1hZDYxLTRkN2MtOTlkZC1kYjVkZDAxNTNjYWQiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJTUdfQklPS1VBTS9MT0dPLUJJT0tVQU0ucG5nIiwiaWF0IjoxNzY4NDQ4ODc5LCJleHAiOjE3NzEwNDA4Nzl9._9t8xngolAI-Tqc0x3qw1eb6lmGXOaMFGIf0ynR-wu8" type="image/x-icon">
     <title>BIOKUAM | GESTIÓN DE ACCESO</title>
-    <script src="/static/scripts/script_inicio.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -277,12 +276,12 @@
                     <p style="font-size: 0.85rem; color: #666; margin-bottom: 20px;">
                         INGRESA TU CORREO ELECTRÓNICO REGISTRADO PARA RESTABLECER LA CONTRASEÑA.
                     </p>
-                    <form>
+                    <form id="formOlvidar">
                         <div class="form-group">
                             <label>CORREO REGISTRADO</label>
                             <input type="email" id="inputCorreo" placeholder="correo@biokuam.com" style="font-family: 'Cause', cursive;" required>
                         </div>
-                        <button type="submit" class="btn-submit">ENVIAR</button>
+                        <button type="submit" class="btn-submit" id="btn-submit">VERIFICAR CORREO</button>
                     </form>
                     <p class="helper-text"><a onclick="triggerTab(0)"> VOLVER AL INICIO</a></p>
                 </div>
@@ -293,6 +292,7 @@
 <script src="{{ url_for('static', path='scripts/script_inicio.js') }}"></script>
 <script src="{{ url_for('static', path='scripts/form_register_user.js') }}"></script>
 <script src="{{ url_for('static', path='scripts/form_login_user.js') }}"></script>
+
 
 </body>
 </html>
