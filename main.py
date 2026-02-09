@@ -1,6 +1,4 @@
-"""
-Aplicación principal FastAPI
-"""
+
 from fastapi import FastAPI, Depends, HTTPException, Request, APIRouter  # Agrega Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -26,13 +24,13 @@ app = FastAPI(
 # CONFIGURAR EL CORS QUE PERMITE LAS PETICIONES DESDE EL FRONTEND
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # En producción, especifica los orígenes permitidos
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Evento de inicio: inicializar base de datos
+# INICIALIZAR LAS BASES DE DATOS
 @app.on_event("startup")
 def on_startup():
     """
@@ -47,7 +45,6 @@ def on_startup():
 def read_root(request: Request):  # Agrega request como parámetro
     """
     ENDPOINT DE BIENVENIDA AL PROYECTO EN DONDE SE RESPONDE CON UN HTML DE INICIO
-    Renderiza la plantilla asistente.html con Jinja2
     """
     return templates.TemplateResponse("inicio.html", {"request": request})  # Usa TemplateResponse
 
@@ -171,7 +168,7 @@ def read_restablecer_pass(request: Request): # Agrega request como parámetro
     ENDPOINT DEL RESTABLECER CONTRASEÑA DEL PROYECTO EN DONDE SE RESPONDE CON UN HTML DEL RESTABLECER CONTRASEÑA
     Renderiza la plantilla restablecer_pass.html con Jinja2
     """
-    return templates.TemplateResponse("restablecer_pass.html", {"request": request})  # Usa TemplateResponse
+    return templates.TemplateResponse("restablecer_pass.html", {"request": request})  # USO DE TEMPLATERESPONSE
 
 @app.get("/verificar-usuario")
 async def verificar_usuario(correo: str):
@@ -180,7 +177,7 @@ async def verificar_usuario(correo: str):
         conn = sqlite3.connect ('biokuam-database.db')
         cursor = conn.cursor()
         #BUSCAR AL USUARIO POR CORREO
-        cursor.execute("SELECT nombres FROM usuarios WHERE correo = ?", (correo,))
+        cursor.execute("SELECT nombres FROM usuario WHERE correo = ?", (correo,))
         resultado = cursor.fetchone()
         conn.close()
 
@@ -195,7 +192,30 @@ async def verificar_usuario(correo: str):
     except Exception as e: 
         print(f"ERROR LEYENDO LA DB: {e}")
         raise HTTPException(status_code=500, detail="ERROR AL LEER LA BASE DE DATOS")
-# Configurar plantillas Jinja2
-app.mount("/static", StaticFiles(directory="static"), name="static")  # Montar archivos estáticos
-templates = Jinja2Templates(directory="templates")  # Directorio de plantillas
+
+@app.put("/actualizar-pass")
+async def actualizar_pass(datos: dict):  
+    #'DATOS' CONTIENE EL CORREO Y LA NUEVA CONTRASEÑA  
+    correo = datos.get("correo")
+    new_pass = datos.get("new_pass")
+    if not correo or not new_pass:  
+        raise HTTPException(status_code=400, detail="FALTAN DATOS.")
+    try:  
+        conn = sqlite3.connect('biokuam-database.db')
+        cursor = conn.cursor()
+        #VERIFICAR SI EL USUARIO SI EXISTE
+        cursor.execute("UPDATE usuario SET contrasena = ? WHERE correo = ?", (new_pass, correo))
+        conn.commit() #PARA GUARDAR DATOS EN DB
+        conn.close()
+        return{
+            "status": "success", 
+            "message": "CONTRASEÑA ACTUALIZADA CORRECTAMENTE"
+        }
+    except Exception as e: 
+        print (f"ERROR AL ACTUALIZAR LA CONTRASEÑA: {e}")
+        raise HTTPException (status_code=500, detail="ERROR AL ACTUALIZAR EN LA BASE DE DATOS")
+
+# CONFIGURACIÓN DELAS PLANTILLAS JINJA2 
+app.mount("/static", StaticFiles(directory="static"), name="static")  # MONTAR LOS ARCHIVOS ESTÁTICOS
+templates = Jinja2Templates(directory="templates")  # DIRECTORIO DE PLANTILLAS 
 
