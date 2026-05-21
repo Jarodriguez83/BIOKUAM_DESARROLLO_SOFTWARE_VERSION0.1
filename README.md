@@ -1,8 +1,8 @@
-# BIOKUAM Web Service
+# BIOKUAM WEB SERVICE
 
 Servicio web desarrollado con FastAPI, SQLModel y SQLAlchemy para gestión de desarrollo de software.
 
-## 🚀 Características
+## 🚀 CARACTERÍSTICAS
 
 - **FastAPI**: Framework moderno y rápido para APIs
 - **SQLModel**: Combina SQLAlchemy y Pydantic
@@ -10,12 +10,12 @@ Servicio web desarrollado con FastAPI, SQLModel y SQLAlchemy para gestión de de
 - **PostgreSQL/SQLite**: Soporte para múltiples bases de datos
 - **Documentación automática**: Swagger UI en `/docs`
 
-## 📋 Requisitos Previos
+## 📋 REQUISITOS PREVIOS 
 
 - Python 3.8+
 - PostgreSQL (opcional, puede usar SQLite para desarrollo)
 
-## 🔧 Instalación
+## 🔧 INSTALACIÓN
 
 1. **Clonar el repositorio** (si aplica)
 
@@ -24,16 +24,16 @@ Servicio web desarrollado con FastAPI, SQLModel y SQLAlchemy para gestión de de
 python -m venv venv
 ```
 
-3. **Activar entorno virtual**:
+3. **ACTIVAR ENTORNO VIRTUAL**:
    - Windows: `venv\Scripts\activate`
    - Linux/Mac: `source venv/bin/activate`
 
-4. **Instalar dependencias**:
+4. **INSTALAR DEPENDENCIAS**:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. **Configurar variables de entorno**:
+5. **CONFIGURAR VARIABLES DE ENTORNO**:
 ```bash
 cp .env.example .env
 # Editar .env con tus configuraciones
