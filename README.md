@@ -8,7 +8,7 @@ Servicio web desarrollado con FastAPI, SQLModel y SQLAlchemy para gestión de de
 - **SQLModel**: Combina SQLAlchemy y Pydantic
 - **SQLAlchemy**: ORM potente para bases de datos
 - **PostgreSQL/SQLite**: Soporte para múltiples bases de datos
-- **Documentación automática**: Swagger UI en `/docs`
+- **Documentación**: Swagger UI en `/docs`
 
 ## 📋 REQUISITOS PREVIOS 
 
@@ -17,16 +17,16 @@ Servicio web desarrollado con FastAPI, SQLModel y SQLAlchemy para gestión de de
 
 ## 🔧 INSTALACIÓN
 
-1. **Clonar el repositorio** (si aplica)
+1. **CLONAR EL REPOSITORIO** (SI APLICA)
 
-2. **Crear entorno virtual**:
+2. **CREAR ENTORNO VIRTUAL**:
 ```bash
 python -m venv venv
 ```
 
 3. **ACTIVAR ENTORNO VIRTUAL**:
-   - Windows: `venv\Scripts\activate`
-   - Linux/Mac: `source venv/bin/activate`
+   - WINDOWS: `venv\Scripts\activate`
+   - LINUX/MAC: `source venv/bin/activate`
 
 4. **INSTALAR DEPENDENCIAS**:
 ```bash
@@ -39,9 +39,9 @@ cp .env.example .env
 # Editar .env con tus configuraciones
 ```
 
-## 🏃 Ejecución
+## 🏃 EJECUCIÓN 
 
-### Desarrollo
+### DESARROLLO
 ```bash
 python main.py
 ```
@@ -51,18 +51,18 @@ O usando uvicorn directamente:
 uvicorn main:app --reload
 ```
 
-### Producción
+### PRODUCCIÓN 
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-## 📚 Documentación
+## 📚 DOCUMENTACIÓN 
 
 Una vez ejecutando el servidor, accede a:
 - **Swagger UI**: http://localhost:8000/docs
 - **ReDoc**: http://localhost:8000/redoc
 
-## 🗂️ Estructura del Proyecto
+## 🗂️ ESTRUCTURA DEL PROYECTO
 
 ```
 .
@@ -75,7 +75,7 @@ Una vez ejecutando el servidor, accede a:
 └── README.md            # Este archivo
 ```
 
-## 🔐 Variables de Entorno
+## 🔐 VARIABLES DE ENTORNO
 
 Crea un archivo `.env` basado en `.env.example`:
 
@@ -83,7 +83,7 @@ Crea un archivo `.env` basado en `.env.example`:
 - `SECRET_KEY`: Clave secreta para JWT (cambiar en producción)
 - `CORS_ORIGINS`: Orígenes permitidos para CORS
 
-## 📝 Próximos Pasos
+## 📝 PRÓXIMOS AVANCES
 
 1. Crear más modelos según tus necesidades
 2. Implementar autenticación y autorización
@@ -92,7 +92,7 @@ Crea un archivo `.env` basado en `.env.example`:
 5. Configurar CI/CD
 6. Documentar endpoints adicionales
 
-## 🤝 Contribuir
+## 🤝 CONTRIBUIR 
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
@@ -100,7 +100,7 @@ Crea un archivo `.env` basado en `.env.example`:
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
-## 📄 Licencia
+## 📄 LICENCIA
 
 Este proyecto está bajo la Licencia MIT.
 
