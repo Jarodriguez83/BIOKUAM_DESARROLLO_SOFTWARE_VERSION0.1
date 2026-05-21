@@ -1,7 +1,7 @@
 console.log("EL SCRIPT PARA EL REGISTRO DEL USUARIO HA SIDO CARGADO EXITOSAMENTE");
 // CONFIGURACIÓN DE SUPABASE
-const SUPABASE_URL = 'https://tgdolalsmimxcxkuiehl.supabase.co'; 
-const SUPABASE_KEY = 'sb_publishable_3iG9laPzWQ8CGRbQTxrU4Q_g29s6mkn'; 
+const SUPABASE_URL = 'https://dqpvhulwukpzhqitiznx.supabase.co'; 
+const SUPABASE_KEY = 'sb_publishable_YzbliQzydvLykLJIvCoFFA_Sr0UgLa7'; 
 
 document.getElementById('formRegistro').addEventListener('submit', async function(e) {
     e.preventDefault(); 
